@@ -3,6 +3,7 @@ using TTNSolver
 using LinearAlgebra
 
 include("dense_heom_reference.jl")
+include("tree_diagram.jl")
 
 H = ComplexF64[0.2 0.3+0.1im; 0.3-0.1im -0.4]
 V = ComplexF64[1 0.2im; -0.2im -0.5]
@@ -31,3 +32,8 @@ println("Dense operator error: ", operator_error)
 println("TTN action error: ", action_error)
 println("Trace derivative error: ", trace_error)
 println("Initial trace: ", dot(trace_observable(system), initial))
+diagram_path = joinpath(@__DIR__, "heom_operator_check.svg")
+write_heom_tree_svg(diagram_path, system, probe;
+    operator_error, action_error, trace_error,
+    initial_trace=dot(trace_observable(system), initial))
+println("Visualization: ", diagram_path)

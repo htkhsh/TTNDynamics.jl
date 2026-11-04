@@ -70,6 +70,11 @@ in `examples/dense_heom_reference.jl` is for small validation problems only.
 Tests also cover trace annihilation, scaling similarity, custom trees, the
 existing ket/bra convention, size-one cutoffs and a bath-free system.
 
+Running `examples/heom_operator_check.jl` also writes
+`examples/heom_operator_check.svg`, a vector diagram of the TTN, local HEOM
+modes, edge ranks and dense-reference errors. It uses only Julia's standard
+library, so plotting dependencies stay out of both packages.
+
 `L * state` uses exact block sums and can multiply TTN ranks by the number of
 terms. `dot(x, L, y)` contracts products directly and avoids that expansion.
 The next numerical step is augmented BUG with local contractions and verified

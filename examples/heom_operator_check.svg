@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#192438}.muted{fill:#63718a}.small{font-size:13px}.label{font-size:14px;font-weight:600}.rank{font-size:12px;font-weight:700;fill:#3e5f8a}.metric{font-size:23px;font-weight:700}.title{font-size:25px;font-weight:700}</style>
+<text class="title" x="34" y="40">HEOM tensor tree · dense verification</text>
+<text class="muted" x="35" y="68">Spin-boson · physical order: vec(ρ), n₁, n₂, n₃ · box cutoffs: [2, 2, 2] · all displayed bonds have rank 1</text>
+<text class="small muted" x="35" y="96">State topology and rank for the probe passed to the product-sum HEOM generator</text>
+<line x1="600.0" y1="337" x2="436.6666666666667" y2="381.0" stroke="#8b9ab1" stroke-width="2.3"/>
+<rect x="493.33333333333337" y="352.0" width="50" height="20" rx="10" fill="white" stroke="#d9e1ed"/>
+<text class="rank" text-anchor="middle" x="518.3333333333334" y="366.0">r=1</text>
+<line x1="600.0" y1="337" x2="763.3333333333334" y2="381.0" stroke="#8b9ab1" stroke-width="2.3"/>
+<rect x="656.6666666666667" y="352.0" width="50" height="20" rx="10" fill="white" stroke="#d9e1ed"/>
+<text class="rank" text-anchor="middle" x="681.6666666666667" y="366.0">r=1</text>
+<line x1="845.0" y1="245" x2="600.0" y2="285" stroke="#8b9ab1" stroke-width="2.3"/>
+<rect x="697.5" y="258.0" width="50" height="20" rx="10" fill="white" stroke="#d9e1ed"/>
+<text class="rank" text-anchor="middle" x="722.5" y="272.0">r=1</text>
+<line x1="845.0" y1="245" x2="1090.0" y2="381.0" stroke="#8b9ab1" stroke-width="2.3"/>
+<rect x="942.5" y="306.0" width="50" height="20" rx="10" fill="white" stroke="#d9e1ed"/>
+<text class="rank" text-anchor="middle" x="967.5" y="320.0">r=1</text>
+<line x1="477.5" y1="153" x2="110.0" y2="381.0" stroke="#8b9ab1" stroke-width="2.3"/>
+<rect x="268.75" y="260.0" width="50" height="20" rx="10" fill="white" stroke="#d9e1ed"/>
+<text class="rank" text-anchor="middle" x="293.75" y="274.0">r=1</text>
+<line x1="477.5" y1="153" x2="845.0" y2="193" stroke="#8b9ab1" stroke-width="2.3"/>
+<rect x="636.25" y="166.0" width="50" height="20" rx="10" fill="white" stroke="#d9e1ed"/>
+<text class="rank" text-anchor="middle" x="661.25" y="180.0">r=1</text>
+<rect x="5.0" y="376.0" width="210" height="68" rx="13" fill="#dceafe" stroke="#3e77c2" stroke-width="1.6"/>
+<text class="label" text-anchor="middle" x="110.0" y="403.0">system · vec(ρ)</text>
+<text class="small muted" text-anchor="middle" x="110.0" y="426.0">fused system axis · M² = 4</text>
+<rect x="331.6666666666667" y="376.0" width="210" height="68" rx="13" fill="#ffedd5" stroke="#d78b37" stroke-width="1.6"/>
+<text class="label" text-anchor="middle" x="436.6666666666667" y="403.0">bath mode 1</text>
+<text class="small muted" text-anchor="middle" x="436.6666666666667" y="426.0">γ = 0.8 + 0.0im · n = 0:1</text>
+<rect x="658.3333333333334" y="376.0" width="210" height="68" rx="13" fill="#ffedd5" stroke="#d78b37" stroke-width="1.6"/>
+<text class="label" text-anchor="middle" x="763.3333333333334" y="403.0">bath mode 2</text>
+<text class="small muted" text-anchor="middle" x="763.3333333333334" y="426.0">γ = 0.4 + 1.2im · n = 0:1</text>
+<rect x="985.0" y="376.0" width="210" height="68" rx="13" fill="#ffedd5" stroke="#d78b37" stroke-width="1.6"/>
+<text class="label" text-anchor="middle" x="1090.0" y="403.0">bath mode 3</text>
+<text class="small muted" text-anchor="middle" x="1090.0" y="426.0">γ = 0.4 - 1.2im · n = 0:1</text>
+<circle cx="600.0" cy="314" r="25" fill="#dce3ed" stroke="#8797ad" stroke-width="1.5"/>
+<text text-anchor="middle" x="600.0" y="319" font-size="12" font-weight="700" fill="#27354a">Cₙ</text>
+<circle cx="845.0" cy="222" r="25" fill="#dce3ed" stroke="#8797ad" stroke-width="1.5"/>
+<text text-anchor="middle" x="845.0" y="227" font-size="12" font-weight="700" fill="#27354a">Cₙ</text>
+<circle cx="477.5" cy="130" r="25" fill="#263c5b" stroke="#263c5b" stroke-width="1.5"/>
+<text text-anchor="middle" x="477.5" y="135" font-size="12" font-weight="700" fill="white">root</text>
+<text class="small muted" x="35" y="466">r: virtual bond dimension · blue: fused system leaf · orange: auxiliary hierarchy leaves</text>
+<rect x="36.0" y="500.0" width="272.0" height="111" rx="14" fill="white" stroke="#dce3ed"/>
+<text class="small muted" x="54.0" y="527.0">Dense operator error</text>
+<text class="metric" x="54.0" y="564.0">0</text>
+<text x="290.0" y="563.0" text-anchor="end" font-size="12" font-weight="700" fill="#19724a">PASS</text>
+<text class="small muted" x="54.0" y="591.0">target = 0</text>
+<rect x="324.0" y="500.0" width="272.0" height="111" rx="14" fill="white" stroke="#dce3ed"/>
+<text class="small muted" x="342.0" y="527.0">TTN action error</text>
+<text class="metric" x="342.0" y="564.0">8.14e-17</text>
+<text x="578.0" y="563.0" text-anchor="end" font-size="12" font-weight="700" fill="#19724a">PASS</text>
+<text class="small muted" x="342.0" y="591.0">target = 0</text>
+<rect x="612.0" y="500.0" width="272.0" height="111" rx="14" fill="white" stroke="#dce3ed"/>
+<text class="small muted" x="630.0" y="527.0">Trace derivative</text>
+<text class="metric" x="630.0" y="564.0">0</text>
+<text x="866.0" y="563.0" text-anchor="end" font-size="12" font-weight="700" fill="#19724a">PASS</text>
+<text class="small muted" x="630.0" y="591.0">target = 0</text>
+<rect x="900.0" y="500.0" width="272.0" height="111" rx="14" fill="white" stroke="#dce3ed"/>
+<text class="small muted" x="918.0" y="527.0">Initial trace</text>
+<text class="metric" x="918.0" y="564.0">1.0</text>
+<text x="1154.0" y="563.0" text-anchor="end" font-size="12" font-weight="700" fill="#19724a">PASS</text>
+<text class="small muted" x="918.0" y="591.0">target = 1</text>
+</svg>
