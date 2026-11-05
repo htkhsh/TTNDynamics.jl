@@ -40,10 +40,11 @@ struct HEOMMode
 end
 
 """
-    HEOMTTNSystem(H, modes, hierarchy_sizes)
+    HEOMTTNSystem(H, modes, hierarchy_sizes; system_layout=:fused)
 
-A scaled HEOM model with a fused vec(rho) system leaf and one auxiliary leaf
-per mode. `hierarchy_sizes[k]` counts n=0:size-1 (independent box cutoffs).
+A scaled HEOM model with one auxiliary leaf per mode. `system_layout=:fused`
+uses one vec(rho) leaf; `:split` uses separate ket and bra leaves, in that
+physical order. `hierarchy_sizes[k]` counts n=0:size-1 (independent box cutoffs).
 H must be Hermitian; all mode couplings match H. Zero bath modes are allowed.
 Inputs are copied and stored arrays should be treated as read-only. Units
 must be consistent with hbar=1. No terminator or residual bath correction.
@@ -52,9 +53,12 @@ struct HEOMTTNSystem
     hamiltonian::Matrix{ComplexF64}
     modes::Vector{HEOMMode}
     hierarchy_sizes::Vector{Int}
+    system_layout::Symbol
 
     function HEOMTTNSystem(H::AbstractMatrix, modes::AbstractVector,
-                           hierarchy_sizes::AbstractVector)
+                           hierarchy_sizes::AbstractVector; system_layout=:fused)
+        system_layout isa Symbol && system_layout in (:fused,:split) ||
+            throw(ArgumentError("system_layout must be :fused or :split"))
         hamiltonian = _hermitian_matrix(H, "Hamiltonian")
         length(modes) == length(hierarchy_sizes) ||
             throw(DimensionMismatch("provide one hierarchy size per mode"))
@@ -67,21 +71,32 @@ struct HEOMTTNSystem
                 throw(DimensionMismatch("mode coupling and Hamiltonian dimensions differ"))
             push!(owned, HEOMMode(mode.coupling, mode.rate, mode.forward, mode.backward; scale=mode.scale))
         end
-        new(hamiltonian, owned, Int.(hierarchy_sizes))
+        new(hamiltonian, owned, Int.(hierarchy_sizes), system_layout)
     end
 end
 
-"""Physical dimensions `[M^2, hierarchy_sizes...]`, with ket fastest in vec(rho)."""
-heom_dimensions(system::HEOMTTNSystem) = [size(system.hamiltonian, 1)^2; system.hierarchy_sizes]
+_heom_system_leaves(system::HEOMTTNSystem) = system.system_layout == :fused ? 1 : 2
 
-"""Default tree: system leaf under the root and a balanced bath subtree."""
+"""Physical dimensions `[M^2, sizes...]` (fused) or `[M, M, sizes...]` (split).
+Ket runs fastest in both layouts, so dense vector order is identical.
+"""
+function heom_dimensions(system::HEOMTTNSystem)
+    d = size(system.hamiltonian,1)
+    return [system.system_layout == :fused ? [d^2] : [d,d]; system.hierarchy_sizes]
+end
+
+"""Default tree: a system branch and balanced bath subtree under the root.
+The system branch is one fused leaf or two sibling ket/bra leaves.
+"""
 function heom_tree(system::HEOMTTNSystem)
     count = length(system.modes)
-    count == 0 && return balanced_tree(1)
+    system_tree = balanced_tree(_heom_system_leaves(system))
+    count == 0 && return system_tree
+    offset = length(system_tree.children)
     bath = balanced_tree(count)
-    children = [(0, 0); [(left == 0 ? 0 : left+1, right == 0 ? 0 : right+1)
+    children = [system_tree.children; [(left == 0 ? 0 : left+offset, right == 0 ? 0 : right+offset)
                          for (left, right) in bath.children]]
-    push!(children, (1, bath.root+1))
+    push!(children, (system_tree.root, bath.root+offset))
     return BinaryTree(children)
 end
 
@@ -94,10 +109,14 @@ No global dense matrix, TTNO compression or coefficient dropping is used.
 """
 function heom_generator(system::HEOMTTNSystem)
     d = size(system.hamiltonian, 1)
-    identity = Matrix{ComplexF64}(I, d, d)
+    fused = system.system_layout == :fused
+    identity = fused ? Matrix{ComplexF64}(I,d,d) : nothing
     left(A) = kron(identity, A)
     right(A) = kron(transpose(A), identity)
-    terms = [ProductTerm(-im, Dict(1 => left(system.hamiltonian)-right(system.hamiltonian)))]
+    terms = fused ?
+        [ProductTerm(-im,Dict(1 => left(system.hamiltonian)-right(system.hamiltonian)))] :
+        [ProductTerm(-im,Dict(1 => system.hamiltonian)),
+         ProductTerm(im,Dict(2 => transpose(system.hamiltonian)))]
     for (k, mode) in enumerate(system.modes)
         n = system.hierarchy_sizes[k]
         number = diagm(0 => ComplexF64.(0:n-1))
@@ -105,18 +124,27 @@ function heom_generator(system::HEOMTTNSystem)
         for occupation in 1:n-1
             lower[occupation, occupation+1] = sqrt(occupation)
         end
-        Vleft, Vright = left(mode.coupling), right(mode.coupling)
-        push!(terms, ProductTerm(-mode.rate, Dict(k+1 => number)))
-        push!(terms, ProductTerm(-im*mode.scale, Dict(1 => Vleft-Vright, k+1 => lower)))
-        push!(terms, ProductTerm(-im/mode.scale,
-            Dict(1 => mode.forward*Vleft-mode.backward*Vright, k+1 => lower')))
+        bath_mode = k+_heom_system_leaves(system)
+        push!(terms, ProductTerm(-mode.rate,Dict(bath_mode => number)))
+        if fused
+            Vleft,Vright = left(mode.coupling),right(mode.coupling)
+            push!(terms,ProductTerm(-im*mode.scale,Dict(1 => Vleft-Vright,bath_mode => lower)))
+            push!(terms,ProductTerm(-im/mode.scale,
+                Dict(1 => mode.forward*Vleft-mode.backward*Vright,bath_mode => lower')))
+        else
+            V = mode.coupling
+            push!(terms,ProductTerm(-im*mode.scale,Dict(1 => V,bath_mode => lower)))
+            push!(terms,ProductTerm(im*mode.scale,Dict(2 => transpose(V),bath_mode => lower)))
+            push!(terms,ProductTerm(-im*mode.forward/mode.scale,Dict(1 => V,bath_mode => lower')))
+            push!(terms,ProductTerm(im*mode.backward/mode.scale,Dict(2 => transpose(V),bath_mode => lower')))
+        end
     end
     return SumOfProducts(heom_dimensions(system), terms)
 end
 
 function _check_heom_tree(system::HEOMTTNSystem, tree::BinaryTree)
-    length(tree.leaf_order) == length(system.modes)+1 ||
-        throw(DimensionMismatch("HEOM tree must have one system leaf and one leaf per mode"))
+    length(tree.leaf_order) == length(system.modes)+_heom_system_leaves(system) ||
+        throw(DimensionMismatch("HEOM tree leaf count differs from the system layout and mode count"))
 end
 
 """
@@ -124,7 +152,10 @@ end
 
 Place a finite system matrix at the hierarchy vacuum. Does not normalize or
 require Hermiticity/positivity, allowing later response-function states.
-Physical position 1 is vec(rho); subsequent positions follow system.modes.
+Fused position 1 is vec(rho); split positions 1 and 2 are ket and bra.
+Subsequent positions follow system.modes. Split states retain full M-dimensional
+ket/bra bases, also needed to protect the trace during evolution; arbitrary
+trees are supported without expanding the hierarchy.
 """
 function heom_initial_state(system::HEOMTTNSystem, rho::AbstractMatrix;
                             tree::BinaryTree=heom_tree(system))
@@ -132,6 +163,7 @@ function heom_initial_state(system::HEOMTTNSystem, rho::AbstractMatrix;
     size(rho) == size(system.hamiltonian) || throw(DimensionMismatch("system matrix dimensions differ"))
     density = Matrix{ComplexF64}(rho)
     all(isfinite, density) || throw(ArgumentError("system matrix must be finite in ComplexF64"))
+    system.system_layout == :split && return _split_heom_initial_state(system,density,tree)
     vectors = [vec(density)]
     for size in system.hierarchy_sizes
         vacuum = zeros(ComplexF64, size)
@@ -141,7 +173,9 @@ function heom_initial_state(system::HEOMTTNSystem, rho::AbstractMatrix;
     return product_state(tree, vectors)
 end
 
-"""Construct the linear trace functional vec(I) times all auxiliary vacua."""
+"""Construct vec(I) times auxiliary vacua, using the selected system layout.
+Split ket/bra leaf ranks are M; protecting this functional requires maxrank >= M.
+"""
 function trace_observable(system::HEOMTTNSystem; tree::BinaryTree=heom_tree(system))
     d = size(system.hamiltonian, 1)
     return heom_initial_state(system, Matrix{ComplexF64}(I, d, d); tree)
@@ -156,18 +190,66 @@ The full hierarchy tensor is never expanded. Works on any compatible tree.
 function root_density_matrix(state::TTNTensor, system::HEOMTTNSystem)
     leafdims(state) == heom_dimensions(system) || throw(DimensionMismatch("state dimensions differ from HEOM model"))
     tree = state.tree
-    system_node = tree.leaf_order[1]
+    system_nodes = tree.leaf_order[1:_heom_system_leaves(system)]
     environments = Vector{Matrix{ComplexF64}}(undef, length(tree.children))
+    physical_order = Vector{Vector{Int}}(undef,length(tree.children))
     for node in tree.postorder
         if tree.children[node] == (0, 0)
-            environments[node] = node == system_node ? state.leaves[node] : state.leaves[node][1:1, :]
+            position = findfirst(==(node),system_nodes)
+            environments[node] = isnothing(position) ? state.leaves[node][1:1,:] : state.leaves[node]
+            physical_order[node] = isnothing(position) ? Int[] : [position]
         else
             left, right = tree.children[node]
             core = state.cores[node]
             environments[node] = kron(environments[right], environments[left]) *
                 transpose(reshape(core, size(core, 1), :))
+            physical_order[node] = [physical_order[left];physical_order[right]]
         end
     end
     d = size(system.hamiltonian, 1)
-    return reshape(environments[tree.root][:, 1], d, d)
+    density = reshape(environments[tree.root][:,1],d,d)
+    return physical_order[tree.root] == [2,1] ? permutedims(density) : density
+end
+
+# Correlate the two system leaves at their least common ancestor. A subtree
+# containing exactly one system index carries that index unchanged; bath-only
+# subtrees and subtrees containing both system indices have rank one initially.
+function _split_heom_initial_state(system,density,tree)
+    d = size(density,1)
+    leaves = Dict{Int,Matrix{ComplexF64}}()
+    cores = Dict{Int,Array{ComplexF64,3}}()
+    indices = zeros(Int,length(tree.children)) # 0: bath, 1: ket, 2: bra, 3: both
+    ranks = ones(Int,length(tree.children))
+    for (position,node) in enumerate(tree.leaf_order)
+        if position <= 2
+            leaves[node] = Matrix{ComplexF64}(I,d,d)
+            indices[node] = position
+            ranks[node] = d
+        else
+            vacuum = zeros(ComplexF64,system.hierarchy_sizes[position-2],1)
+            vacuum[1] = 1
+            leaves[node] = vacuum
+        end
+    end
+    for node in tree.postorder
+        tree.children[node] == (0,0) && continue
+        left,right = tree.children[node]
+        a,b = indices[left],indices[right]
+        indices[node] = a | b
+        ranks[node] = indices[node] in (1,2) ? d : 1
+        core = zeros(ComplexF64,ranks[node],ranks[left],ranks[right])
+        if (a,b) == (1,2)
+            core[1,:,:] = density
+        elseif (a,b) == (2,1)
+            core[1,:,:] = transpose(density)
+        elseif indices[node] in (1,2)
+            for j in 1:d
+                core[j,a == 0 ? 1 : j,b == 0 ? 1 : j] = 1
+            end
+        else
+            core[1,1,1] = 1
+        end
+        cores[node] = core
+    end
+    return TTNTensor(tree,leaves,cores)
 end

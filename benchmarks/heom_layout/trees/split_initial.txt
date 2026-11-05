@@ -1,0 +1,10 @@
+HEOM · split · initial
+M = 4 · hierarchy sizes = [2, 2]
+
+root n7
+├─ n3 · r=1
+│  ├─ n1 · p1 · d=4 · r=4 · System · ket · density row index
+│  └─ n2 · p2 · d=4 · r=4 · System · bra · density column index
+└─ n6 · r=1
+   ├─ n4 · p3 · d=2 · r=1 · Hierarchy mode 1 · γ = 0.8 + 0.0im n = 0:1
+   └─ n5 · p4 · d=2 · r=1 · Hierarchy mode 2 · γ = 1.2 + 0.0im n = 0:1

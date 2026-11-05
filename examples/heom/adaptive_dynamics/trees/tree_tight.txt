@@ -1,0 +1,10 @@
+HEOM · tight
+t = 10.0 · rtol = 1.0e-5 · scaled hierarchy
+
+root n7
+├─ n1 · p1 · d=4 · r=4 · System · vec(ρ) · ket × bra
+└─ n6 · r=5
+   ├─ n5 · r=9
+   │  ├─ n2 · p2 · d=3 · r=3 · Hierarchy mode 1 · γ = 0.8 + 0.0im n = 0:2
+   │  └─ n3 · p3 · d=3 · r=3 · Hierarchy mode 2 · γ = 0.4 + 1.2im n = 0:2
+   └─ n4 · p4 · d=3 · r=3 · Hierarchy mode 3 · γ = 0.4 - 1.2im n = 0:2

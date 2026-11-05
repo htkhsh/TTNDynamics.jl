@@ -1,0 +1,3 @@
+label,method,parameter,value
+coarse,fixed,dt_fs,1.0
+fine,fixed,dt_fs,0.5

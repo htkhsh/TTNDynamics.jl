@@ -1,0 +1,16 @@
+Measured: 2026-11-05T10:30:23.363
+Julia: 1.12.6
+CPU: AMD Ryzen Threadripper PRO 9985WX 64-Cores
+Julia threads: 1
+BLAS threads: 1
+BLAS: LBTConfig([ILP64] libopenblas64_.so)
+Repetitions: 5
+KrylovKit: 0.10.4
+before TTNSolver.jl sha256: 4996b09626c4a8a4c673f838c3bd609e4cbc09104096f21b2b88c80dbeab3eae
+before bug.jl sha256: f79acf62d6fb33c71157bccb38cff4fcbc4712fda03bb18fa3d7c4f89d2348f3
+before adaptive.jl sha256: 59623ea908f713872a9045f747a6896de239bc2edf24e4a3e75c4d0ac2e40654
+before bug_workspaces.jl sha256: absent
+after TTNSolver.jl sha256: 28efc8f827f59b7bb6035635f39fcb9bfcd26e5fc7954d3d6dea03744c51c49a
+after bug.jl sha256: 75ee9988755fb722574a829fccbedddbc3d0753328dca8eb760ba77f8656d984
+after adaptive.jl sha256: 262a68f1b46377c29e83e290cd1ae2b2f9c46989118d8c33227b221e22727460
+after bug_workspaces.jl sha256: 69b960c079be6fa97550c99ba5834f9fbb95c579b922df1ea3f7943156fc6051

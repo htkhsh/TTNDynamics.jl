@@ -1,0 +1,12 @@
+Holstein–TFD · initial tree
+300.0 K · before basis enrichment · frequencies in fs⁻¹
+
+root n9
+├─ n1 · p1 · d=4 · r=1 · Electron + ancilla · physical electron × inactive ancilla
+└─ n8 · r=1
+   ├─ n6 · r=1
+   │  ├─ n2 · p2 · d=3 · r=1 · Oscillator 1 · +ω · ω = 0.03014 n = 0:2
+   │  └─ n3 · p3 · d=3 · r=1 · Oscillator 1 · −ω · ω = -0.03014 n = 0:2
+   └─ n7 · r=1
+      ├─ n4 · p4 · d=3 · r=1 · Oscillator 2 · +ω · ω = 0.03014 n = 0:2
+      └─ n5 · p5 · d=3 · r=1 · Oscillator 2 · −ω · ω = -0.03014 n = 0:2

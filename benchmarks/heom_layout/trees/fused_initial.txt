@@ -1,0 +1,8 @@
+HEOM · fused · initial
+M = 4 · hierarchy sizes = [2, 2]
+
+root n5
+├─ n1 · p1 · d=16 · r=1 · System · vec(ρ) · ket × bra
+└─ n4 · r=1
+   ├─ n2 · p2 · d=2 · r=1 · Hierarchy mode 1 · γ = 0.8 + 0.0im n = 0:1
+   └─ n3 · p3 · d=2 · r=1 · Hierarchy mode 2 · γ = 1.2 + 0.0im n = 0:1

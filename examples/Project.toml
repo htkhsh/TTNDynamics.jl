@@ -1,0 +1,13 @@
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+TTNDynamics = "1d146b18-4977-4f60-ac20-ce280536fab7"
+TTNSolver = "e04f9842-9468-4ce2-8b19-12c83bc286ab"
+TTNPlots = "fc048bf9-6d04-4128-9c40-420f351ccd9b"
+
+[sources]
+TTNDynamics = {path = ".."}
+TTNSolver = {path = "../../TTNSolver"}
+TTNPlots = {path = "../../TTNPlots"}
+
+[compat]
+julia = "1.11"

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="998" height="678" viewBox="0 0 998 678" role="img" aria-labelledby="ttn-title ttn-desc">
+<title id="ttn-title">HEOM · loose</title><desc id="ttn-desc">t = 10.0 · rtol = 0.001 · scaled hierarchy — 4 physical axes, 7 nodes.</desc>
+<style>text{font-family:Inter,'Segoe UI','Noto Sans',Arial,sans-serif;fill:#203349}.muted{fill:#66788a}.root-text{fill:white}.edge{fill:none;stroke:#9dabb9;stroke-width:1.8}.rank{font-size:12px;font-weight:600;fill:#405c76}</style>
+<rect width="100%" height="100%" rx="16" fill="#f8fafc"/>
+<text x="40" y="30" font-size="10" font-weight="700" letter-spacing="2" class="muted">TTN / STRUCTURE</text>
+<text x="40" y="68" font-size="28" font-weight="650">HEOM · loose</text>
+<text x="40" y="95" font-size="13" class="muted">t = 10.0 · rtol = 0.001 · scaled hierarchy</text>
+<text x="40" y="127" font-size="11" class="muted">4 physical axes   /   7 nodes</text>
+<path class="edge" d="M 499.0 415.0 C 499.0 461.0 381.0 461.0 381.0 507.0"/>
+<rect x="419.0" y="450.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="440.0" y="465.0">r=3</text>
+<path class="edge" d="M 499.0 415.0 C 499.0 461.0 617.0 461.0 617.0 507.0"/>
+<rect x="537.0" y="450.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="558.0" y="465.0">r=3</text>
+<path class="edge" d="M 617.0 303.0 C 617.0 339.0 499.0 339.0 499.0 375.0"/>
+<rect x="537.0" y="328.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="558.0" y="343.0">r=9</text>
+<path class="edge" d="M 617.0 303.0 C 617.0 405.0 853.0 405.0 853.0 507.0"/>
+<rect x="714.0" y="394.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="735.0" y="409.0">r=3</text>
+<path class="edge" d="M 499.0 191.0 C 499.0 349.0 145.0 349.0 145.0 507.0"/>
+<rect x="301.0" y="338.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="322.0" y="353.0">r=4</text>
+<path class="edge" d="M 499.0 191.0 C 499.0 227.0 617.0 227.0 617.0 263.0"/>
+<rect x="537.0" y="216.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="558.0" y="231.0">r=5</text>
+<g id="node-1">
+<rect x="40.0" y="507.0" width="210" height="97" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 55.0 523.0 v 65" stroke="#4263aa" stroke-width="3" stroke-linecap="round"/>
+<text x="68.0" y="528.0" font-size="10" class="muted">p1 · d=4 · n1</text>
+<text x="68.0" y="554.0" font-size="13" font-weight="650">System · vec(ρ)</text>
+<text x="68.0" y="576.0" font-size="11" class="muted">ket × bra</text>
+</g>
+<g id="node-2">
+<rect x="276.0" y="507.0" width="210" height="97" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 291.0 523.0 v 65" stroke="#b17c38" stroke-width="3" stroke-linecap="round"/>
+<text x="304.0" y="528.0" font-size="10" class="muted">p2 · d=3 · n2</text>
+<text x="304.0" y="554.0" font-size="13" font-weight="650">Hierarchy mode 1</text>
+<text x="304.0" y="576.0" font-size="11" class="muted">γ = 0.8 + 0.0im</text>
+<text x="304.0" y="592.0" font-size="11" class="muted">n = 0:2</text>
+</g>
+<g id="node-3">
+<rect x="512.0" y="507.0" width="210" height="97" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 527.0 523.0 v 65" stroke="#b17c38" stroke-width="3" stroke-linecap="round"/>
+<text x="540.0" y="528.0" font-size="10" class="muted">p3 · d=3 · n3</text>
+<text x="540.0" y="554.0" font-size="13" font-weight="650">Hierarchy mode 2</text>
+<text x="540.0" y="576.0" font-size="11" class="muted">γ = 0.4 + 1.2im</text>
+<text x="540.0" y="592.0" font-size="11" class="muted">n = 0:2</text>
+</g>
+<g id="node-4">
+<rect x="748.0" y="507.0" width="210" height="97" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 763.0 523.0 v 65" stroke="#b17c38" stroke-width="3" stroke-linecap="round"/>
+<text x="776.0" y="528.0" font-size="10" class="muted">p4 · d=3 · n4</text>
+<text x="776.0" y="554.0" font-size="13" font-weight="650">Hierarchy mode 3</text>
+<text x="776.0" y="576.0" font-size="11" class="muted">γ = 0.4 - 1.2im</text>
+<text x="776.0" y="592.0" font-size="11" class="muted">n = 0:2</text>
+</g>
+<g id="node-5">
+<circle cx="499.0" cy="395.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="499.0" y="399.0" text-anchor="middle" font-size="11" class="muted">n5</text>
+</g>
+<g id="node-6">
+<circle cx="617.0" cy="283.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="617.0" y="287.0" text-anchor="middle" font-size="11" class="muted">n6</text>
+</g>
+<g id="node-7">
+<circle cx="499.0" cy="171.0" r="20" fill="#263e56" stroke="#263e56"/>
+<text x="499.0" y="175.0" text-anchor="middle" font-size="11" class="root-text">root</text>
+<text x="528.0" y="175.0" font-size="11" class="muted">n7</text>
+</g>
+<text x="40" y="648" font-size="11" class="muted">r: bond dimension   ·   p: physical axis   ·   n: node ID   ·   d: local dimension</text></svg>

@@ -1,0 +1,8 @@
+Measured: 2026-11-05T10:03:10.529
+Julia: 1.12.6
+CPU: AMD Ryzen Threadripper PRO 9985WX 64-Cores
+Julia threads: 1
+BLAS threads: 1
+BLAS: LBTConfig([ILP64] libopenblas64_.so)
+Repetitions: 5
+Two full warmups per case; alternating timed/untimed runs; GC enabled.

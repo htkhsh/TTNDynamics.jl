@@ -1,0 +1,12 @@
+Holstein–TFD · fine
+t = 50.0 fs · 300.0 K · dt_fs = 0.5
+
+root n9
+├─ n1 · p1 · d=4 · r=2 · Electron + ancilla · physical electron × inactive ancilla
+└─ n8 · r=2
+   ├─ n6 · r=9
+   │  ├─ n2 · p2 · d=3 · r=3 · Oscillator 1 · +ω · ω = 0.03014 n = 0:2
+   │  └─ n3 · p3 · d=3 · r=3 · Oscillator 1 · −ω · ω = -0.03014 n = 0:2
+   └─ n7 · r=9
+      ├─ n4 · p4 · d=3 · r=3 · Oscillator 2 · +ω · ω = 0.03014 n = 0:2
+      └─ n5 · p5 · d=3 · r=3 · Oscillator 2 · −ω · ω = -0.03014 n = 0:2
