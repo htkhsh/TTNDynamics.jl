@@ -1,0 +1,4 @@
+/data/*.jls
+/data/**/*.jls
+/data/**/*.tmp
+__pycache__/

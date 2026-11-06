@@ -2,10 +2,13 @@
     tfd_evolve(system, initial; tspan, dt, saveat=nothing,
                atol=1e-6, rtol=1e-4, enrich_initial=true, kwargs...)
 
-Adaptive augmented BUG for the thermofield Schrodinger equation. `dt` is the
+Adaptive BUG for the thermofield Schrodinger equation. Select `method=:augmented`
+(default) or `:parallel`; `threaded` enables concurrency for either method. `dt` is the
 initial step proposal; saveat specifies observation times. atol/rtol control
 the whole-TTN local step-doubling estimate, not a global error bound. Additional
 rank, truncation and Krylov options are passed to TTNSolver.adaptive_evolve.
+Compression defaults to `truncation=:weighted`; `:local` selects the
+conservative local-core SVD policy.
 No linear invariant or norm correction is applied. Monitor norm/energy drift
 and check time/rank and Fock-cutoff convergence independently.
 
@@ -41,12 +44,16 @@ end
 """
     tfd_evolve(system, initial, times; atol=1e-10, maxrank=typemax(Int),
                krylov_tol=1e-12, krylovdim=30, krylov_maxiter=100,
-               enrich_initial=true)
+               enrich_initial=true, method=:augmented, threaded=true, truncation=:weighted)
 
-Propagate the thermofield Schrodinger equation with one augmented BUG step
+Propagate the thermofield Schrodinger equation with one BUG step
 between each pair of strictly increasing finite `times`. The first time
 labels `initial`; an equally spaced grid gives a fixed step size. No time-step
 adaptation, normalization or norm correction is applied.
+Select `method=:augmented` (default) or `:parallel`. `threaded` controls
+concurrent sibling subtrees for augmented BUG and all-node solves for parallel BUG.
+Compression defaults to `truncation=:weighted`; select `:local` for the
+conservative local-core SVD policy.
 
 `atol` controls the absolute rank-truncation budget per step, not time error.
 Reduce the step size to check temporal convergence. A binding `maxrank` can
@@ -54,7 +61,8 @@ miss that budget; inspect each diagnostic's `truncation.tolerance_met`.
 By default, enrich the initial bases with `H*initial` without changing its
 amplitudes, as in the adaptive API. Set `enrich_initial=false` for a prepared
 basis. A single time point returns an independent initial snapshot without
-enrichment or evaluating step-specific solver options. Inputs are not mutated.
+enrichment or evaluating truncation/Krylov options. The method name is always
+validated. Inputs are not mutated.
 
 Return `times`, `densities`, `norms`, `energies`, `mode_occupations` and
 `physical_occupations` (mode by sample matrices), node-by-sample `ranks`,
@@ -63,7 +71,12 @@ are retained. Evolution and observations use local TTN contractions.
 """
 function tfd_evolve(system::TFDTTNSystem, initial::TTNTensor, times;
                     atol=1e-10, maxrank=typemax(Int), krylov_tol=1e-12,
-                    krylovdim=30, krylov_maxiter=100, enrich_initial::Bool=true)
+                    krylovdim=30, krylov_maxiter=100, enrich_initial::Bool=true,
+                    method=:augmented, threaded::Bool=true,truncation=:weighted)
+    method === :augmented || method === :parallel ||
+        throw(ArgumentError("method must be :augmented or :parallel"))
+    step = method == :parallel ? parallel_bug_step : augmented_bug_step
+    execution = (;threaded,truncation)
     _check_tfd_state(initial,system)
     grid = collect(times)
     !isempty(grid) && all(t -> t isa Real && isfinite(t),grid) ||
@@ -83,9 +96,9 @@ function tfd_evolve(system::TFDTTNSystem, initial::TTNTensor, times;
     diagnostics = NamedTuple[]
     for sample in eachindex(grid)
         if sample > 1
-            state,info = augmented_bug_step(state,generator,grid[sample]-grid[sample-1];
+            state,info = step(state,generator,grid[sample]-grid[sample-1];
                 atol,maxrank,krylov_tol,krylovdim,krylov_maxiter,
-                conserved=nothing,correct_invariant=false)
+                conserved=nothing,correct_invariant=false,execution...)
             push!(diagnostics,info)
         end
         value = observe(state)

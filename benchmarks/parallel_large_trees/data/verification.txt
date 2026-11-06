@@ -1,0 +1,2 @@
+Test Summary:                 | Pass  Total   Time
+Large-tree benchmark fixtures |   31     31  11.5s

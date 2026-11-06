@@ -1,0 +1,8 @@
+case=heom64
+MPO rank=9
+setup seconds=0.541895707
+fixture setup seconds=0.000944399 (includes first-call compilation and TFD enrichment)
+coarse seconds=14.56879571
+fine seconds=39.458904623
+reference rank=18
+convergence=5.288146067395491e-9

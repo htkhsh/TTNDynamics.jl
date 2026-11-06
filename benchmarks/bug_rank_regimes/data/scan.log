@@ -1,0 +1,59 @@
+Scanning weak6 input ranks TT=30 TTN=18
+weak6 tAMEn tol=0.001
+  22.093826541 s error 0.0003970213046033287 rank 23
+weak6 tAMEn tol=0.0001
+  0.11477176 s error 4.8697094836831616e-5 rank 32
+weak6 augmented steps=1 cap=18
+  1.86499075 s error 1.665291327621153e-5 rank 18
+weak6 parallel steps=1 cap=18
+  0.220288565 s error 0.00017289572243525819 rank 18
+weak6 parallel steps=2 cap=18
+  0.149768895 s error 8.480358105508285e-5 rank 18
+Scanning strong6 input ranks TT=79 TTN=27
+strong6 tAMEn tol=0.001
+  0.181445774 s error 0.0008892039612748238 rank 76
+strong6 tAMEn tol=0.0001
+  1.002960254 s error 9.081312961872539e-5 rank 81
+strong6 augmented steps=1 cap=27
+  0.165866892 s error 7.539183783704112e-5 rank 27
+strong6 parallel steps=1 cap=27
+  0.120027788 s error 0.00452017575776128 rank 27
+strong6 parallel steps=2 cap=27
+  0.250558356 s error 0.0022363049767606786 rank 27
+strong6 parallel steps=4 cap=27
+  1.035381582 s error 0.0011075317907247838 rank 27
+strong6 parallel steps=8 cap=27
+  1.05611292 s error 0.0005506152169422508 rank 27
+strong6 parallel steps=16 cap=27
+  2.924473791 s error 0.00027446470147681585 rank 27
+strong6 parallel steps=32 cap=27
+  5.036460645 s error 0.00013701515398579776 rank 27
+Scanning system8 input ranks TT=64 TTN=64
+system8 tAMEn tol=0.001
+  0.116917261 s error 0.0004797678453007008 rank 64
+system8 tAMEn tol=0.0001
+  0.276168192 s error 5.82603692848099e-5 rank 64
+system8 augmented steps=1 cap=64
+  0.107122569 s error 0.00017722552436912384 rank 64
+system8 augmented steps=2 cap=64
+  0.648338095 s error 0.00017756907363590082 rank 64
+system8 augmented steps=4 cap=64
+  0.430004498 s error 0.00017798250870929502 rank 64
+system8 augmented steps=8 cap=64
+  0.830083461 s error 0.00017824575547582252 rank 64
+system8 augmented steps=16 cap=64
+  2.209665451 s error 0.00017839113438275356 rank 64
+system8 augmented steps=32 cap=64
+  4.522589345 s error 0.0001784672225876378 rank 64
+system8 parallel steps=1 cap=64
+  0.059553096 s error 0.000423817752034655 rank 64
+system8 parallel steps=2 cap=64
+  0.119625998 s error 0.0002571044536194068 rank 64
+system8 parallel steps=4 cap=64
+  0.2820991 s error 0.00020057626648602593 rank 64
+system8 parallel steps=8 cap=64
+  0.991300045 s error 0.00018415892475732087 rank 64
+system8 parallel steps=16 cap=64
+  1.00038657 s error 0.000179899146394903 rank 64
+system8 parallel steps=32 cap=64
+  2.958238792 s error 0.00017885184329897153 rank 64

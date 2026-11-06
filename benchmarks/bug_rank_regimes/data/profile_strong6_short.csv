@@ -1,0 +1,2 @@
+case,m,modes,strength,prep,interval,dimension,tt_rank,ttn_rank,mpo_rank,tt_storage,ttn_storage,tt_input_error,ttn_input_error,reference_convergence
+strong6_short,4,6,16.0,0.5,0.005,11664,81,27,14,21604,13850,5.374469768314404e-15,1.6325189149789364e-15,0.0

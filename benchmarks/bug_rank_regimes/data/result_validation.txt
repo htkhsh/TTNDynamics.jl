@@ -1,0 +1,2 @@
+54 timing rows pass the 1e-4 target; 228 recorded source hashes match.
+Local documentation links resolve; SVG XML parses.

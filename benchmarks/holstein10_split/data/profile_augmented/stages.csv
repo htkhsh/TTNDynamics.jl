@@ -1,0 +1,2 @@
+prepare,update,finish,total,gc_seconds,allocated_bytes,solve_sum,max_node_solve,root_solve,state_distance
+1.80787241,32.421620897,0.760677295,34.990174707,6.87867076,23472386080,45.262517976,11.715678836,0.30356127,6.42756923549628e-16

@@ -1,0 +1,165 @@
+Preparing heom16
+MPO rank 8 setup seconds 0.026856342
+Computing independent reference
+  reference step 1/10 rank 7
+  reference step 2/10 rank 9
+  reference step 3/10 rank 11
+  reference step 4/10 rank 11
+  reference step 5/10 rank 12
+  reference step 6/10 rank 14
+  reference step 7/10 rank 14
+  reference step 8/10 rank 14
+  reference step 9/10 rank 14
+  reference step 10/10 rank 15
+Coarse reference 6.645319433 s rank 15
+  reference step 1/20 rank 7
+  reference step 2/20 rank 9
+  reference step 3/20 rank 11
+  reference step 4/20 rank 11
+  reference step 5/20 rank 11
+  reference step 6/20 rank 12
+  reference step 7/20 rank 13
+  reference step 8/20 rank 13
+  reference step 9/20 rank 14
+  reference step 10/20 rank 14
+  reference step 11/20 rank 14
+  reference step 12/20 rank 15
+  reference step 13/20 rank 15
+  reference step 14/20 rank 15
+  reference step 15/20 rank 15
+  reference step 16/20 rank 17
+  reference step 17/20 rank 17
+  reference step 18/20 rank 18
+  reference step 19/20 rank 18
+  reference step 20/20 rank 18
+Fine reference 6.380957862 s rank 18 convergence 5.479454326446934e-9
+tAMEn tol=0.001: 19.088868409 s error 7.369762502843566e-5 rank 10
+BUG steps=5 atol=1.0e-7 cap=8: 2.493700325 s error 0.00047131876819618557 rank 8 misses 2
+BUG steps=10 atol=1.0e-7 cap=8: 1.296024789 s error 0.00015595861960158032 rank 8 misses 7
+BUG steps=20 atol=5.0000000000000004e-8 cap=8: 1.902705361 s error 5.501667834522211e-5 rank 8 misses 17
+Preparing heom32
+MPO rank 9 setup seconds 0.124900538
+Computing independent reference
+  reference step 1/10 rank 7
+  reference step 2/10 rank 9
+  reference step 3/10 rank 11
+  reference step 4/10 rank 11
+  reference step 5/10 rank 12
+  reference step 6/10 rank 14
+  reference step 7/10 rank 14
+  reference step 8/10 rank 14
+  reference step 9/10 rank 14
+  reference step 10/10 rank 15
+Coarse reference 6.179518576 s rank 15
+  reference step 1/20 rank 7
+  reference step 2/20 rank 9
+  reference step 3/20 rank 11
+  reference step 4/20 rank 11
+  reference step 5/20 rank 11
+  reference step 6/20 rank 12
+  reference step 7/20 rank 13
+  reference step 8/20 rank 13
+  reference step 9/20 rank 14
+  reference step 10/20 rank 14
+  reference step 11/20 rank 14
+  reference step 12/20 rank 15
+  reference step 13/20 rank 15
+  reference step 14/20 rank 15
+  reference step 15/20 rank 16
+  reference step 16/20 rank 17
+  reference step 17/20 rank 17
+  reference step 18/20 rank 18
+  reference step 19/20 rank 18
+  reference step 20/20 rank 19
+Fine reference 15.81722512 s rank 19 convergence 5.3387569598450045e-9
+tAMEn tol=0.001: 0.036816445 s error 8.498320006995309e-5 rank 10
+BUG steps=5 atol=1.0e-7 cap=8: 1.037991314 s error 0.0004761529282947497 rank 8 misses 2
+BUG steps=10 atol=1.0e-7 cap=8: 3.557334866 s error 0.00014002582985355708 rank 8 misses 7
+BUG steps=20 atol=5.0000000000000004e-8 cap=8: 8.53957871 s error 5.780839846383613e-5 rank 8 misses 17
+Preparing heom64
+MPO rank 9 setup seconds 0.541895707
+Computing independent reference
+  reference step 1/10 rank 7
+  reference step 2/10 rank 10
+  reference step 3/10 rank 11
+  reference step 4/10 rank 11
+  reference step 5/10 rank 12
+  reference step 6/10 rank 14
+  reference step 7/10 rank 14
+  reference step 8/10 rank 14
+  reference step 9/10 rank 15
+  reference step 10/10 rank 15
+Coarse reference 14.56879571 s rank 15
+  reference step 1/20 rank 7
+  reference step 2/20 rank 9
+  reference step 3/20 rank 11
+  reference step 4/20 rank 11
+  reference step 5/20 rank 11
+  reference step 6/20 rank 12
+  reference step 7/20 rank 13
+  reference step 8/20 rank 13
+  reference step 9/20 rank 14
+  reference step 10/20 rank 14
+  reference step 11/20 rank 14
+  reference step 12/20 rank 15
+  reference step 13/20 rank 15
+  reference step 14/20 rank 15
+  reference step 15/20 rank 17
+  reference step 16/20 rank 17
+  reference step 17/20 rank 17
+  reference step 18/20 rank 18
+  reference step 19/20 rank 18
+  reference step 20/20 rank 18
+Fine reference 39.458904623 s rank 18 convergence 5.288146067395491e-9
+tAMEn tol=0.001: 0.058496637 s error 7.976910978411285e-5 rank 10
+BUG steps=5 atol=1.0e-7 cap=8: 5.174193515 s error 0.0003433805807275781 rank 8 misses 2
+BUG steps=10 atol=1.0e-7 cap=8: 14.862259825 s error 0.00014516881639014626 rank 8 misses 7
+BUG steps=20 atol=5.0000000000000004e-8 cap=8: 34.535076577 s error 6.649893522813013e-5 rank 8 misses 17
+Preparing tfd16
+MPO rank 5 setup seconds 0.008282347
+Computing independent reference
+  reference step 1/10 rank 11
+  reference step 2/10 rank 14
+  reference step 3/10 rank 14
+  reference step 4/10 rank 15
+  reference step 5/10 rank 16
+  reference step 6/10 rank 18
+  reference step 7/10 rank 19
+  reference step 8/10 rank 21
+  reference step 9/10 rank 24
+  reference step 10/10 rank 24
+Coarse reference 3.222620793 s rank 24
+  reference step 1/20 rank 11
+  reference step 2/20 rank 13
+  reference step 3/20 rank 14
+  reference step 4/20 rank 14
+  reference step 5/20 rank 15
+  reference step 6/20 rank 16
+  reference step 7/20 rank 17
+  reference step 8/20 rank 18
+  reference step 9/20 rank 19
+  reference step 10/20 rank 21
+  reference step 11/20 rank 23
+  reference step 12/20 rank 24
+  reference step 13/20 rank 25
+  reference step 14/20 rank 25
+  reference step 15/20 rank 24
+  reference step 16/20 rank 25
+  reference step 17/20 rank 26
+  reference step 18/20 rank 26
+  reference step 19/20 rank 26
+  reference step 20/20 rank 27
+Fine reference 7.790523069 s rank 27 convergence 7.01838691307509e-9
+tAMEn tol=0.001: 1.985103155 s error 0.00017258201601058756 rank 12
+tAMEn tol=0.0001: 0.025522139 s error 3.3834158130756775e-5 rank 15
+BUG steps=5 atol=1.0e-7 cap=8: 1.132227059 s error 0.0019339383815331248 rank 8 misses 4
+BUG steps=10 atol=1.0e-7 cap=8: 0.861717695 s error 0.0011875716624255364 rank 8 misses 9
+BUG steps=20 atol=5.0000000000000004e-8 cap=8: 2.076242054 s error 0.0024407622247958147 rank 8 misses 19
+BUG steps=40 atol=2.5000000000000002e-8 cap=8: 3.183863643 s error 0.0032000532738728246 rank 8 misses 39
+BUG steps=80 atol=1.2500000000000001e-8 cap=8: 6.583653614 s error 0.001282931969039468 rank 8 misses 79
+BUG steps=160 atol=6.2500000000000005e-9 cap=8: 13.006409494 s error 0.005573635573681675 rank 8 misses 159
+BUG steps=5 atol=1.0e-7 cap=16: 1.219223117 s error 0.001018382897760484 rank 16 misses 3
+BUG steps=10 atol=1.0e-7 cap=16: 2.056132396 s error 0.0006331595157758914 rank 16 misses 8
+BUG steps=20 atol=5.0000000000000004e-8 cap=16: 4.721080679 s error 0.00035731362093889427 rank 16 misses 18
+BUG steps=40 atol=2.5000000000000002e-8 cap=16: 9.09284902 s error 0.0001562083717296091 rank 16 misses 38
+BUG steps=80 atol=1.2500000000000001e-8 cap=16: 19.44681588 s error 8.777601824483572e-5 rank 16 misses 78

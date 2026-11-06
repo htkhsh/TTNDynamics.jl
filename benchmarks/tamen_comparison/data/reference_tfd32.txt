@@ -1,0 +1,8 @@
+case=tfd32
+MPO rank=6
+setup seconds=0.031449029
+fixture setup seconds=0.268399839 (includes first-call compilation and TFD enrichment)
+coarse seconds=17.53260087
+fine seconds=32.033257293
+reference rank=29
+convergence=7.224809138690431e-9

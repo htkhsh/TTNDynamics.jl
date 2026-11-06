@@ -17,10 +17,27 @@ julia --startup-file=no --project=examples examples/holstein_tfd/dynamics.jl
 
 ## Time-evolution algorithms
 
-HEOM and TFD use recursive, first-order augmented BUG integration with adaptive
-tensor ranks. The standard examples use fixed time steps and compare `h` with
-`h/2` to check temporal convergence. The Holstein example selects this workflow
-with `method = :fixed`; `method = :adaptive` enables step-doubling control.
+HEOM and TFD support first-order **augmented BUG** [1] and **parallel BUG** [3],
+both with adaptive tensor ranks. The solver keyword `method=:parallel` selects
+parallel BUG; `:augmented` is the default. `threaded=true` (default) runs sibling
+subtrees concurrently for augmented BUG and all-node solves for parallel BUG.
+See the scaling measurements for [augmented BUG](docs/augmented_threads.md)
+and [parallel BUG](docs/parallel_threads.md), and the
+[algorithm comparison](docs/parallel_bug.md).
+The [larger-tree study](docs/parallel_large_trees.md) extends parallel BUG
+measurements to 65 leaves and 16 workers.
+The [TT tAMEn comparison](docs/tamen_comparison.md) measures propagation time
+at a common full-state error target.
+The [rank study](docs/bug_rank_regimes.md) tests when BUG methods become faster.
+The [long-time Holstein comparison](docs/holstein_longtime.md) provides a common
+Brownian-bath setup, checkpoints and accuracy checks for TT/tAMEn and both BUG methods.
+The [optimization report](docs/parallel_bug_optimization.md) compares compact
+assembly with the initial implementation and measures a common error target.
+
+The standard examples use fixed time steps and compare `h` with
+`h/2` to check temporal convergence. The Holstein example's configuration
+`method = :fixed` / `:adaptive` selects the time-grid workflow; it is separate
+from the solver's BUG selection.
 
 Adaptive integration compares one full step with two half steps and adjusts the
 step size using a whole-TTN local-error estimate, including truncation and
@@ -45,3 +62,7 @@ limits, detailed validation results, related code and literature references.
    see E. Hairer, S. P. Nørsett and G. Wanner, *Solving Ordinary Differential
    Equations I: Nonstiff Problems*, 2nd revised ed. (1993),
    [doi:10.1007/978-3-540-78862-1](https://doi.org/10.1007/978-3-540-78862-1).
+3. G. Ceruti, J. Kusch, C. Lubich and D. Sulz, “A Parallel Basis Update and
+   Galerkin Integrator for Tree Tensor Networks,” *SIAM Journal on Scientific
+   Computing* **48**(1), A27–A48 (2026),
+   [doi:10.1137/24M1714502](https://doi.org/10.1137/24M1714502).

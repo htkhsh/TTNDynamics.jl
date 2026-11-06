@@ -1,0 +1,5 @@
+case,method,tolerance,steps,maxrank,seconds,error,rank,storage,intervals,misses
+strong6_short,tamen,0.001,0,0,23.841544385,0.0004663031647026458,66,18229,1,0
+strong6_short,tamen,0.0001,0,0,0.257480824,5.3834995002033504e-5,81,21604,1,0
+strong6_short,augmented,0,1,28,1.688876225,7.817757678487048e-8,27,14595,0,0
+strong6_short,parallel,0,1,28,0.313669396,4.5685164008487815e-5,27,14595,0,0

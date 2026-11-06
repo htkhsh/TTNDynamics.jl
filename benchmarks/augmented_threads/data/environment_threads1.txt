@@ -1,0 +1,17 @@
+Measured: 2026-11-05T13:07:06.141
+Julia: 1.12.6
+CPU: AMD Ryzen Threadripper PRO 9985WX 64-Cores
+Julia workers: 1
+BLAS threads: 1
+GC threads: 1
+KrylovKit: 0.10.4
+h: 0.05
+steps: 5
+options: (atol = 1.0e-10, maxrank = 64, correct_invariant = false)
+repetitions: 5
+Load at start: [30.36, 30.38, 28.6]
+bug.jl sha256: 477b09cc5558b5c2c31751c0ee5bba37f687ed991eb0bbd54f3f0934a8b0fa06
+bug_workspaces.jl sha256: 69b960c079be6fa97550c99ba5834f9fbb95c579b922df1ea3f7943156fc6051
+contractions.jl sha256: ca0b1d8a6749f0909be7629c3a49cae63b30985143d5dfa15f99254c020bb47f
+truncation.jl sha256: dda8613c5c64e01d407af25f1ae31f6e755c55cc08daa3bc608231108c997b29
+run.jl sha256: 25980d8a1da2ef3293b3e95489e86485b3fa4d5091e013a6a8fa4897ba0c0d4c

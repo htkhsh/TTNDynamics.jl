@@ -1,0 +1,17 @@
+Julia 1.12.6, eight worker threads, BLAS=1, Strided=1.
+Successful terminal run using --startup-file=no --compiled-modules=existing (exit code 0).
+
+Included benchmarks/bug_rank_regimes/verify.jl:
+Test Summary:              | Pass  Total   Time
+Dense rank-profile helpers |    8      8  11.3s
+
+Additional continuation controls, loaded from input_strong6.jls and input_strong6_short.jls:
+Same-state control: TT distance=7.178934089432611e-16; TTN distance=1.4185088883640047e-15; MPO difference=0.0
+Assertions: all three differences < 1e-12.
+
+Input mutation norm=0.0
+Checked the strong6 train before and after run_tamen(A,train;tolerance=1e-4,final_time=0.05,conserved=...).
+Assertion: norm(train_vector(after)-train_vector(before)) < 1e-12.
+
+reproduce.jl parsed successfully with Meta.parseall.
+All helper tests and continuation controls passed.

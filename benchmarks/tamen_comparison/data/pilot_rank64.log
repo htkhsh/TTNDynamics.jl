@@ -1,0 +1,41 @@
+Test Summary:                   | Pass  Total   Time
+TT / TTN comparison conventions |    7      7  16.2s
+Test Summary:                                           | Pass  Total   Time
+Independent reference and tAMEn against dense evolution |   10     10  19.9s
+Preparing heom16
+MPO rank 8 setup seconds 0.469016444
+Computing independent reference
+  reference step 1/10 rank 7
+  reference step 2/10 rank 9
+  reference step 3/10 rank 11
+  reference step 4/10 rank 11
+  reference step 5/10 rank 12
+  reference step 6/10 rank 14
+  reference step 7/10 rank 14
+  reference step 8/10 rank 14
+  reference step 9/10 rank 14
+  reference step 10/10 rank 15
+Coarse reference 3.384622633 s rank 15
+  reference step 1/20 rank 7
+  reference step 2/20 rank 9
+  reference step 3/20 rank 11
+  reference step 4/20 rank 11
+  reference step 5/20 rank 11
+  reference step 6/20 rank 12
+  reference step 7/20 rank 13
+  reference step 8/20 rank 13
+  reference step 9/20 rank 14
+  reference step 10/20 rank 14
+  reference step 11/20 rank 14
+  reference step 12/20 rank 15
+  reference step 13/20 rank 15
+  reference step 14/20 rank 15
+  reference step 15/20 rank 15
+  reference step 16/20 rank 17
+  reference step 17/20 rank 17
+  reference step 18/20 rank 18
+  reference step 19/20 rank 18
+  reference step 20/20 rank 18
+Fine reference 7.243192959 s rank 18 convergence 5.479454326446934e-9
+tAMEn tol=0.001: 2.410956329 s error 7.369762502843566e-5 rank 10
+BUG steps=5 atol=1.0e-7: 2.60855364 s error 0.00046919563899440675 rank 32 misses 0

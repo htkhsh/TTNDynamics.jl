@@ -1,0 +1,3 @@
+case,method,parameter,atol,seconds,relative_error,density_error,rank,misses,discarded,intervals
+heom16,tamen,0.001,0,2.410956329,7.369762502843566e-5,2.6188071913223356e-5,10,0,0,1
+heom16,parallel_bug,5,1.0e-7,2.60855364,0.00046919563899440675,0.0004040912598755298,32,0,5.834224411871327e-9,0

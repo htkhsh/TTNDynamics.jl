@@ -1,0 +1,11 @@
+Measured: 2026-11-05T13:14:33.539
+Julia: 1.12.6
+CPU: AMD Ryzen Threadripper PRO 9985WX 64-Cores
+Workers: 4
+GC threads: 1
+BLAS threads: 1
+Repetitions: 3
+Load: [24.35, 27.78, 28.31]
+run.jl sha256: 25980d8a1da2ef3293b3e95489e86485b3fa4d5091e013a6a8fa4897ba0c0d4c
+stages.jl sha256: 5934fa4ba46d47b6d5d217941afa30f9469864a1f82d07598d8d5b1446cb5b8f
+bug.jl sha256: 477b09cc5558b5c2c31751c0ee5bba37f687ed991eb0bbd54f3f0934a8b0fa06

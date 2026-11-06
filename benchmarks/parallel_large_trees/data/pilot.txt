@@ -1,0 +1,25 @@
+Preparing heom16
+(name = "heom16", setup = 7.635771534, preevolution = 13.214795085, leaves = 17, nodes = 33, height = 5, terms = 49, full_dimension = 688747536, input_rank = 16, pretruncation_misses = 0)
+(threaded = false, seconds = 0.569921588, GB = 0.649518824, rank = 32, augmented = 32, max_local_dimension = 4096, local_solves = 17, skipped = 16, truncation_met = true)
+(threaded = true, seconds = 0.409285921, GB = 0.648860776, rank = 32, augmented = 32, max_local_dimension = 4096, local_solves = 17, skipped = 16, truncation_met = true)
+Serial/threaded distance: 5.768945721377126e-16
+Preparing heom32
+(name = "heom32", setup = 0.000647587, preevolution = 0.831840443, leaves = 33, nodes = 65, height = 6, terms = 97, full_dimension = 29648323021629456, input_rank = 16, pretruncation_misses = 0)
+(threaded = false, seconds = 2.05559339, GB = 2.462726392, rank = 32, augmented = 32, max_local_dimension = 4096, local_solves = 33, skipped = 32, truncation_met = true)
+(threaded = true, seconds = 1.288635454, GB = 2.46276428, rank = 32, augmented = 32, max_local_dimension = 4096, local_solves = 33, skipped = 32, truncation_met = true)
+Serial/threaded distance: 6.218714341342625e-16
+Preparing heom64
+(name = "heom64", setup = 0.001336738, preevolution = 2.813123149, leaves = 65, nodes = 129, height = 7, terms = 193, full_dimension = 54938941124680199754525585428496, input_rank = 16, pretruncation_misses = 0)
+(threaded = false, seconds = 8.318711517, GB = 9.464981184, rank = 32, augmented = 32, max_local_dimension = 4096, local_solves = 65, skipped = 64, truncation_met = true)
+(threaded = true, seconds = 4.655610127, GB = 9.465054432, rank = 32, augmented = 32, max_local_dimension = 4096, local_solves = 65, skipped = 64, truncation_met = true)
+Serial/threaded distance: 4.314550331253113e-16
+Preparing tfd16
+(name = "tfd16", setup = 0.0960327, preevolution = 3.538831498, leaves = 17, nodes = 33, height = 5, terms = 33, full_dimension = 688747536, input_rank = 64, pretruncation_misses = 1)
+(threaded = false, seconds = 11.888908468, GB = 8.289805264, rank = 64, augmented = 128, max_local_dimension = 102400, local_solves = 16, skipped = 17, truncation_met = false)
+(threaded = true, seconds = 7.656983603, GB = 8.289160752, rank = 64, augmented = 128, max_local_dimension = 102400, local_solves = 16, skipped = 17, truncation_met = false)
+Serial/threaded distance: 1.9818787583690707e-15
+Preparing tfd32
+(name = "tfd32", setup = 0.253048061, preevolution = 24.820480863, leaves = 33, nodes = 65, height = 6, terms = 65, full_dimension = 29648323021629456, input_rank = 64, pretruncation_misses = 1)
+(threaded = false, seconds = 100.065822553, GB = 50.595334952, rank = 64, augmented = 128, max_local_dimension = 262144, local_solves = 32, skipped = 33, truncation_met = false)
+(threaded = true, seconds = 54.045451088, GB = 50.595261072, rank = 64, augmented = 128, max_local_dimension = 262144, local_solves = 32, skipped = 33, truncation_met = false)
+Serial/threaded distance: 5.594404964690299e-15

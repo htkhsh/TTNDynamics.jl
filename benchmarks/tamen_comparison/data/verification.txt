@@ -1,0 +1,9 @@
+Command: JULIA_DEPOT_PATH=/tmp/ttndynamics-fixed-depot:/home/takahashi/.julia JULIA_LOAD_PATH=/home/takahashi/.julia/dev/TTNDynamics:/home/takahashi/.julia/dev/TTSolver:@stdlib OPENBLAS_NUM_THREADS=1 JULIA_NUM_GC_THREADS=1 julia --threads=8 --startup-file=no --compiled-modules=existing TTNDynamics/benchmarks/tamen_comparison/verify.jl
+
+Captured test summaries from the successful terminal run (exit code 0):
+Test Summary:                   | Pass  Total   Time
+TT / TTN comparison conventions |    7      7  15.4s
+Test Summary:                                           | Pass  Total   Time
+Independent reference and tAMEn against dense evolution |   12     12  30.1s
+
+19 checks passed. An earlier redirected invocation ended with signal 15 before producing test output; the complete rerun above used existing compiled modules.

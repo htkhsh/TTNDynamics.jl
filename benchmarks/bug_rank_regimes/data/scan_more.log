@@ -1,0 +1,62 @@
+Preparing weak8 (name = "weak8", m = 4, k = 8, strength = 1.0, prep = 0.25)
+  4.062668 seconds (8.22 M allocations: 564.850 MiB, 11.38% gc time, 84.64% compilation time)
+weak8 TT rank=77 TTN rank=50 MPO rank=18 input errors (5.77970661099147e-8, 2.288950083977661e-8)
+Preparing moderate8 (name = "moderate8", m = 4, k = 8, strength = 4.0, prep = 0.25)
+  0.874471 seconds (410 allocations: 169.314 MiB, 7.13% gc time)
+moderate8 TT rank=113 TTN rank=67 MPO rank=18 input errors (6.768821258746599e-8, 3.143823702597006e-8)
+Scanning strong6 input ranks TT=79 TTN=27
+strong6 parallel steps=1 cap=28
+  1.137806689 s error 0.00452017575776128 rank 27
+strong6 parallel steps=2 cap=28
+  0.757831271 s error 0.0022363049767606786 rank 27
+strong6 parallel steps=4 cap=28
+  0.522399963 s error 0.0011075317907247838 rank 27
+strong6 parallel steps=8 cap=28
+  1.469679717 s error 0.0005506152169422508 rank 27
+strong6 parallel steps=16 cap=28
+  2.894187283 s error 0.00027446470147681585 rank 27
+strong6 parallel steps=32 cap=28
+  5.27784155 s error 0.00013701515398579776 rank 27
+strong6 parallel steps=64 cap=28
+  10.289044182 s error 6.845249644808888e-5 rank 27
+Scanning system8 input ranks TT=64 TTN=64
+system8 augmented steps=1 cap=65
+  0.552287621 s error 5.247394687053551e-15 rank 65
+system8 parallel steps=1 cap=65
+  0.159732335 s error 0.00038498847676198114 rank 65
+system8 parallel steps=2 cap=65
+  0.116388221 s error 0.00018408866772361395 rank 65
+system8 parallel steps=4 cap=65
+  0.261956078 s error 9.005226535568274e-5 rank 65
+Scanning weak8 input ranks TT=42 TTN=30
+weak8 tAMEn tol=0.001
+  22.424531256 s error 0.00043008213571006014 rank 25
+weak8 tAMEn tol=0.0001
+  0.090083969 s error 6.317268281365068e-5 rank 39
+weak8 augmented steps=1 cap=31
+  1.618566973 s error 9.985937456926955e-6 rank 31
+weak8 parallel steps=1 cap=31
+  0.818693418 s error 0.00020828683744620894 rank 31
+weak8 parallel steps=2 cap=31
+  1.083568843 s error 0.0001016312559297412 rank 31
+weak8 parallel steps=4 cap=31
+  2.117673588 s error 5.106211473205333e-5 rank 31
+Scanning moderate8 input ranks TT=70 TTN=47
+moderate8 tAMEn tol=0.001
+  0.123326053 s error 0.0006993347255779958 rank 39
+moderate8 tAMEn tol=0.0001
+  0.681472986 s error 0.00010098762062824584 rank 59
+moderate8 tAMEn tol=1.0e-5
+  0.762532563 s error 1.7276361495480626e-5 rank 89
+moderate8 augmented steps=1 cap=48
+  3.157217928 s error 9.59989780970719e-6 rank 48
+moderate8 parallel steps=1 cap=48
+  1.144473222 s error 0.0008904515399057103 rank 48
+moderate8 parallel steps=2 cap=48
+  1.943447274 s error 0.00043071871281170725 rank 48
+moderate8 parallel steps=4 cap=48
+  3.809233552 s error 0.00021205077250299696 rank 48
+moderate8 parallel steps=8 cap=48
+  7.833091564 s error 0.00010547828835461212 rank 48
+moderate8 parallel steps=16 cap=48
+  16.190530238 s error 5.311767801756135e-5 rank 48

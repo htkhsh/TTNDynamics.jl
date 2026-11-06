@@ -1,0 +1,72 @@
+Preparing strong6_short (name = "strong6_short", m = 4, k = 6, strength = 16.0, prep = 0.5, interval = 0.005)
+  2.809843 seconds (8.22 M allocations: 414.635 MiB, 2.50% gc time, 107.81% compilation time)
+strong6_short TT rank=81 TTN rank=27 MPO rank=14 input errors (5.374469768314404e-15, 1.6325189149789364e-15)
+Scanning strong6_short input ranks TT=79 TTN=27
+strong6_short tAMEn tol=0.001
+  23.841544385 s error 0.0004663031647026458 rank 66
+strong6_short tAMEn tol=0.0001
+  0.257480824 s error 5.3834995002033504e-5 rank 81
+strong6_short augmented steps=1 cap=28
+  1.688876225 s error 7.817757678487048e-8 rank 27
+strong6_short parallel steps=1 cap=28
+  0.313669396 s error 4.5685164008487815e-5 rank 27
+Measuring weak6: Dict{String, NamedTuple}("parallel" => (steps = 2, maxrank = 18), "tamen" => (points = 12, tolerance = 0.0001), "augmented" => (steps = 1, maxrank = 18))
+  1 tamen 0.039524794 s error 6.217102314564658e-5
+  1 augmented 0.143624082 s error 1.665291327621153e-5
+  1 parallel 0.129603313 s error 8.480358105508285e-5
+  2 parallel 0.148970415 s error 8.480358105508285e-5
+  2 tamen 0.035291491 s error 6.217102314564658e-5
+  2 augmented 0.127254197 s error 1.665291327621153e-5
+  3 augmented 0.122318077 s error 1.665291327621153e-5
+  3 parallel 0.121491584 s error 8.480358105508285e-5
+  3 tamen 0.029893677 s error 6.217102314564658e-5
+Measuring weak8: Dict{String, NamedTuple}("parallel" => (steps = 4, maxrank = 31), "tamen" => (points = 12, tolerance = 0.0001), "augmented" => (steps = 1, maxrank = 31))
+  1 tamen 0.10328673 s error 6.951729925273341e-5
+  1 augmented 1.153289399 s error 9.985937456926955e-6
+  1 parallel 1.793776965 s error 5.106211473205333e-5
+  2 parallel 1.761187638 s error 5.106211473205333e-5
+  2 tamen 0.083279179 s error 6.951729925273341e-5
+  2 augmented 1.137118722 s error 9.985937456926955e-6
+  3 augmented 1.229811104 s error 9.985937456926955e-6
+  3 parallel 1.69897885 s error 5.106211473205333e-5
+  3 tamen 0.115001091 s error 6.951729925273341e-5
+Measuring moderate8: Dict{String, NamedTuple}("parallel" => (steps = 16, maxrank = 48), "tamen" => (points = 4, tolerance = 0.0001), "augmented" => (steps = 1, maxrank = 48))
+  1 tamen 0.381188918 s error 8.561470656895955e-5
+  1 augmented 2.765011506 s error 9.59989780970719e-6
+  1 parallel 16.953339819 s error 5.311767801756135e-5
+  2 parallel 16.301626 s error 5.311767801756135e-5
+  2 tamen 0.365855089 s error 8.561470656895955e-5
+  2 augmented 2.518302704 s error 9.59989780970719e-6
+  3 augmented 2.596763954 s error 9.59989780970719e-6
+  3 parallel 15.916704871 s error 5.311767801756135e-5
+  3 tamen 0.333811574 s error 8.561470656895955e-5
+Measuring strong6: Dict{String, NamedTuple}("parallel" => (steps = 64, maxrank = 28), "tamen" => (points = 8, tolerance = 0.0001), "augmented" => (steps = 1, maxrank = 27))
+  1 tamen 0.56574697 s error 9.081312961872539e-5
+  1 augmented 0.130773482 s error 7.539183783704112e-5
+  1 parallel 10.156592577 s error 6.845249644808888e-5
+  2 parallel 9.942079552 s error 6.845249644808888e-5
+  2 tamen 0.568898412 s error 9.081312961872539e-5
+  2 augmented 0.132856944 s error 7.539183783704112e-5
+  3 augmented 0.138557497 s error 7.539183783704112e-5
+  3 parallel 10.403745688 s error 6.845249644808888e-5
+  3 tamen 0.560461453 s error 9.081312961872539e-5
+Measuring strong6_short: Dict{String, NamedTuple}("parallel" => (steps = 1, maxrank = 28), "tamen" => (points = 12, tolerance = 0.0001), "augmented" => (steps = 1, maxrank = 28))
+  1 tamen 0.172126145 s error 7.266032197601342e-5
+  1 augmented 0.1279741 s error 7.817757678487048e-8
+  1 parallel 0.123827488 s error 4.5685164008487815e-5
+  2 parallel 0.114255892 s error 4.5685164008487815e-5
+  2 tamen 0.175660718 s error 7.266032197601342e-5
+  2 augmented 0.128810848 s error 7.817757678487048e-8
+  3 augmented 0.129722091 s error 7.817757678487048e-8
+  3 parallel 0.118248719 s error 4.5685164008487815e-5
+  3 tamen 0.172012249 s error 7.266032197601342e-5
+Measuring system8: Dict{String, NamedTuple}("parallel" => (steps = 4, maxrank = 65), "tamen" => (points = 8, tolerance = 0.0001), "augmented" => (steps = 1, maxrank = 65))
+  1 tamen 0.250175367 s error 5.82603692848099e-5
+  1 augmented 0.097892901 s error 5.247394687053551e-15
+  1 parallel 0.258346403 s error 9.005226535568274e-5
+  2 parallel 0.262873653 s error 9.005226535568274e-5
+  2 tamen 0.341807695 s error 5.82603692848099e-5
+  2 augmented 0.099076073 s error 5.247394687053551e-15
+  3 augmented 0.099350243 s error 5.247394687053551e-15
+  3 parallel 0.299118909 s error 9.005226535568274e-5
+  3 tamen 0.274984737 s error 5.82603692848099e-5

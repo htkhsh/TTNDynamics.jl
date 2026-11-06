@@ -1,0 +1,272 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4066" height="870" viewBox="0 0 4066 870" role="img" aria-labelledby="ttn-title ttn-desc">
+<title id="ttn-title">Parallel BUG: heom16</title><desc id="ttn-desc">Input to measured step, t=0.20; 17 leaves, 33 nodes — 17 physical axes, 33 nodes.</desc>
+<style>text{font-family:Inter,'Segoe UI','Noto Sans',Arial,sans-serif;fill:#203349}.muted{fill:#66788a}.root-text{fill:white}.edge{fill:none;stroke:#9dabb9;stroke-width:1.8}.rank{font-size:12px;font-weight:600;fill:#405c76}</style>
+<rect width="100%" height="100%" rx="16" fill="#f8fafc"/>
+<text x="40" y="30" font-size="10" font-weight="700" letter-spacing="2" class="muted">TTN / STRUCTURE</text>
+<text x="40" y="68" font-size="28" font-weight="650">Parallel BUG: heom16</text>
+<text x="40" y="95" font-size="13" class="muted">Input to measured step, t=0.20; 17 leaves, 33 nodes</text>
+<text x="40" y="127" font-size="11" class="muted">17 physical axes   /   33 nodes</text>
+<path class="edge" d="M 499.0 639.0 C 499.0 685.0 381.0 685.0 381.0 731.0"/>
+<rect x="419.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="440.0" y="689.0">r=3</text>
+<path class="edge" d="M 499.0 639.0 C 499.0 685.0 617.0 685.0 617.0 731.0"/>
+<rect x="537.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="558.0" y="689.0">r=3</text>
+<path class="edge" d="M 971.0 639.0 C 971.0 685.0 853.0 685.0 853.0 731.0"/>
+<rect x="891.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="912.0" y="689.0">r=3</text>
+<path class="edge" d="M 971.0 639.0 C 971.0 685.0 1089.0 685.0 1089.0 731.0"/>
+<rect x="1009.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1030.0" y="689.0">r=3</text>
+<path class="edge" d="M 735.0 527.0 C 735.0 563.0 499.0 563.0 499.0 599.0"/>
+<rect x="596.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="617.0" y="567.0">r=9</text>
+<path class="edge" d="M 735.0 527.0 C 735.0 563.0 971.0 563.0 971.0 599.0"/>
+<rect x="832.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="853.0" y="567.0">r=9</text>
+<path class="edge" d="M 1443.0 639.0 C 1443.0 685.0 1325.0 685.0 1325.0 731.0"/>
+<rect x="1363.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1384.0" y="689.0">r=3</text>
+<path class="edge" d="M 1443.0 639.0 C 1443.0 685.0 1561.0 685.0 1561.0 731.0"/>
+<rect x="1481.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1502.0" y="689.0">r=3</text>
+<path class="edge" d="M 1915.0 639.0 C 1915.0 685.0 1797.0 685.0 1797.0 731.0"/>
+<rect x="1835.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1856.0" y="689.0">r=3</text>
+<path class="edge" d="M 1915.0 639.0 C 1915.0 685.0 2033.0 685.0 2033.0 731.0"/>
+<rect x="1953.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1974.0" y="689.0">r=3</text>
+<path class="edge" d="M 1679.0 527.0 C 1679.0 563.0 1443.0 563.0 1443.0 599.0"/>
+<rect x="1540.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1561.0" y="567.0">r=9</text>
+<path class="edge" d="M 1679.0 527.0 C 1679.0 563.0 1915.0 563.0 1915.0 599.0"/>
+<rect x="1776.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1797.0" y="567.0">r=9</text>
+<path class="edge" d="M 1207.0 415.0 C 1207.0 451.0 735.0 451.0 735.0 487.0"/>
+<rect x="946.0" y="440.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="971.0" y="455.0">r=16</text>
+<path class="edge" d="M 1207.0 415.0 C 1207.0 451.0 1679.0 451.0 1679.0 487.0"/>
+<rect x="1418.0" y="440.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1443.0" y="455.0">r=16</text>
+<path class="edge" d="M 2387.0 639.0 C 2387.0 685.0 2269.0 685.0 2269.0 731.0"/>
+<rect x="2307.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2328.0" y="689.0">r=3</text>
+<path class="edge" d="M 2387.0 639.0 C 2387.0 685.0 2505.0 685.0 2505.0 731.0"/>
+<rect x="2425.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2446.0" y="689.0">r=3</text>
+<path class="edge" d="M 2859.0 639.0 C 2859.0 685.0 2741.0 685.0 2741.0 731.0"/>
+<rect x="2779.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2800.0" y="689.0">r=3</text>
+<path class="edge" d="M 2859.0 639.0 C 2859.0 685.0 2977.0 685.0 2977.0 731.0"/>
+<rect x="2897.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2918.0" y="689.0">r=3</text>
+<path class="edge" d="M 2623.0 527.0 C 2623.0 563.0 2387.0 563.0 2387.0 599.0"/>
+<rect x="2484.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2505.0" y="567.0">r=9</text>
+<path class="edge" d="M 2623.0 527.0 C 2623.0 563.0 2859.0 563.0 2859.0 599.0"/>
+<rect x="2720.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2741.0" y="567.0">r=9</text>
+<path class="edge" d="M 3331.0 639.0 C 3331.0 685.0 3213.0 685.0 3213.0 731.0"/>
+<rect x="3251.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3272.0" y="689.0">r=3</text>
+<path class="edge" d="M 3331.0 639.0 C 3331.0 685.0 3449.0 685.0 3449.0 731.0"/>
+<rect x="3369.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3390.0" y="689.0">r=3</text>
+<path class="edge" d="M 3803.0 639.0 C 3803.0 685.0 3685.0 685.0 3685.0 731.0"/>
+<rect x="3723.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3744.0" y="689.0">r=3</text>
+<path class="edge" d="M 3803.0 639.0 C 3803.0 685.0 3921.0 685.0 3921.0 731.0"/>
+<rect x="3841.0" y="674.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3862.0" y="689.0">r=3</text>
+<path class="edge" d="M 3567.0 527.0 C 3567.0 563.0 3331.0 563.0 3331.0 599.0"/>
+<rect x="3428.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3449.0" y="567.0">r=9</text>
+<path class="edge" d="M 3567.0 527.0 C 3567.0 563.0 3803.0 563.0 3803.0 599.0"/>
+<rect x="3664.0" y="552.0" width="42" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3685.0" y="567.0">r=9</text>
+<path class="edge" d="M 3095.0 415.0 C 3095.0 451.0 2623.0 451.0 2623.0 487.0"/>
+<rect x="2834.0" y="440.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2859.0" y="455.0">r=16</text>
+<path class="edge" d="M 3095.0 415.0 C 3095.0 451.0 3567.0 451.0 3567.0 487.0"/>
+<rect x="3306.0" y="440.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="3331.0" y="455.0">r=16</text>
+<path class="edge" d="M 2151.0 303.0 C 2151.0 339.0 1207.0 339.0 1207.0 375.0"/>
+<rect x="1654.0" y="328.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1679.0" y="343.0">r=16</text>
+<path class="edge" d="M 2151.0 303.0 C 2151.0 339.0 3095.0 339.0 3095.0 375.0"/>
+<rect x="2598.0" y="328.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2623.0" y="343.0">r=16</text>
+<path class="edge" d="M 2033.0 191.0 C 2033.0 461.0 145.0 461.0 145.0 731.0"/>
+<rect x="1064.0" y="450.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="1089.0" y="465.0">r=15</text>
+<path class="edge" d="M 2033.0 191.0 C 2033.0 227.0 2151.0 227.0 2151.0 263.0"/>
+<rect x="2067.0" y="216.0" width="50" height="22" rx="11" fill="white" stroke="#e0e7ee"/>
+<text class="rank" text-anchor="middle" x="2092.0" y="231.0">r=16</text>
+<g id="node-1">
+<rect x="40.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 55.0 747.0 v 33" stroke="#4263aa" stroke-width="3" stroke-linecap="round"/>
+<text x="68.0" y="752.0" font-size="10" class="muted">p1 · d=16 · n1</text>
+<text x="68.0" y="778.0" font-size="13" font-weight="650">System M=4</text>
+</g>
+<g id="node-2">
+<rect x="276.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 291.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="304.0" y="752.0" font-size="10" class="muted">p2 · d=3 · n2</text>
+<text x="304.0" y="778.0" font-size="13" font-weight="650">Mode 1</text>
+</g>
+<g id="node-3">
+<rect x="512.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 527.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="540.0" y="752.0" font-size="10" class="muted">p3 · d=3 · n3</text>
+<text x="540.0" y="778.0" font-size="13" font-weight="650">Mode 2</text>
+</g>
+<g id="node-4">
+<rect x="748.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 763.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="776.0" y="752.0" font-size="10" class="muted">p4 · d=3 · n4</text>
+<text x="776.0" y="778.0" font-size="13" font-weight="650">Mode 3</text>
+</g>
+<g id="node-5">
+<rect x="984.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 999.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="1012.0" y="752.0" font-size="10" class="muted">p5 · d=3 · n5</text>
+<text x="1012.0" y="778.0" font-size="13" font-weight="650">Mode 4</text>
+</g>
+<g id="node-6">
+<rect x="1220.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 1235.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="1248.0" y="752.0" font-size="10" class="muted">p6 · d=3 · n6</text>
+<text x="1248.0" y="778.0" font-size="13" font-weight="650">Mode 5</text>
+</g>
+<g id="node-7">
+<rect x="1456.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 1471.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="1484.0" y="752.0" font-size="10" class="muted">p7 · d=3 · n7</text>
+<text x="1484.0" y="778.0" font-size="13" font-weight="650">Mode 6</text>
+</g>
+<g id="node-8">
+<rect x="1692.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 1707.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="1720.0" y="752.0" font-size="10" class="muted">p8 · d=3 · n8</text>
+<text x="1720.0" y="778.0" font-size="13" font-weight="650">Mode 7</text>
+</g>
+<g id="node-9">
+<rect x="1928.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 1943.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="1956.0" y="752.0" font-size="10" class="muted">p9 · d=3 · n9</text>
+<text x="1956.0" y="778.0" font-size="13" font-weight="650">Mode 8</text>
+</g>
+<g id="node-10">
+<rect x="2164.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 2179.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="2192.0" y="752.0" font-size="10" class="muted">p10 · d=3 · n10</text>
+<text x="2192.0" y="778.0" font-size="13" font-weight="650">Mode 9</text>
+</g>
+<g id="node-11">
+<rect x="2400.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 2415.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="2428.0" y="752.0" font-size="10" class="muted">p11 · d=3 · n11</text>
+<text x="2428.0" y="778.0" font-size="13" font-weight="650">Mode 10</text>
+</g>
+<g id="node-12">
+<rect x="2636.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 2651.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="2664.0" y="752.0" font-size="10" class="muted">p12 · d=3 · n12</text>
+<text x="2664.0" y="778.0" font-size="13" font-weight="650">Mode 11</text>
+</g>
+<g id="node-13">
+<rect x="2872.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 2887.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="2900.0" y="752.0" font-size="10" class="muted">p13 · d=3 · n13</text>
+<text x="2900.0" y="778.0" font-size="13" font-weight="650">Mode 12</text>
+</g>
+<g id="node-14">
+<rect x="3108.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 3123.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="3136.0" y="752.0" font-size="10" class="muted">p14 · d=3 · n14</text>
+<text x="3136.0" y="778.0" font-size="13" font-weight="650">Mode 13</text>
+</g>
+<g id="node-15">
+<rect x="3344.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 3359.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="3372.0" y="752.0" font-size="10" class="muted">p15 · d=3 · n15</text>
+<text x="3372.0" y="778.0" font-size="13" font-weight="650">Mode 14</text>
+</g>
+<g id="node-16">
+<rect x="3580.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 3595.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="3608.0" y="752.0" font-size="10" class="muted">p16 · d=3 · n16</text>
+<text x="3608.0" y="778.0" font-size="13" font-weight="650">Mode 15</text>
+</g>
+<g id="node-17">
+<rect x="3816.0" y="731.0" width="210" height="65" rx="10" fill="white" stroke="#dce4ec"/>
+<path d="M 3831.0 747.0 v 33" stroke="#25887e" stroke-width="3" stroke-linecap="round"/>
+<text x="3844.0" y="752.0" font-size="10" class="muted">p17 · d=3 · n17</text>
+<text x="3844.0" y="778.0" font-size="13" font-weight="650">Mode 16</text>
+</g>
+<g id="node-18">
+<circle cx="499.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="499.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n18</text>
+</g>
+<g id="node-19">
+<circle cx="971.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="971.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n19</text>
+</g>
+<g id="node-20">
+<circle cx="735.0" cy="507.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="735.0" y="511.0" text-anchor="middle" font-size="11" class="muted">n20</text>
+</g>
+<g id="node-21">
+<circle cx="1443.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="1443.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n21</text>
+</g>
+<g id="node-22">
+<circle cx="1915.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="1915.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n22</text>
+</g>
+<g id="node-23">
+<circle cx="1679.0" cy="507.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="1679.0" y="511.0" text-anchor="middle" font-size="11" class="muted">n23</text>
+</g>
+<g id="node-24">
+<circle cx="1207.0" cy="395.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="1207.0" y="399.0" text-anchor="middle" font-size="11" class="muted">n24</text>
+</g>
+<g id="node-25">
+<circle cx="2387.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="2387.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n25</text>
+</g>
+<g id="node-26">
+<circle cx="2859.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="2859.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n26</text>
+</g>
+<g id="node-27">
+<circle cx="2623.0" cy="507.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="2623.0" y="511.0" text-anchor="middle" font-size="11" class="muted">n27</text>
+</g>
+<g id="node-28">
+<circle cx="3331.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="3331.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n28</text>
+</g>
+<g id="node-29">
+<circle cx="3803.0" cy="619.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="3803.0" y="623.0" text-anchor="middle" font-size="11" class="muted">n29</text>
+</g>
+<g id="node-30">
+<circle cx="3567.0" cy="507.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="3567.0" y="511.0" text-anchor="middle" font-size="11" class="muted">n30</text>
+</g>
+<g id="node-31">
+<circle cx="3095.0" cy="395.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="3095.0" y="399.0" text-anchor="middle" font-size="11" class="muted">n31</text>
+</g>
+<g id="node-32">
+<circle cx="2151.0" cy="283.0" r="20" fill="#e9eff5" stroke="#bccbd8"/>
+<text x="2151.0" y="287.0" text-anchor="middle" font-size="11" class="muted">n32</text>
+</g>
+<g id="node-33">
+<circle cx="2033.0" cy="171.0" r="20" fill="#263e56" stroke="#263e56"/>
+<text x="2033.0" y="175.0" text-anchor="middle" font-size="11" class="root-text">root</text>
+<text x="2062.0" y="175.0" font-size="11" class="muted">n33</text>
+</g>
+<text x="40" y="840" font-size="11" class="muted">r: bond dimension   ·   p: physical axis   ·   n: node ID   ·   d: local dimension</text></svg>

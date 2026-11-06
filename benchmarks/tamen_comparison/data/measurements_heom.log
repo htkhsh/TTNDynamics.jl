@@ -1,0 +1,21 @@
+Warming heom16: (tolerance = 0.001, steps = 20, atol = 5.0000000000000004e-8, maxrank = 8)
+heom16 1 tamen: 0.018118933 s error 7.369762502843566e-5
+heom16 1 parallel_bug: 1.815843184 s error 5.501667834522211e-5
+heom16 2 parallel_bug: 1.803110311 s error 5.501667834522211e-5
+heom16 2 tamen: 0.016146287 s error 7.369762502843566e-5
+heom16 3 tamen: 0.017171599 s error 7.369762502843566e-5
+heom16 3 parallel_bug: 1.70109244 s error 5.501667834522211e-5
+Warming heom32: (tolerance = 0.001, steps = 20, atol = 5.0000000000000004e-8, maxrank = 8)
+heom32 1 tamen: 0.026004815 s error 8.498320006995309e-5
+heom32 1 parallel_bug: 7.275722131 s error 5.780839846383613e-5
+heom32 2 parallel_bug: 7.638485886 s error 5.780839846383613e-5
+heom32 2 tamen: 0.027683043 s error 8.498320006995309e-5
+heom32 3 tamen: 0.026498308 s error 8.498320006995309e-5
+heom32 3 parallel_bug: 7.795836937 s error 5.780839846383613e-5
+Warming heom64: (tolerance = 0.001, steps = 20, atol = 5.0000000000000004e-8, maxrank = 8)
+heom64 1 tamen: 0.053780449 s error 7.976910978411285e-5
+heom64 1 parallel_bug: 31.520787473 s error 6.649893522813013e-5
+heom64 2 parallel_bug: 31.226619774 s error 6.649893522813013e-5
+heom64 2 tamen: 0.061237191 s error 7.976910978411285e-5
+heom64 3 tamen: 0.058026436 s error 7.976910978411285e-5
+heom64 3 parallel_bug: 31.591719605 s error 6.649893522813013e-5

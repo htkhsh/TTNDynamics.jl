@@ -7,10 +7,13 @@ an increasing collection of observation times, with both tspan endpoints
 included. The internal mesh may contain many more steps than saved samples.
 The positional form `heom_evolve(system, initial, times; ...)` retains its
 fixed-step behavior and its original meaning of atol as a truncation budget.
+Select `method=:augmented` (default) or `:parallel`; `threaded` controls
+concurrent sibling subtrees for augmented BUG and all-node solves for parallel BUG.
 
 Here atol/rtol control a whole-TTN local step-doubling estimate. Other controls
-(truncation_fraction, maxrank, dtmin/dtmax, maxsteps/maxreject, Krylov options)
+(truncation=:weighted, truncation_fraction, maxrank, dtmin/dtmax, maxsteps/maxreject, Krylov options)
 are passed to TTNSolver.adaptive_evolve. No global error guarantee is implied.
+Use `truncation=:local` for the conservative local-core SVD policy.
 The trace functional is protected at every step; correct_trace disables/enables
 the optional correction, not the protected basis. Limits raise
 AdaptiveIntegrationError containing the last accepted TTN and attempt history.

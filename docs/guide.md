@@ -6,7 +6,7 @@ root. The [example index](../examples/README.md) lists runnable demonstrations
 and their generated outputs.
 
 This package provides a scaled HEOM generator, initial states, trace/root-ADO
-observables, and a thermofield (TFD) model layer with augmented BUG evolution.
+observables, and a thermofield (TFD) model layer with augmented or parallel BUG evolution.
 Fixed time steps are the standard workflow; adaptive step-size control is
 optional. Tensor ranks remain adaptive in both. The examples include
 independent dense comparisons.
@@ -82,6 +82,11 @@ rho_final = last(trajectory.densities)
   `-im*scale*sqrt(n+1)*(V*rho_plus-rho_plus*V)` and
   `-im*sqrt(n)/scale*(forward*V*rho_minus-backward*rho_minus*V)`.
 
+`heom_tree(system; bath_grouping=:coupling)` first groups bath modes with exactly
+equal coupling matrices, then balances those groups. In Holstein this keeps
+each site's Brownian components together. Physical axis ordering is preserved,
+even for interleaved modes. See the [weighted truncation / tree comparison](weighted_tree.md).
+
 `heom_tree(system)` puts the system branch under the root and balances the bath
 subtree. The branch is one fused leaf or two sibling ket/bra leaves. Pass
 `tree=...` to initial/trace constructors for another tree; physical positions
@@ -138,6 +143,17 @@ time labels the supplied initial state. The result contains zero-tier
 `final_state`. Only observables and the final TTN are retained.
 This is a first-order recursive augmented BUG step [1].
 
+Both BUG methods use amplitude-weighted truncation by default. Pass
+`truncation=:local` to restore conservative local-core compression. This option
+works with fixed and adaptive `heom_evolve` and `tfd_evolve`. The default HEOM
+tree remains `bath_grouping=:balanced`; weighting changes the compression,
+not the topology. See the [comparison](weighted_tree.md).
+The [allocation optimization and second-order trials](bug_improvements.md)
+report measured speed, memory allocation and accuracy on the same Holstein
+model. The second-order methods are available in the benchmark module.
+The subsequent [5 fs comparison against tAMEn](tamen_recomparison.md) includes
+full-state errors and measured rank growth over a longer interval.
+
 The trace functional is included in the bases and protected during SVD
 truncation. Set `correct_trace=false` to check conservation without the
 optional root correction. Tests cover conservation with active rank truncation
@@ -161,10 +177,30 @@ The current example on Julia 1.12.6 gives maximum density errors of about
 time convergence; the fine run's final full-hierarchy relative error is
 `7.11e-4`. Maximum bond rank is 9 and trace drift is below `3e-15`.
 These are small-system checks, not a performance benchmark or a guarantee of
-physical positivity. The implementation is sequential, uses constant model
-coefficients, and does not yet compile TTNOs.
+physical positivity. The implementation uses constant model coefficients
+and does not yet compile TTNOs.
 
 ## Adaptive time steps and independent output times
+
+Both fixed and adaptive APIs accept `method=:augmented` (default) or
+`method=:parallel`. Parallel BUG solves all old-basis node equations before
+block assembly; `threaded=true` enables concurrent node solves when Julia has
+multiple worker threads. `threaded=false` runs the same formula serially.
+Augmented BUG also honors `threaded`: sibling subtrees update concurrently,
+while a parent waits for both children. Preparation and final truncation stay
+serial. See the [larger-system scaling measurements](augmented_threads.md).
+The [parallel BUG scaling study](parallel_threads.md) measures the same larger
+fixtures at 1/2/4/8 workers and separates local ODE time from sequential phases.
+The [larger-tree study](parallel_large_trees.md) adds up to 65 physical leaves
+and 16 workers, using a prepared state for each measured step.
+The [TT tAMEn comparison](tamen_comparison.md) instead measures full trajectories
+at matched accuracy against an independently converged reference.
+The [rank study](bug_rank_regimes.md) adds developed HEOM states and compares
+both BUG methods with tAMEn at a common error target.
+The [long-time Holstein driver](holstein_longtime.md) uses a configurable common
+model and observation grid, with validated resume and reference-refinement checks.
+See the [parallel BUG comparison](parallel_bug.md) for usage, measured timing,
+accuracy, and the distinction between step doubling and rank-expansion retries.
 
 ```julia
 trajectory = heom_evolve(system, state;

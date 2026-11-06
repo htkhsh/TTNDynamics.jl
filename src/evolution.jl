@@ -1,9 +1,13 @@
 """
     heom_evolve(system, initial, times; atol=1e-10, maxrank=typemax(Int),
                 krylov_tol=1e-12, krylovdim=30, krylov_maxiter=100,
-                correct_trace=true)
+                correct_trace=true, method=:augmented, threaded=true, truncation=:weighted)
 
-Propagate a TTN with augmented BUG over strictly increasing finite `times`.
+Propagate a TTN with `method=:augmented` (default) or `:parallel` BUG over
+strictly increasing finite `times`. `threaded` controls concurrent sibling
+subtrees for augmented BUG and all-node solves for parallel BUG.
+Compression uses amplitude weights by default; `truncation=:local` selects
+the conservative local-core SVD policy.
 Each adjacent pair is one integration step (the first time labels `initial`).
 The trace functional is included in every augmented and truncated space.
 No normalization, dense hierarchy, or global Liouvillian is constructed.
@@ -15,11 +19,16 @@ checked by reducing the time step. A binding rank cap is reported in each
 step's `truncation.tolerance_met`. `correct_trace=false` exposes uncorrected
 trace preservation for validation. Caller inputs are never mutated.
 With one time point, return an independent initial snapshot without evaluating
-step-specific solver options.
+truncation or Krylov options. The method name is always validated.
 """
 function heom_evolve(system::HEOMTTNSystem, initial::TTNTensor, times;
                      atol=1e-10, maxrank=typemax(Int), krylov_tol=1e-12,
-                     krylovdim=30, krylov_maxiter=100, correct_trace::Bool=true)
+                     krylovdim=30, krylov_maxiter=100, correct_trace::Bool=true,
+                     method=:augmented, threaded::Bool=true,truncation=:weighted)
+    method === :augmented || method === :parallel ||
+        throw(ArgumentError("method must be :augmented or :parallel"))
+    step = method == :parallel ? parallel_bug_step : augmented_bug_step
+    execution = (;threaded,truncation)
     leafdims(initial) == heom_dimensions(system) ||
         throw(DimensionMismatch("initial TTN dimensions differ from HEOM model"))
     grid = collect(times)
@@ -37,9 +46,9 @@ function heom_evolve(system::HEOMTTNSystem, initial::TTNTensor, times;
     diagnostics = NamedTuple[]
     for sample in eachindex(grid)
         if sample > 1
-            state, info = augmented_bug_step(state, generator, grid[sample]-grid[sample-1];
+            state, info = step(state, generator, grid[sample]-grid[sample-1];
                 atol, maxrank, conserved, krylov_tol, krylovdim, krylov_maxiter,
-                correct_invariant=correct_trace)
+                correct_invariant=correct_trace, execution...)
             push!(diagnostics, info)
         end
         densities[sample] = root_density_matrix(state, system)

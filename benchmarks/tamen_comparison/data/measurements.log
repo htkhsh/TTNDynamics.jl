@@ -1,0 +1,35 @@
+Preparing tfd32
+MPO rank 6 setup seconds 0.031449029
+Computing independent reference
+  reference step 1/10 rank 12
+  reference step 2/10 rank 14
+  reference step 3/10 rank 15
+  reference step 4/10 rank 15
+  reference step 5/10 rank 16
+  reference step 6/10 rank 18
+  reference step 7/10 rank 19
+  reference step 8/10 rank 23
+  reference step 9/10 rank 24
+  reference step 10/10 rank 25
+Coarse reference 17.53260087 s rank 25
+  reference step 1/20 rank 11
+  reference step 2/20 rank 13
+  reference step 3/20 rank 14
+  reference step 4/20 rank 14
+  reference step 5/20 rank 15
+  reference step 6/20 rank 16
+  reference step 7/20 rank 17
+  reference step 8/20 rank 18
+  reference step 9/20 rank 19
+  reference step 10/20 rank 23
+  reference step 11/20 rank 24
+  reference step 12/20 rank 25
+  reference step 13/20 rank 25
+  reference step 14/20 rank 25
+  reference step 15/20 rank 25
+  reference step 16/20 rank 26
+  reference step 17/20 rank 26
+  reference step 18/20 rank 27
+  reference step 19/20 rank 27
+  reference step 20/20 rank 29
+Fine reference 32.033257293 s rank 29 convergence 7.224809138690431e-9
