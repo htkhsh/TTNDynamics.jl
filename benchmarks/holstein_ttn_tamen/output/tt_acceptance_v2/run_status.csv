@@ -1,0 +1,9 @@
+name,phase,time_fs,completed_repetitions,reference_checked
+reference,complete,5.0,1,true
+reference_refined,complete,5.0,1,true
+tree_tt,complete,5.0,3,true
+tree_tt_channels,complete,5.0,3,true
+tree_tt_channels_loose,complete,5.0,3,true
+tree_tt_channels_tight,complete,5.0,3,true
+tt,complete,5.0,3,true
+tt_serial,complete,5.0,3,true
