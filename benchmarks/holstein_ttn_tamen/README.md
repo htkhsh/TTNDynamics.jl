@@ -54,3 +54,16 @@ hashed sources while a batch runs: every case records source hashes, and
 `analyze()` rejects a root whose cases disagree. Uncertified TTN cases are
 validated only against the refined reference. Results:
 [holstein_tt_acceptance.md](../../docs/holstein_tt_acceptance.md).
+
+`batch_tree_center.jl` writes to `output/tree_center`. It adds cases in the
+centered-system order. `*_center` TT cases (`reference_center`,
+`reference_refined_center`, `tt_center`, `tt_center_serial`) permute the SoP
+modes to the leaf order of `heom_tree(...; system_position=:center)`, build the
+MPO with `sop_to_mpo`, and reorder the initial and trace TTs. `tree_center*`
+TTN cases use that tree. `analyze()` compares every run with the references
+of its own order. TTN states are compared with order-permuted TT references
+through `ordered_overlap`. `summarize.py` also reports
+`time_ratio_vs_best_tt`, the ratio to the fastest qualified TT in either order
+and BLAS setting. Timings depend strongly on background load, especially for
+BLAS8 TT, so compare ratios within one batch only. Results:
+[holstein_tree_center.md](../../docs/holstein_tree_center.md).

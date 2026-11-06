@@ -3,10 +3,103 @@ include("../holstein_longtime/driver.jl")
 using .HolsteinLongTime, LinearAlgebra, Serialization, TOML
 const HLT=HolsteinLongTime
 const TS=HLT.TTNSolver
+const TTS=HLT.TTSolver
+const TD=HLT.TTNDynamics
 # Separate output roots keep runs from different solver sources apart.
 default_root()=joinpath(@__DIR__,"output",get(ENV,"HOLSTEIN_TTN_TAMEN_OUTPUT","five_fs"))
 const TT_ACCEPTANCE=Dict("tree_tt"=>5e-5,"tree_tt_tight"=>3e-5,"tree_tt_loose"=>1e-4,
-    "tree_tt_channels"=>5e-5,"tree_tt_channels_tight"=>3e-5,"tree_tt_channels_loose"=>1e-4)
+    "tree_tt_channels"=>5e-5,"tree_tt_channels_tight"=>3e-5,"tree_tt_channels_loose"=>1e-4,
+    "tree_center"=>5e-5,"tree_center_tight"=>3e-5,"tree_center_loose"=>1e-4)
+
+# Runs named *center* use heom_tree(...; system_position=:center). Its leaves
+# are visited in the physical order `perm` = (baths of the first half, ket,
+# bra, baths of the second half); TT references and TT runs for these cases
+# use the same core order, so full-state errors remain cheap contractions.
+run_order(name)=occursin("center",name) ? :center : :original
+
+"""Physical modes in the order a tree visits its leaves."""
+function leaf_sequence(tree)
+    modes=Dict(node=>m for (m,node) in enumerate(tree.leaf_order))
+    sequence=Int[]
+    function visit(node)
+        left,right=tree.children[node]
+        if left==0
+            push!(sequence,modes[node])
+        else
+            visit(left); visit(right)
+        end
+    end
+    visit(tree.root)
+    return sequence
+end
+
+"""Problem view for one core/leaf order; `:original` keeps the stored model."""
+function ordered_problem(p,order)
+    n=length(p.operator.dimensions)
+    order==:original && return merge(p,(;order,perm=collect(1:n),ketpos=1,
+        mpo=p.problem.liouvillian,trace=p.problem.trace_observable))
+    order==:center || error("unknown order $order")
+    tree=TD.heom_tree(p.system;bath_grouping=:coupling,system_position=:center)
+    perm=leaf_sequence(tree)
+    ketpos=findfirst(==(1),perm)
+    ketpos<n && perm[ketpos+1]==2 || error("ket and bra must stay adjacent")
+    inverse=invperm(perm)
+    sop=TS.SumOfProducts(p.operator.dimensions[perm],[TS.ProductTerm(t.coefficient,
+        Dict(inverse[m]=>f for (m,f) in t.factors)) for t in p.operator.terms])
+    # Only the ket–bra bond of the initial state and trace may exceed one.
+    function reorder(x)
+        r=TTS.tt_ranks(x)
+        all(==(1),r[[1;4:end]]) || error("cannot reorder a TT with bath correlations")
+        return TTS.TTTensor([copy(x.cores[m]) for m in perm])
+    end
+    rho=TD.root_density_matrix(p.tree,p.system)
+    x0=TD.heom_initial_state(p.system,rho;tree)
+    return merge(p,(;order,perm,ketpos,tree=x0,conserved=TD.trace_observable(p.system;tree),
+        train=reorder(p.train),mpo=HLT.sop_to_mpo(sop;tolerance=1e-13),
+        trace=reorder(p.problem.trace_observable)))
+end
+
+# <train, tree> for a TT whose core j holds physical mode perm[j]. Subtrees
+# must be contiguous in that core order (true for the tree defining perm).
+function ordered_overlap(train,tree,perm)
+    position=Dict(m=>j for (j,m) in enumerate(perm))
+    env=Dict{Int,Array{ComplexF64,3}}(); spans=Dict{Int,UnitRange{Int}}()
+    for (mode,node) in enumerate(tree.tree.leaf_order)
+        j=position[mode]; g=train.cores[j]; a,n,b=size(g); u=tree.leaves[node]
+        env[node]=reshape(transpose(u)*reshape(permutedims(conj.(g),(2,1,3)),n,:),size(u,2),a,b)
+        spans[node]=j:j
+    end
+    for node in tree.tree.postorder
+        l,r=tree.tree.children[node]; l==0 && continue
+        last(spans[l])+1==first(spans[r]) || throw(ArgumentError("noncontiguous subtree"))
+        spans[node]=first(spans[l]):last(spans[r])
+        L,R,C=env[l],env[r],tree.cores[node]
+        p,nl,nr=size(C); _,a,b=size(L); _,_,c=size(R)
+        T=reshape(permutedims(L,(2,1,3)),a,nl*b)
+        CR=reshape(reshape(C,p*nl,nr)*reshape(R,nr,b*c),p,nl,b,c)
+        env[node]=permutedims(reshape(T*reshape(permutedims(CR,(2,3,1,4)),nl*b,p*c),a,p,c),(2,1,3))
+        delete!(env,l); delete!(env,r)
+    end
+    return only(env[tree.tree.root])
+end
+
+function state_error(x,reference,q)
+    q.order==:original && return HLT.comparison_error(x,reference)
+    x isa TTS.TTTensor && return HLT.relative_error(x,reference)
+    n2=real(TTS.tt_dot(reference,reference))
+    squared=norm(x)^2+n2-2real(ordered_overlap(reference,x,q.perm))
+    squared>=-100eps(Float64)*n2 || error("negative squared distance: $squared")
+    return sqrt(max(0.0,squared)/n2)
+end
+
+function density(x,q)
+    (q.order==:original || x isa TS.TTNTensor) && return HLT.density_of(x,q)
+    left=ones(ComplexF64,1,1); right=ones(ComplexF64,1,1)
+    for k in 1:q.ketpos-1; left=left*x.cores[k][:,1,:]; end
+    for k in length(x.cores):-1:q.ketpos+2; right=x.cores[k][:,1,:]*right; end
+    K,B=x.cores[q.ketpos],x.cores[q.ketpos+1]; d=size(K,2)
+    return [only(left*K[:,i,:]*B[:,j,:]*right) for i in 1:d, j in 1:d]
+end
 
 function configuration(;sites=10,local_size=5,end_fs=5.0)
     cfg=HLT.load_config(joinpath(@__DIR__,"../holstein_longtime/config_50fs.toml"))
@@ -17,6 +110,12 @@ function configuration(;sites=10,local_size=5,end_fs=5.0)
 end
 
 function specification(cfg,name)
+    # TT cases with "_center" anywhere (tt_center_serial, reference_refined_center).
+    base=replace(name,"_center"=>"")
+    if base!=name && base in ("reference","reference_refined","tt","tt_serial")
+        s=specification(cfg,base); s["order"]="center"
+        return s
+    end
     if name in ("reference","reference_refined","tt","tt_serial")
         s=HLT.case_config(cfg,startswith(name,"tt") ? "tamen" : name)
         name=="tt_serial" && (s["blas_threads"]=1)
@@ -29,7 +128,8 @@ function specification(cfg,name)
             "tolerance"=>TT_ACCEPTANCE[name],"maxrank"=>96,"sweeps"=>20,"kick_rank"=>4,
             "blas_threads"=>1,"als_sweep"=>"etter","threaded"=>true,
             "truncation_rtol"=>1e-5,"certify"=>false,"local_tol_factor"=>0.01,
-            "local_operator"=>occursin("channels",name) ? "channels" : "sop")
+            "local_operator"=>(occursin("channels",name) || occursin("center",name)) ? "channels" : "sop",
+            "order"=>String(run_order(name)))
     end
     name in ("tree","tree_tight","tree_loose") || error("unknown run $name")
     return Dict{String,Any}("method"=>"tree_tamen","dt_fs"=>0.5,"points"=>8,
@@ -39,7 +139,15 @@ function specification(cfg,name)
 end
 
 function advance(p,x,s,work,hint)
-    s["method"]=="tamen" && return HLT.advance(p,x,s,work)
+    if s["method"]=="tamen"
+        get(s,"order","original")=="center" || return HLT.advance(p,x,s,work)
+        h=s["dt_fs"]
+        st=TTS.tt_kron(x,TTS.tt_ones(s["points"];T=ComplexF64))
+        y,grid,_,_,_=TTS.tamen(st,h*p.mpo,s["tolerance"];time_scheme="cheb",nswp=s["sweeps"],
+            local_iters=s["local_iters"],kickrank=s["kick_rank"],time_error_damp=s["time_error_damp"],
+            correct_2_norm=false,conserved_observables=[p.trace],workspace=work,verb=0)
+        return TTS.extract_snapshot(y,grid,1.0,"cheb"),(;intervals=length(grid))
+    end
     return TS.tamen_step(x,p.operator,s["dt_fs"];workspace=work,
         time_points=s["points"],rtol=s["tolerance"],maxrank=s["maxrank"],
         maxsweeps=s["sweeps"],kickrank=s["kick_rank"],conserved=p.conserved,
@@ -72,7 +180,7 @@ function run_case(name;root=default_root(),wall_seconds=1200.0,repeats=1,
         save_status("timeout");return
     end
     p=try
-        built=@timed HLT.comparison_problem(cfg)
+        built=@timed ordered_problem(HLT.comparison_problem(cfg),Symbol(get(s,"order","original")))
         setup=built.time;built.value
     catch error
         status["failure"]=sprint(showerror,error);save_status("setup_failed");rethrow()
@@ -180,10 +288,18 @@ function analyze(;root=default_root())
             Dict(k=>v for (k,v) in base["runtime"] if k!="blas_threads") || error("runtime mismatch $name")
     end
     total=HLT.grid_count(cfg["time"]["end_fs"],1.)
-    common=Int[]
-    for t in 1:total
-        all(isfile(joinpath(root,n,"rep1","time_$t.jls")) for n in ("reference","reference_refined")) || break
-        push!(common,t)
+    # Each order has its own pair of references: reference(_center) and
+    # reference_refined(_center). A run is compared with its order's pair.
+    suffix(order)=order==:original ? "" : "_center"
+    refnames(order)=("reference"*suffix(order),"reference_refined"*suffix(order))
+    orders=[o for o in (:original,:center) if any(n->run_order(n)==o,names)]
+    common=Dict{Symbol,Vector{Int}}()
+    for order in orders
+        common[order]=Int[]
+        for t in 1:total
+            all(isfile(joinpath(root,n,"rep1","time_$t.jls")) for n in refnames(order)) || break
+            push!(common[order],t)
+        end
     end
     statuses=NamedTuple[]
     for name in names
@@ -193,39 +309,49 @@ function analyze(;root=default_root())
             completed_repetitions=status["completed_repetitions"],reference_checked=false))
     end
     HLT.write_rows(joinpath(root,"run_status.csv"),statuses)
-    if isempty(common)
+    if all(o->isempty(common[o]),orders)
         println("No common reference checkpoints; every attempted run remains unqualified.")
         return statuses
     end
-    p=HLT.comparison_problem(cfg)
+    base_problem=HLT.comparison_problem(cfg)
+    views=Dict(order=>ordered_problem(base_problem,order) for order in orders)
     BLAS.set_num_threads(8)
-    checks=NamedTuple[];maxstate=0.;maxrho=0.
-    for t in common
-        a=deserialize(joinpath(root,"reference","rep1","time_$t.jls"))
-        b=deserialize(joinpath(root,"reference_refined","rep1","time_$t.jls"))
-        maxstate=max(maxstate,HLT.comparison_error(a,b))
-        maxrho=max(maxrho,norm(HLT.density_of(a,p)-HLT.density_of(b,p)))
-        push!(checks,(;time_fs=t,max_state=maxstate,max_density=maxrho,qualified=maxstate<1e-4 && maxrho<1e-4))
+    checks=Dict{Symbol,Vector{NamedTuple}}(); convergence=NamedTuple[]; checked=Dict{Symbol,Bool}()
+    for order in orders
+        q=views[order]; coarse,fine=refnames(order)
+        checks[order]=NamedTuple[]; maxstate=0.;maxrho=0.
+        for t in common[order]
+            a=deserialize(joinpath(root,coarse,"rep1","time_$t.jls"))
+            b=deserialize(joinpath(root,fine,"rep1","time_$t.jls"))
+            maxstate=max(maxstate,state_error(a,b,q))
+            maxrho=max(maxrho,norm(density(a,q)-density(b,q)))
+            row=(;order=String(order),time_fs=t,max_state=maxstate,max_density=maxrho,
+                qualified=maxstate<1e-4 && maxrho<1e-4)
+            push!(checks[order],row); push!(convergence,row)
+        end
+        checked[order]=length(checks[order])==total && last(checks[order]).qualified
     end
-    HLT.write_rows(joinpath(root,"reference_convergence.csv"),checks)
-    reference_checked=length(checks)==total && last(checks).qualified
-    HLT.write_rows(joinpath(root,"run_status.csv"),[merge(r,(;reference_checked)) for r in statuses])
+    HLT.write_rows(joinpath(root,"reference_convergence.csv"),convergence)
+    HLT.write_rows(joinpath(root,"run_status.csv"),
+        [merge(r,(;reference_checked=get(checked,run_order(r.name),false))) for r in statuses])
     rows=NamedTuple[]
-    for name in filter(n->!(n in ("reference","reference_refined")),names)
+    references=Set(n for o in orders for n in refnames(o))
+    for name in filter(n->!(n in references),names)
         isfile(joinpath(root,name,"runs.csv")) || continue
+        order=run_order(name); q=views[order]; fine=last(refnames(order))
         for run in csvrows(joinpath(root,name,"runs.csv"))
             rep=parse(Int,run["repetition"]);maxstate=0.;maxrho=0.;maxtrace=0.
             steps=csvrows(joinpath(root,name,"rep$rep","steps.csv"))
-            for t in common
+            for t in common[order]
                 path=joinpath(root,name,"rep$rep","time_$t.jls");isfile(path) || break
-                x=deserialize(path);ref=deserialize(joinpath(root,"reference_refined","rep1","time_$t.jls"))
-                rho=HLT.density_of(x,p)
-                maxstate=max(maxstate,HLT.comparison_error(x,ref))
-                maxrho=max(maxrho,norm(rho-HLT.density_of(ref,p)));maxtrace=max(maxtrace,abs(tr(rho)-1))
+                x=deserialize(path);ref=deserialize(joinpath(root,fine,"rep1","time_$t.jls"))
+                rho=density(x,q)
+                maxstate=max(maxstate,state_error(x,ref,q))
+                maxrho=max(maxrho,norm(rho-density(ref,q)));maxtrace=max(maxtrace,abs(tr(rho)-1))
                 lastrow=last(filter(r->parse(Float64,r["time_fs"])<=t+1e-12,steps))
                 push!(rows,(;name,repetition=rep,time_fs=t,seconds=parse(Float64,lastrow["cumulative_seconds"]),
                     max_state_error=maxstate,max_density_error=maxrho,max_trace_error=maxtrace,
-                    qualified=checks[t].qualified && maxstate<1e-3 && maxrho<1e-3,
+                    qualified=checks[order][t].qualified && maxstate<1e-3 && maxrho<1e-3,
                     maxrank=parse(Int,lastrow["maxrank"])))
             end
         end

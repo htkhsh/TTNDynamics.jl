@@ -23,6 +23,40 @@ const HLT=HTC.HLT
     end
 end
 
+@testset "Centered system order: TT and TTN agree with the dense solution" begin
+    cfg=HTC.configuration(;sites=2,local_size=2,end_fs=1.0)
+    p=HLT.comparison_problem(cfg)
+    q=HTC.ordered_problem(p,:center)
+    n=length(p.operator.dimensions)
+    @test sort(q.perm)==collect(1:n) && q.perm[q.ketpos:q.ketpos+1]==[1,2]
+    @test HTC.leaf_sequence(q.tree.tree)==q.perm
+    @test HTC.density(q.train,q) ≈ HLT.density_of(p.train,p)
+    @test HTC.state_error(q.tree,q.train,q) < 1e-7
+    target=exp(0.2*HLT.dense(p.operator))*vec(HLT.dense(p.tree))
+    to_physical(y)=begin
+        full=reshape(HLT.tt_full(y),Tuple(reverse(HLT.tt_dims(y))))
+        tensor=permutedims(full,reverse(1:n))          # axes in core order perm
+        vec(permutedims(tensor,invperm(q.perm)))       # axes in physical order
+    end
+    results=Dict{String,Any}()
+    for name in ("tt_center","tree_center")
+        s=HTC.specification(cfg,name);s["dt_fs"]=0.2;s["tolerance"]=1e-8;s["sweeps"]=30
+        name=="tree_center" && (s["truncation_rtol"]=1e-10)
+        work=name=="tt_center" ? HLT.TAMEnWorkspace(ComplexF64) : HTC.TS.TAMEnWorkspace()
+        y,d=HTC.advance(q,name=="tt_center" ? q.train : q.tree,s,work,nothing)
+        vector=name=="tt_center" ? to_physical(y) : vec(HLT.dense(y))
+        @test norm(vector-target)/norm(target)<1e-6
+        @test abs(tr(HTC.density(y,q))-1)<1e-9
+        results[name]=y
+    end
+    @test HTC.state_error(results["tree_center"],results["tt_center"],q) < 1e-6
+    for name in ("tt_center","tt_center_serial","reference_center","reference_refined_center")
+        @test HTC.specification(cfg,name)["order"]=="center"
+    end
+    @test HTC.specification(cfg,"tt_center_serial")["blas_threads"]==1
+    @test norm(HTC.density(results["tree_center"],q)-HTC.density(results["tt_center"],q)) < 1e-6
+end
+
 @testset "Explicit startup failure and zero-budget status" begin
     cfg=HTC.configuration(;sites=2,local_size=2,end_fs=1.0)
     mktempdir() do root

@@ -1,0 +1,303 @@
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference 13.246010803 s; setup 8.39494544 s
+reference t=1.0 fs; seconds=1.066204095 rank=43
+reference t=2.0 fs; seconds=3.496651389 rank=70
+reference t=3.0 fs; seconds=10.201693579 rank=97
+reference t=4.0 fs; seconds=21.130512113 rank=130
+reference t=5.0 fs; seconds=47.396083002 rank=176
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 47.396083002, bytes = 12751100728, gc = 5.600217477, peak_rank = 176)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference_refined 0.405309367 s; setup 0.148198315 s
+reference_refined t=1.0 fs; seconds=2.031478488 rank=57
+reference_refined t=2.0 fs; seconds=9.461154684 rank=95
+reference_refined t=3.0 fs; seconds=34.051773271 rank=145
+reference_refined t=4.0 fs; seconds=91.66943497999999 rank=192
+reference_refined t=5.0 fs; seconds=193.14336237700002 rank=255
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 193.14336237700002, bytes = 46641536536, gc = 17.701726134999998, peak_rank = 255)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference_center 0.074150416 s; setup 0.721830239 s
+reference_center t=1.0 fs; seconds=0.63885672 rank=39
+reference_center t=2.0 fs; seconds=2.431002645 rank=55
+reference_center t=3.0 fs; seconds=5.572652278 rank=70
+reference_center t=4.0 fs; seconds=11.823968032 rank=88
+reference_center t=5.0 fs; seconds=22.001519943 rank=110
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 22.001519943, bytes = 8069168840, gc = 2.765907643, peak_rank = 110)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference_refined_center 0.059797801 s; setup 0.275788625 s
+reference_refined_center t=1.0 fs; seconds=1.709702308 rank=45
+reference_refined_center t=2.0 fs; seconds=7.488601624999999 rank=65
+reference_refined_center t=3.0 fs; seconds=21.667126434 rank=89
+reference_refined_center t=4.0 fs; seconds=45.585855127 rank=115
+reference_refined_center t=5.0 fs; seconds=90.08815270299999 rank=147
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 90.08815270299999, bytes = 26154656688, gc = 8.96772148, peak_rank = 147)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt 0.037438258 s; setup 0.07393069 s
+tt t=1.0 fs; seconds=0.087790679 rank=22
+tt t=2.0 fs; seconds=0.236507053 rank=29
+tt t=3.0 fs; seconds=0.475805515 rank=41
+tt t=4.0 fs; seconds=0.9572433220000001 rank=57
+tt t=5.0 fs; seconds=1.9159549530000002 rank=65
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 1.9159549530000002, bytes = 1157276792, gc = 0.39103639500000004, peak_rank = 65)
+tt t=1.0 fs; seconds=0.08959294 rank=22
+tt t=2.0 fs; seconds=0.23565227300000002 rank=29
+tt t=3.0 fs; seconds=0.453035449 rank=41
+tt t=4.0 fs; seconds=0.9216519919999999 rank=57
+tt t=5.0 fs; seconds=1.516835523 rank=65
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 1.516835523, bytes = 1007917360, gc = 0.019719262, peak_rank = 65)
+tt t=1.0 fs; seconds=0.09279575200000001 rank=22
+tt t=2.0 fs; seconds=0.243557808 rank=29
+tt t=3.0 fs; seconds=0.464941901 rank=41
+tt t=4.0 fs; seconds=0.937749145 rank=57
+tt t=5.0 fs; seconds=1.535139166 rank=65
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 1.535139166, bytes = 1007913184, gc = 0.022571909, peak_rank = 65)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt_serial 0.043458576 s; setup 0.102941934 s
+tt_serial t=1.0 fs; seconds=0.142299034 rank=22
+tt_serial t=2.0 fs; seconds=0.44121408799999995 rank=29
+tt_serial t=3.0 fs; seconds=0.917621614 rank=39
+tt_serial t=4.0 fs; seconds=1.847488566 rank=53
+tt_serial t=5.0 fs; seconds=3.38501866 rank=64
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 3.38501866, bytes = 1089145096, gc = 0.08025404, peak_rank = 64)
+tt_serial t=1.0 fs; seconds=0.140125707 rank=22
+tt_serial t=2.0 fs; seconds=0.448092571 rank=29
+tt_serial t=3.0 fs; seconds=0.9533327229999999 rank=39
+tt_serial t=4.0 fs; seconds=1.890892208 rank=53
+tt_serial t=5.0 fs; seconds=3.3826523660000003 rank=64
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 3.3826523660000003, bytes = 939773136, gc = 0.066149568, peak_rank = 64)
+tt_serial t=1.0 fs; seconds=0.140015269 rank=22
+tt_serial t=2.0 fs; seconds=0.44058641099999996 rank=29
+tt_serial t=3.0 fs; seconds=0.9265782439999999 rank=39
+tt_serial t=4.0 fs; seconds=1.8550312199999999 rank=53
+tt_serial t=5.0 fs; seconds=3.3427449 rank=64
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 3.3427449, bytes = 939773136, gc = 0.023413937, peak_rank = 64)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt_center 0.051328278 s; setup 0.661997396 s
+tt_center t=1.0 fs; seconds=0.116040758 rank=26
+tt_center t=2.0 fs; seconds=0.315440413 rank=32
+tt_center t=3.0 fs; seconds=0.558429648 rank=40
+tt_center t=4.0 fs; seconds=0.9091016219999999 rank=47
+tt_center t=5.0 fs; seconds=1.426536444 rank=53
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 1.426536444, bytes = 1107004896, gc = 0.024098376, peak_rank = 53)
+tt_center t=1.0 fs; seconds=0.110784752 rank=26
+tt_center t=2.0 fs; seconds=0.311998173 rank=32
+tt_center t=3.0 fs; seconds=0.532500993 rank=40
+tt_center t=4.0 fs; seconds=0.8874779079999999 rank=47
+tt_center t=5.0 fs; seconds=1.399074875 rank=53
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 1.399074875, bytes = 974032824, gc = 0.019625442, peak_rank = 53)
+tt_center t=1.0 fs; seconds=0.107826145 rank=26
+tt_center t=2.0 fs; seconds=0.306131693 rank=32
+tt_center t=3.0 fs; seconds=0.5379772669999999 rank=40
+tt_center t=4.0 fs; seconds=0.8790463799999999 rank=47
+tt_center t=5.0 fs; seconds=1.400964472 rank=53
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 1.400964472, bytes = 974028648, gc = 0.019936897000000002, peak_rank = 53)
+RUN FAILED tt_center_serial: unknown run tt_center_serial
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_tt_channels 13.284248431 s; setup 0.10386372 s
+tree_tt_channels t=1.0 fs; seconds=0.13271353 rank=19
+tree_tt_channels t=2.0 fs; seconds=0.400264986 rank=25
+tree_tt_channels t=3.0 fs; seconds=1.2862182739999999 rank=37
+tree_tt_channels t=4.0 fs; seconds=3.1775554789999996 rank=44
+tree_tt_channels t=5.0 fs; seconds=6.245021198 rank=51
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 6.245021198, bytes = 4711962624, gc = 1.3710644170000001, peak_rank = 51)
+tree_tt_channels t=1.0 fs; seconds=0.12942925 rank=19
+tree_tt_channels t=2.0 fs; seconds=0.386436918 rank=25
+tree_tt_channels t=3.0 fs; seconds=1.233897136 rank=37
+tree_tt_channels t=4.0 fs; seconds=3.106955005 rank=44
+tree_tt_channels t=5.0 fs; seconds=5.772693915 rank=51
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 5.772693915, bytes = 4712002384, gc = 0.9042387350000001, peak_rank = 51)
+tree_tt_channels t=1.0 fs; seconds=0.13057306200000002 rank=19
+tree_tt_channels t=2.0 fs; seconds=0.386069723 rank=25
+tree_tt_channels t=3.0 fs; seconds=1.233744754 rank=37
+tree_tt_channels t=4.0 fs; seconds=3.099788575 rank=44
+tree_tt_channels t=5.0 fs; seconds=5.761114702 rank=51
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 5.761114702, bytes = 4712002384, gc = 0.915315476, peak_rank = 51)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_center 0.07579602 s; setup 0.299622723 s
+tree_center t=1.0 fs; seconds=0.06941344 rank=14
+tree_center t=2.0 fs; seconds=0.18978272699999998 rank=21
+tree_center t=3.0 fs; seconds=0.47590480799999996 rank=28
+tree_center t=4.0 fs; seconds=1.012468682 rank=35
+tree_center t=5.0 fs; seconds=2.31266587 rank=42
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 2.31266587, bytes = 2801409216, gc = 0.46593356799999996, peak_rank = 42)
+tree_center t=1.0 fs; seconds=0.068751423 rank=14
+tree_center t=2.0 fs; seconds=0.191016503 rank=21
+tree_center t=3.0 fs; seconds=0.482627802 rank=28
+tree_center t=4.0 fs; seconds=1.014089969 rank=35
+tree_center t=5.0 fs; seconds=2.327039762 rank=42
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 2.327039762, bytes = 2801626656, gc = 0.471834704, peak_rank = 42)
+tree_center t=1.0 fs; seconds=0.071711826 rank=14
+tree_center t=2.0 fs; seconds=0.193534278 rank=21
+tree_center t=3.0 fs; seconds=0.48242337300000004 rank=28
+tree_center t=4.0 fs; seconds=1.003709475 rank=35
+tree_center t=5.0 fs; seconds=2.324996043 rank=42
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 2.324996043, bytes = 2801626656, gc = 0.481424148, peak_rank = 42)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_center_tight 0.113838107 s; setup 0.27843665 s
+tree_center_tight t=1.0 fs; seconds=0.11300997600000001 rank=19
+tree_center_tight t=2.0 fs; seconds=0.30157557900000004 rank=26
+tree_center_tight t=3.0 fs; seconds=0.663090465 rank=33
+tree_center_tight t=4.0 fs; seconds=1.402656194 rank=40
+tree_center_tight t=5.0 fs; seconds=3.0952313719999998 rank=47
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 3.0952313719999998, bytes = 3596959984, gc = 0.482442893, peak_rank = 47)
+tree_center_tight t=1.0 fs; seconds=0.110803381 rank=19
+tree_center_tight t=2.0 fs; seconds=0.297655883 rank=26
+tree_center_tight t=3.0 fs; seconds=0.6575738369999999 rank=33
+tree_center_tight t=4.0 fs; seconds=1.401471746 rank=40
+tree_center_tight t=5.0 fs; seconds=3.1038101759999996 rank=47
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 3.1038101759999996, bytes = 3597174896, gc = 0.50357038, peak_rank = 47)
+tree_center_tight t=1.0 fs; seconds=0.114246831 rank=19
+tree_center_tight t=2.0 fs; seconds=0.304231813 rank=26
+tree_center_tight t=3.0 fs; seconds=0.6636434280000001 rank=33
+tree_center_tight t=4.0 fs; seconds=1.40536831 rank=40
+tree_center_tight t=5.0 fs; seconds=3.1136304280000004 rank=47
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 3.1136304280000004, bytes = 3597174896, gc = 0.50109769, peak_rank = 47)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_center_loose 0.065937594 s; setup 0.658847571 s
+tree_center_loose t=1.0 fs; seconds=0.067808898 rank=14
+tree_center_loose t=2.0 fs; seconds=0.130261289 rank=16
+tree_center_loose t=3.0 fs; seconds=0.32735362300000004 rank=23
+tree_center_loose t=4.0 fs; seconds=0.929254279 rank=35
+tree_center_loose t=5.0 fs; seconds=1.8975654419999999 rank=37
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 1.8975654419999999, bytes = 2453944112, gc = 0.470842326, peak_rank = 37)
+tree_center_loose t=1.0 fs; seconds=0.067285297 rank=14
+tree_center_loose t=2.0 fs; seconds=0.13226285599999998 rank=16
+tree_center_loose t=3.0 fs; seconds=0.32906816499999997 rank=23
+tree_center_loose t=4.0 fs; seconds=0.920588532 rank=35
+tree_center_loose t=5.0 fs; seconds=1.881347307 rank=37
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 1.881347307, bytes = 2453953152, gc = 0.457691807, peak_rank = 37)
+tree_center_loose t=1.0 fs; seconds=0.066336434 rank=14
+tree_center_loose t=2.0 fs; seconds=0.129054275 rank=16
+tree_center_loose t=3.0 fs; seconds=0.323904757 rank=23
+tree_center_loose t=4.0 fs; seconds=0.920642031 rank=35
+tree_center_loose t=5.0 fs; seconds=1.8875779700000002 rank=37
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 1.8875779700000002, bytes = 2453953152, gc = 0.46163134799999994, peak_rank = 37)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+(name = "tree_center", repetition = 1, time_fs = 1, seconds = 0.06941344, max_state_error = 0.0001007751733938296, max_density_error = 5.149423122505398e-6, max_trace_error = 4.267139241914081e-7, qualified = true, maxrank = 14)
+(name = "tree_center", repetition = 1, time_fs = 2, seconds = 0.18978272699999998, max_state_error = 0.00015561041800453906, max_density_error = 1.4371799138667595e-5, max_trace_error = 6.723157738517215e-7, qualified = true, maxrank = 21)
+(name = "tree_center", repetition = 1, time_fs = 3, seconds = 0.47590480799999996, max_state_error = 0.0002988914610473799, max_density_error = 3.568370433098434e-5, max_trace_error = 7.030279508036776e-7, qualified = true, maxrank = 28)
+(name = "tree_center", repetition = 1, time_fs = 4, seconds = 1.012468682, max_state_error = 0.0003160908306937896, max_density_error = 7.197918160762248e-5, max_trace_error = 2.419990874609997e-6, qualified = true, maxrank = 35)
+(name = "tree_center", repetition = 1, time_fs = 5, seconds = 2.31266587, max_state_error = 0.0004225881408938007, max_density_error = 0.00010438034262354026, max_trace_error = 2.419990874609997e-6, qualified = true, maxrank = 42)
+(name = "tree_center", repetition = 2, time_fs = 1, seconds = 0.068751423, max_state_error = 0.0001007751733938296, max_density_error = 5.149423122505398e-6, max_trace_error = 4.267139241914081e-7, qualified = true, maxrank = 14)
+(name = "tree_center", repetition = 2, time_fs = 2, seconds = 0.191016503, max_state_error = 0.00015561041800453906, max_density_error = 1.4371799138667595e-5, max_trace_error = 6.723157738517215e-7, qualified = true, maxrank = 21)
+(name = "tree_center", repetition = 2, time_fs = 3, seconds = 0.482627802, max_state_error = 0.0002988914610473799, max_density_error = 3.568370433098434e-5, max_trace_error = 7.030279508036776e-7, qualified = true, maxrank = 28)
+(name = "tree_center", repetition = 2, time_fs = 4, seconds = 1.014089969, max_state_error = 0.0003160908306937896, max_density_error = 7.197918160762248e-5, max_trace_error = 2.419990874609997e-6, qualified = true, maxrank = 35)
+(name = "tree_center", repetition = 2, time_fs = 5, seconds = 2.327039762, max_state_error = 0.0004225881408938007, max_density_error = 0.00010438034262354026, max_trace_error = 2.419990874609997e-6, qualified = true, maxrank = 42)
+(name = "tree_center", repetition = 3, time_fs = 1, seconds = 0.071711826, max_state_error = 0.0001007751733938296, max_density_error = 5.149423122505398e-6, max_trace_error = 4.267139241914081e-7, qualified = true, maxrank = 14)
+(name = "tree_center", repetition = 3, time_fs = 2, seconds = 0.193534278, max_state_error = 0.00015561041800453906, max_density_error = 1.4371799138667595e-5, max_trace_error = 6.723157738517215e-7, qualified = true, maxrank = 21)
+(name = "tree_center", repetition = 3, time_fs = 3, seconds = 0.48242337300000004, max_state_error = 0.0002988914610473799, max_density_error = 3.568370433098434e-5, max_trace_error = 7.030279508036776e-7, qualified = true, maxrank = 28)
+(name = "tree_center", repetition = 3, time_fs = 4, seconds = 1.003709475, max_state_error = 0.0003160908306937896, max_density_error = 7.197918160762248e-5, max_trace_error = 2.419990874609997e-6, qualified = true, maxrank = 35)
+(name = "tree_center", repetition = 3, time_fs = 5, seconds = 2.324996043, max_state_error = 0.0004225881408938007, max_density_error = 0.00010438034262354026, max_trace_error = 2.419990874609997e-6, qualified = true, maxrank = 42)
+(name = "tree_center_loose", repetition = 1, time_fs = 1, seconds = 0.067808898, max_state_error = 0.00021348608900712227, max_density_error = 1.187102136271883e-5, max_trace_error = 1.9394366899026475e-6, qualified = true, maxrank = 14)
+(name = "tree_center_loose", repetition = 1, time_fs = 2, seconds = 0.130261289, max_state_error = 0.0005650067000104381, max_density_error = 8.594162300081157e-5, max_trace_error = 1.9394366899026475e-6, qualified = true, maxrank = 16)
+(name = "tree_center_loose", repetition = 1, time_fs = 3, seconds = 0.32735362300000004, max_state_error = 0.0006944731089694495, max_density_error = 0.00017024054252484202, max_trace_error = 5.084368093554481e-6, qualified = true, maxrank = 23)
+(name = "tree_center_loose", repetition = 1, time_fs = 4, seconds = 0.929254279, max_state_error = 0.0006944731089694495, max_density_error = 0.00024086293894617003, max_trace_error = 6.466511108525482e-6, qualified = true, maxrank = 35)
+(name = "tree_center_loose", repetition = 1, time_fs = 5, seconds = 1.8975654419999999, max_state_error = 0.0007169268131426354, max_density_error = 0.0002805124231794531, max_trace_error = 7.237159460962075e-6, qualified = true, maxrank = 37)
+(name = "tree_center_loose", repetition = 2, time_fs = 1, seconds = 0.067285297, max_state_error = 0.00021348608900712227, max_density_error = 1.187102136271883e-5, max_trace_error = 1.9394366899026475e-6, qualified = true, maxrank = 14)
+(name = "tree_center_loose", repetition = 2, time_fs = 2, seconds = 0.13226285599999998, max_state_error = 0.0005650067000104381, max_density_error = 8.594162300081157e-5, max_trace_error = 1.9394366899026475e-6, qualified = true, maxrank = 16)
+(name = "tree_center_loose", repetition = 2, time_fs = 3, seconds = 0.32906816499999997, max_state_error = 0.0006944731089694495, max_density_error = 0.00017024054252484202, max_trace_error = 5.084368093554481e-6, qualified = true, maxrank = 23)
+(name = "tree_center_loose", repetition = 2, time_fs = 4, seconds = 0.920588532, max_state_error = 0.0006944731089694495, max_density_error = 0.00024086293894617003, max_trace_error = 6.466511108525482e-6, qualified = true, maxrank = 35)
+(name = "tree_center_loose", repetition = 2, time_fs = 5, seconds = 1.881347307, max_state_error = 0.0007169268131426354, max_density_error = 0.0002805124231794531, max_trace_error = 7.237159460962075e-6, qualified = true, maxrank = 37)
+(name = "tree_center_loose", repetition = 3, time_fs = 1, seconds = 0.066336434, max_state_error = 0.00021348608900712227, max_density_error = 1.187102136271883e-5, max_trace_error = 1.9394366899026475e-6, qualified = true, maxrank = 14)
+(name = "tree_center_loose", repetition = 3, time_fs = 2, seconds = 0.129054275, max_state_error = 0.0005650067000104381, max_density_error = 8.594162300081157e-5, max_trace_error = 1.9394366899026475e-6, qualified = true, maxrank = 16)
+(name = "tree_center_loose", repetition = 3, time_fs = 3, seconds = 0.323904757, max_state_error = 0.0006944731089694495, max_density_error = 0.00017024054252484202, max_trace_error = 5.084368093554481e-6, qualified = true, maxrank = 23)
+(name = "tree_center_loose", repetition = 3, time_fs = 4, seconds = 0.920642031, max_state_error = 0.0006944731089694495, max_density_error = 0.00024086293894617003, max_trace_error = 6.466511108525482e-6, qualified = true, maxrank = 35)
+(name = "tree_center_loose", repetition = 3, time_fs = 5, seconds = 1.8875779700000002, max_state_error = 0.0007169268131426354, max_density_error = 0.0002805124231794531, max_trace_error = 7.237159460962075e-6, qualified = true, maxrank = 37)
+(name = "tree_center_tight", repetition = 1, time_fs = 1, seconds = 0.11300997600000001, max_state_error = 4.1133598660330294e-5, max_density_error = 2.7365750439506445e-6, max_trace_error = 3.0793689515259553e-7, qualified = true, maxrank = 19)
+(name = "tree_center_tight", repetition = 1, time_fs = 2, seconds = 0.30157557900000004, max_state_error = 9.357729198939289e-5, max_density_error = 8.15739152035867e-6, max_trace_error = 6.062582806038072e-7, qualified = true, maxrank = 26)
+(name = "tree_center_tight", repetition = 1, time_fs = 3, seconds = 0.663090465, max_state_error = 0.00016901578355952356, max_density_error = 2.3963753250308008e-5, max_trace_error = 6.226333446102459e-7, qualified = true, maxrank = 33)
+(name = "tree_center_tight", repetition = 1, time_fs = 4, seconds = 1.402656194, max_state_error = 0.00020650485905827207, max_density_error = 4.23657323813521e-5, max_trace_error = 8.538961032582259e-7, qualified = true, maxrank = 40)
+(name = "tree_center_tight", repetition = 1, time_fs = 5, seconds = 3.0952313719999998, max_state_error = 0.0002781875290015529, max_density_error = 5.9604614116814036e-5, max_trace_error = 9.51654028010264e-7, qualified = true, maxrank = 47)
+(name = "tree_center_tight", repetition = 2, time_fs = 1, seconds = 0.110803381, max_state_error = 4.1133598660330294e-5, max_density_error = 2.7365750439506445e-6, max_trace_error = 3.0793689515259553e-7, qualified = true, maxrank = 19)
+(name = "tree_center_tight", repetition = 2, time_fs = 2, seconds = 0.297655883, max_state_error = 9.357729198939289e-5, max_density_error = 8.15739152035867e-6, max_trace_error = 6.062582806038072e-7, qualified = true, maxrank = 26)
+(name = "tree_center_tight", repetition = 2, time_fs = 3, seconds = 0.6575738369999999, max_state_error = 0.00016901578355952356, max_density_error = 2.3963753250308008e-5, max_trace_error = 6.226333446102459e-7, qualified = true, maxrank = 33)
+(name = "tree_center_tight", repetition = 2, time_fs = 4, seconds = 1.401471746, max_state_error = 0.00020650485905827207, max_density_error = 4.23657323813521e-5, max_trace_error = 8.538961032582259e-7, qualified = true, maxrank = 40)
+(name = "tree_center_tight", repetition = 2, time_fs = 5, seconds = 3.1038101759999996, max_state_error = 0.0002781875290015529, max_density_error = 5.9604614116814036e-5, max_trace_error = 9.51654028010264e-7, qualified = true, maxrank = 47)
+(name = "tree_center_tight", repetition = 3, time_fs = 1, seconds = 0.114246831, max_state_error = 4.1133598660330294e-5, max_density_error = 2.7365750439506445e-6, max_trace_error = 3.0793689515259553e-7, qualified = true, maxrank = 19)
+(name = "tree_center_tight", repetition = 3, time_fs = 2, seconds = 0.304231813, max_state_error = 9.357729198939289e-5, max_density_error = 8.15739152035867e-6, max_trace_error = 6.062582806038072e-7, qualified = true, maxrank = 26)
+(name = "tree_center_tight", repetition = 3, time_fs = 3, seconds = 0.6636434280000001, max_state_error = 0.00016901578355952356, max_density_error = 2.3963753250308008e-5, max_trace_error = 6.226333446102459e-7, qualified = true, maxrank = 33)
+(name = "tree_center_tight", repetition = 3, time_fs = 4, seconds = 1.40536831, max_state_error = 0.00020650485905827207, max_density_error = 4.23657323813521e-5, max_trace_error = 8.538961032582259e-7, qualified = true, maxrank = 40)
+(name = "tree_center_tight", repetition = 3, time_fs = 5, seconds = 3.1136304280000004, max_state_error = 0.0002781875290015529, max_density_error = 5.9604614116814036e-5, max_trace_error = 9.51654028010264e-7, qualified = true, maxrank = 47)
+(name = "tree_tt_channels", repetition = 1, time_fs = 1, seconds = 0.13271353, max_state_error = 9.528148944738454e-5, max_density_error = 2.618728938098937e-6, max_trace_error = 2.5876823900575696e-7, qualified = true, maxrank = 19)
+(name = "tree_tt_channels", repetition = 1, time_fs = 2, seconds = 0.400264986, max_state_error = 0.00017025489343632297, max_density_error = 1.137521945679009e-5, max_trace_error = 2.718218661593314e-7, qualified = true, maxrank = 25)
+(name = "tree_tt_channels", repetition = 1, time_fs = 3, seconds = 1.2862182739999999, max_state_error = 0.0004026282898910735, max_density_error = 3.408471482759092e-5, max_trace_error = 6.226307983760889e-7, qualified = true, maxrank = 37)
+(name = "tree_tt_channels", repetition = 1, time_fs = 4, seconds = 3.1775554789999996, max_state_error = 0.0004331717934016907, max_density_error = 6.553133506506988e-5, max_trace_error = 1.0369785917535126e-6, qualified = true, maxrank = 44)
+(name = "tree_tt_channels", repetition = 1, time_fs = 5, seconds = 6.245021198, max_state_error = 0.0006659047921805195, max_density_error = 9.880864417808851e-5, max_trace_error = 2.5272816305553063e-6, qualified = true, maxrank = 51)
+(name = "tree_tt_channels", repetition = 2, time_fs = 1, seconds = 0.12942925, max_state_error = 9.528148944738454e-5, max_density_error = 2.618728938098937e-6, max_trace_error = 2.5876823900575696e-7, qualified = true, maxrank = 19)
+(name = "tree_tt_channels", repetition = 2, time_fs = 2, seconds = 0.386436918, max_state_error = 0.00017025489343632297, max_density_error = 1.137521945679009e-5, max_trace_error = 2.718218661593314e-7, qualified = true, maxrank = 25)
+(name = "tree_tt_channels", repetition = 2, time_fs = 3, seconds = 1.233897136, max_state_error = 0.0004026282898910735, max_density_error = 3.408471482759092e-5, max_trace_error = 6.226307983760889e-7, qualified = true, maxrank = 37)
+(name = "tree_tt_channels", repetition = 2, time_fs = 4, seconds = 3.106955005, max_state_error = 0.0004331717934016907, max_density_error = 6.553133506506988e-5, max_trace_error = 1.0369785917535126e-6, qualified = true, maxrank = 44)
+(name = "tree_tt_channels", repetition = 2, time_fs = 5, seconds = 5.772693915, max_state_error = 0.0006659047921805195, max_density_error = 9.880864417808851e-5, max_trace_error = 2.5272816305553063e-6, qualified = true, maxrank = 51)
+(name = "tree_tt_channels", repetition = 3, time_fs = 1, seconds = 0.13057306200000002, max_state_error = 9.528148944738454e-5, max_density_error = 2.618728938098937e-6, max_trace_error = 2.5876823900575696e-7, qualified = true, maxrank = 19)
+(name = "tree_tt_channels", repetition = 3, time_fs = 2, seconds = 0.386069723, max_state_error = 0.00017025489343632297, max_density_error = 1.137521945679009e-5, max_trace_error = 2.718218661593314e-7, qualified = true, maxrank = 25)
+(name = "tree_tt_channels", repetition = 3, time_fs = 3, seconds = 1.233744754, max_state_error = 0.0004026282898910735, max_density_error = 3.408471482759092e-5, max_trace_error = 6.226307983760889e-7, qualified = true, maxrank = 37)
+(name = "tree_tt_channels", repetition = 3, time_fs = 4, seconds = 3.099788575, max_state_error = 0.0004331717934016907, max_density_error = 6.553133506506988e-5, max_trace_error = 1.0369785917535126e-6, qualified = true, maxrank = 44)
+(name = "tree_tt_channels", repetition = 3, time_fs = 5, seconds = 5.761114702, max_state_error = 0.0006659047921805195, max_density_error = 9.880864417808851e-5, max_trace_error = 2.5272816305553063e-6, qualified = true, maxrank = 51)
+(name = "tt", repetition = 1, time_fs = 1, seconds = 0.087790679, max_state_error = 7.386906598897132e-5, max_density_error = 8.693222218121477e-6, max_trace_error = 3.89881180252057e-14, qualified = true, maxrank = 22)
+(name = "tt", repetition = 1, time_fs = 2, seconds = 0.236507053, max_state_error = 0.00015813297290719598, max_density_error = 2.09152991409156e-5, max_trace_error = 7.142316015098252e-14, qualified = true, maxrank = 29)
+(name = "tt", repetition = 1, time_fs = 3, seconds = 0.475805515, max_state_error = 0.000424694495484766, max_density_error = 4.35690837135936e-5, max_trace_error = 1.0888791915593651e-13, qualified = true, maxrank = 41)
+(name = "tt", repetition = 1, time_fs = 4, seconds = 0.9572433220000001, max_state_error = 0.0004632023665765006, max_density_error = 8.891729463839513e-5, max_trace_error = 1.4014549242317464e-13, qualified = true, maxrank = 57)
+(name = "tt", repetition = 1, time_fs = 5, seconds = 1.9159549530000002, max_state_error = 0.0006019638425313609, max_density_error = 0.00012861884624201455, max_trace_error = 1.7414684447097266e-13, qualified = true, maxrank = 65)
+(name = "tt", repetition = 2, time_fs = 1, seconds = 0.08959294, max_state_error = 7.386906598897132e-5, max_density_error = 8.693222218121477e-6, max_trace_error = 3.89881180252057e-14, qualified = true, maxrank = 22)
+(name = "tt", repetition = 2, time_fs = 2, seconds = 0.23565227300000002, max_state_error = 0.00015813297290719598, max_density_error = 2.09152991409156e-5, max_trace_error = 7.142316015098252e-14, qualified = true, maxrank = 29)
+(name = "tt", repetition = 2, time_fs = 3, seconds = 0.453035449, max_state_error = 0.000424694495484766, max_density_error = 4.35690837135936e-5, max_trace_error = 1.0888791915593651e-13, qualified = true, maxrank = 41)
+(name = "tt", repetition = 2, time_fs = 4, seconds = 0.9216519919999999, max_state_error = 0.0004632023665765006, max_density_error = 8.891729463839513e-5, max_trace_error = 1.4014549242317464e-13, qualified = true, maxrank = 57)
+(name = "tt", repetition = 2, time_fs = 5, seconds = 1.516835523, max_state_error = 0.0006019638425313609, max_density_error = 0.00012861884624201455, max_trace_error = 1.7414684447097266e-13, qualified = true, maxrank = 65)
+(name = "tt", repetition = 3, time_fs = 1, seconds = 0.09279575200000001, max_state_error = 7.386906598897132e-5, max_density_error = 8.693222218121477e-6, max_trace_error = 3.89881180252057e-14, qualified = true, maxrank = 22)
+(name = "tt", repetition = 3, time_fs = 2, seconds = 0.243557808, max_state_error = 0.00015813297290719598, max_density_error = 2.09152991409156e-5, max_trace_error = 7.142316015098252e-14, qualified = true, maxrank = 29)
+(name = "tt", repetition = 3, time_fs = 3, seconds = 0.464941901, max_state_error = 0.000424694495484766, max_density_error = 4.35690837135936e-5, max_trace_error = 1.0888791915593651e-13, qualified = true, maxrank = 41)
+(name = "tt", repetition = 3, time_fs = 4, seconds = 0.937749145, max_state_error = 0.0004632023665765006, max_density_error = 8.891729463839513e-5, max_trace_error = 1.4014549242317464e-13, qualified = true, maxrank = 57)
+(name = "tt", repetition = 3, time_fs = 5, seconds = 1.535139166, max_state_error = 0.0006019638425313609, max_density_error = 0.00012861884624201455, max_trace_error = 1.7414684447097266e-13, qualified = true, maxrank = 65)
+(name = "tt_center", repetition = 1, time_fs = 1, seconds = 0.116040758, max_state_error = 4.8673795540587595e-5, max_density_error = 7.964703700233862e-6, max_trace_error = 4.557957283311292e-13, qualified = true, maxrank = 26)
+(name = "tt_center", repetition = 1, time_fs = 2, seconds = 0.315440413, max_state_error = 0.00011199579195675639, max_density_error = 1.2268404252417508e-5, max_trace_error = 9.165738208260666e-13, qualified = true, maxrank = 32)
+(name = "tt_center", repetition = 1, time_fs = 3, seconds = 0.558429648, max_state_error = 0.00016001959570975592, max_density_error = 2.360287928030486e-5, max_trace_error = 1.3699762211796094e-12, qualified = true, maxrank = 40)
+(name = "tt_center", repetition = 1, time_fs = 4, seconds = 0.9091016219999999, max_state_error = 0.00023273367078713409, max_density_error = 3.620137680882629e-5, max_trace_error = 1.8287484587883386e-12, qualified = true, maxrank = 47)
+(name = "tt_center", repetition = 1, time_fs = 5, seconds = 1.426536444, max_state_error = 0.00033321269072645324, max_density_error = 4.988475501476929e-5, max_trace_error = 2.295220286453775e-12, qualified = true, maxrank = 53)
+(name = "tt_center", repetition = 2, time_fs = 1, seconds = 0.110784752, max_state_error = 4.8673795540587595e-5, max_density_error = 7.964703700233862e-6, max_trace_error = 4.557957283311292e-13, qualified = true, maxrank = 26)
+(name = "tt_center", repetition = 2, time_fs = 2, seconds = 0.311998173, max_state_error = 0.00011199579195675639, max_density_error = 1.2268404252417508e-5, max_trace_error = 9.165738208260666e-13, qualified = true, maxrank = 32)
+(name = "tt_center", repetition = 2, time_fs = 3, seconds = 0.532500993, max_state_error = 0.00016001959570975592, max_density_error = 2.360287928030486e-5, max_trace_error = 1.3699762211796094e-12, qualified = true, maxrank = 40)
+(name = "tt_center", repetition = 2, time_fs = 4, seconds = 0.8874779079999999, max_state_error = 0.00023273367078713409, max_density_error = 3.620137680882629e-5, max_trace_error = 1.8287484587883386e-12, qualified = true, maxrank = 47)
+(name = "tt_center", repetition = 2, time_fs = 5, seconds = 1.399074875, max_state_error = 0.00033321269072645324, max_density_error = 4.988475501476929e-5, max_trace_error = 2.295220286453775e-12, qualified = true, maxrank = 53)
+(name = "tt_center", repetition = 3, time_fs = 1, seconds = 0.107826145, max_state_error = 4.8673795540587595e-5, max_density_error = 7.964703700233862e-6, max_trace_error = 4.557957283311292e-13, qualified = true, maxrank = 26)
+(name = "tt_center", repetition = 3, time_fs = 2, seconds = 0.306131693, max_state_error = 0.00011199579195675639, max_density_error = 1.2268404252417508e-5, max_trace_error = 9.165738208260666e-13, qualified = true, maxrank = 32)
+(name = "tt_center", repetition = 3, time_fs = 3, seconds = 0.5379772669999999, max_state_error = 0.00016001959570975592, max_density_error = 2.360287928030486e-5, max_trace_error = 1.3699762211796094e-12, qualified = true, maxrank = 40)
+(name = "tt_center", repetition = 3, time_fs = 4, seconds = 0.8790463799999999, max_state_error = 0.00023273367078713409, max_density_error = 3.620137680882629e-5, max_trace_error = 1.8287484587883386e-12, qualified = true, maxrank = 47)
+(name = "tt_center", repetition = 3, time_fs = 5, seconds = 1.400964472, max_state_error = 0.00033321269072645324, max_density_error = 4.988475501476929e-5, max_trace_error = 2.295220286453775e-12, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 1, time_fs = 1, seconds = 0.142299034, max_state_error = 7.418629703744232e-5, max_density_error = 8.309962144015673e-6, max_trace_error = 2.940629040324537e-14, qualified = true, maxrank = 22)
+(name = "tt_serial", repetition = 1, time_fs = 2, seconds = 0.44121408799999995, max_state_error = 0.00015526472439811399, max_density_error = 1.969821465414039e-5, max_trace_error = 6.095618417678363e-14, qualified = true, maxrank = 29)
+(name = "tt_serial", repetition = 1, time_fs = 3, seconds = 0.917621614, max_state_error = 0.0004593762897134669, max_density_error = 4.2792644113702004e-5, max_trace_error = 9.32558994149707e-14, qualified = true, maxrank = 39)
+(name = "tt_serial", repetition = 1, time_fs = 4, seconds = 1.847488566, max_state_error = 0.0005259280739235181, max_density_error = 9.270885710304256e-5, max_trace_error = 1.278012460360398e-13, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 1, time_fs = 5, seconds = 3.38501866, max_state_error = 0.0006648036449935107, max_density_error = 0.00013547264948648836, max_trace_error = 1.622539501560845e-13, qualified = true, maxrank = 64)
+(name = "tt_serial", repetition = 2, time_fs = 1, seconds = 0.140125707, max_state_error = 7.418629703744232e-5, max_density_error = 8.309962144015673e-6, max_trace_error = 2.940629040324537e-14, qualified = true, maxrank = 22)
+(name = "tt_serial", repetition = 2, time_fs = 2, seconds = 0.448092571, max_state_error = 0.00015526472439811399, max_density_error = 1.969821465414039e-5, max_trace_error = 6.095618417678363e-14, qualified = true, maxrank = 29)
+(name = "tt_serial", repetition = 2, time_fs = 3, seconds = 0.9533327229999999, max_state_error = 0.0004593762897134669, max_density_error = 4.2792644113702004e-5, max_trace_error = 9.32558994149707e-14, qualified = true, maxrank = 39)
+(name = "tt_serial", repetition = 2, time_fs = 4, seconds = 1.890892208, max_state_error = 0.0005259280739235181, max_density_error = 9.270885710304256e-5, max_trace_error = 1.278012460360398e-13, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 2, time_fs = 5, seconds = 3.3826523660000003, max_state_error = 0.0006648036449935107, max_density_error = 0.00013547264948648836, max_trace_error = 1.622539501560845e-13, qualified = true, maxrank = 64)
+(name = "tt_serial", repetition = 3, time_fs = 1, seconds = 0.140015269, max_state_error = 7.418629703744232e-5, max_density_error = 8.309962144015673e-6, max_trace_error = 2.940629040324537e-14, qualified = true, maxrank = 22)
+(name = "tt_serial", repetition = 3, time_fs = 2, seconds = 0.44058641099999996, max_state_error = 0.00015526472439811399, max_density_error = 1.969821465414039e-5, max_trace_error = 6.095618417678363e-14, qualified = true, maxrank = 29)
+(name = "tt_serial", repetition = 3, time_fs = 3, seconds = 0.9265782439999999, max_state_error = 0.0004593762897134669, max_density_error = 4.2792644113702004e-5, max_trace_error = 9.32558994149707e-14, qualified = true, maxrank = 39)
+(name = "tt_serial", repetition = 3, time_fs = 4, seconds = 1.8550312199999999, max_state_error = 0.0005259280739235181, max_density_error = 9.270885710304256e-5, max_trace_error = 1.278012460360398e-13, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 3, time_fs = 5, seconds = 3.3427449, max_state_error = 0.0006648036449935107, max_density_error = 0.00013547264948648836, max_trace_error = 1.622539501560845e-13, qualified = true, maxrank = 64)

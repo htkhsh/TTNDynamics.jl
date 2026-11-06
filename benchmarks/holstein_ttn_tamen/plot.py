@@ -21,7 +21,12 @@ labels = {"tt": "TT tAMEn (BLAS 8)", "tt_serial": "TT tAMEn (BLAS 1)",
           "tree_tt_loose": "TTN, TT-style acceptance, rtol 1e-4",
           "tree_tt_channels": "TTN, TT-style + channels, rtol 5e-5",
           "tree_tt_channels_tight": "TTN, TT-style + channels, rtol 3e-5",
-          "tree_tt_channels_loose": "TTN, TT-style + channels, rtol 1e-4"}
+          "tree_tt_channels_loose": "TTN, TT-style + channels, rtol 1e-4",
+          "tt_center": "TT tAMEn, centered system (BLAS 8)",
+          "tt_center_serial": "TT tAMEn, centered system (BLAS 1)",
+          "tree_center": "TTN, centered system, rtol 5e-5",
+          "tree_center_tight": "TTN, centered system, rtol 3e-5",
+          "tree_center_loose": "TTN, centered system, rtol 1e-4"}
 for name in dict.fromkeys(r["name"] for r in rows):
     group = [r for r in rows if r["name"] == name]
     times = sorted({float(r["time_fs"]) for r in group})

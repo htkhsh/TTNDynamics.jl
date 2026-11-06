@@ -85,24 +85,40 @@ function heom_dimensions(system::HEOMTTNSystem)
     return [system.system_layout == :fused ? [d^2] : [d,d]; system.hierarchy_sizes]
 end
 
-"""    heom_tree(system; bath_grouping=:balanced)
+"""    heom_tree(system; bath_grouping=:balanced, system_position=:root)
 
-A system branch and balanced bath subtree under the root. The system branch
-is one fused leaf or two sibling ket/bra leaves. With `:coupling`, first group
-modes having exactly equal system coupling matrices, then balance the groups.
-This keeps a site's Brownian components together without changing physical
-axis order, including when those modes were interleaved in the input.
+A system branch and balanced bath subtrees. The system branch is one fused
+leaf or two sibling ket/bra leaves. With `:coupling`, first group modes having
+exactly equal system coupling matrices, then balance the groups. This keeps a
+site's Brownian components together without changing physical axis order,
+including when those modes were interleaved in the input.
+
+`system_position=:root` (default) puts the system branch under the root next
+to one bath subtree. `:center` splits the bath groups (or modes) into two
+halves and builds `(first half, (system, second half))`, so no node joins two
+large bath halves that both correlate with the system. For the 10-site
+Holstein benchmark this halved the largest cores and ran several times faster.
+Physical axis order is unchanged; only the topology differs.
 """
-function heom_tree(system::HEOMTTNSystem; bath_grouping=:balanced)
+function heom_tree(system::HEOMTTNSystem; bath_grouping=:balanced, system_position=:root)
     bath_grouping isa Symbol && bath_grouping in (:balanced,:coupling) ||
         throw(ArgumentError("bath_grouping must be :balanced or :coupling"))
+    system_position isa Symbol && system_position in (:root,:center) ||
+        throw(ArgumentError("system_position must be :root or :center"))
     count = length(system.modes)
     system_tree = balanced_tree(_heom_system_leaves(system))
     count == 0 && return system_tree
     offset = length(system_tree.children)
+    if bath_grouping == :balanced && system_position == :root
+        bath = balanced_tree(count)
+        children = [system_tree.children; [(left == 0 ? 0 : left+offset, right == 0 ? 0 : right+offset)
+                             for (left, right) in bath.children]]
+        push!(children, (system_tree.root, bath.root+offset))
+        return BinaryTree(children)
+    end
+    children = [system_tree.children; fill((0,0),count)]
+    groups = Vector{Int}[]
     if bath_grouping == :coupling
-        children = [system_tree.children; fill((0,0),count)]
-        groups = Vector{Int}[]
         representatives = Int[]
         for k in 1:count
             group = findfirst(j->system.modes[j].coupling==system.modes[k].coupling,representatives)
@@ -112,23 +128,28 @@ function heom_tree(system::HEOMTTNSystem; bath_grouping=:balanced)
             end
             push!(groups[group],offset+k)
         end
-        function join_balanced(nodes,first=1,last=length(nodes))
-            first==last && return nodes[first]
-            middle=first+(last-first)÷2
-            left=join_balanced(nodes,first,middle)
-            right=join_balanced(nodes,middle+1,last)
-            push!(children,(left,right))
-            return length(children)
-        end
-        roots=[join_balanced(group) for group in groups]
+    else
+        groups = [[offset+k] for k in 1:count]
+    end
+    function join_balanced(nodes,first=1,last=length(nodes))
+        first==last && return nodes[first]
+        middle=first+(last-first)÷2
+        left=join_balanced(nodes,first,middle)
+        right=join_balanced(nodes,middle+1,last)
+        push!(children,(left,right))
+        return length(children)
+    end
+    roots=[join_balanced(group) for group in groups]
+    if system_position == :root || length(roots) == 1
         bath_root=join_balanced(roots)
         push!(children,(system_tree.root,bath_root))
         return BinaryTree(children)
     end
-    bath = balanced_tree(count)
-    children = [system_tree.children; [(left == 0 ? 0 : left+offset, right == 0 ? 0 : right+offset)
-                         for (left, right) in bath.children]]
-    push!(children, (system_tree.root, bath.root+offset))
+    half=cld(length(roots),2)
+    first_half=join_balanced(roots,1,half)
+    second_half=join_balanced(roots,half+1,length(roots))
+    push!(children,(system_tree.root,second_half))
+    push!(children,(first_half,length(children)))
     return BinaryTree(children)
 end
 

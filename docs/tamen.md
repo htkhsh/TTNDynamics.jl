@@ -53,6 +53,16 @@ A failed GMRES solve or an interval failing the global residual tolerance
 throws `TAMEnConvergenceError`; propagation does not advance with that iterate.
 Raise rank/sweep limits or shorten intervals after examining the failure.
 
+## Choosing the tree
+
+`heom_tree(system; bath_grouping=:coupling, system_position=:center)` places the
+system branch between two halves of the bath groups: `(first half, (system,
+second half))`. For the 10-site Holstein benchmark this was about 2.5 times
+faster than the default `system_position=:root`, with smaller ranks (42 vs 51)
+and fewer parameters. Pass the tree to `heom_initial_state(system, rho; tree)`;
+`heom_tamen_evolve` uses `initial.tree`. See
+[holstein_tree_center.md](holstein_tree_center.md).
+
 ## Small validation example
 
 From the package root:

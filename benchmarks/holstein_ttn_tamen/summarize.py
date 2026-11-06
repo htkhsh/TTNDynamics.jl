@@ -19,6 +19,12 @@ for name in dict.fromkeys(r["name"] for r in rows):
         at_time = [r for r in group if int(r["time_fs"]) == t]
         times = [float(r["seconds"]) for r in at_time]
         baseline = [r for r in rows if r["name"] == "tt" and int(r["time_fs"]) == t]
+        # Fastest qualified TT among both core orders and BLAS settings.
+        tt_medians = []
+        for tt_name in ("tt", "tt_serial", "tt_center", "tt_center_serial"):
+            group_tt = [r for r in rows if r["name"] == tt_name and int(r["time_fs"]) == t]
+            if group_tt and all(r["qualified"] == "true" for r in group_tt):
+                tt_medians.append(st.median(float(r["seconds"]) for r in group_tt))
         qualified = all(r["qualified"] == "true" for r in at_time)
         peak = []
         allocations = []
@@ -47,6 +53,7 @@ for name in dict.fromkeys(r["name"] for r in rows):
             max_density_error=max(float(r["max_density_error"]) for r in at_time),
             max_trace_error=max(float(r["max_trace_error"]) for r in at_time),
             qualified=qualified, time_ratio_vs_tt=ratio,
+            time_ratio_vs_best_tt=(st.median(times) / min(tt_medians) if qualified and tt_medians else None),
             global_fraction=(st.median(global_time) / st.median(times) if name.startswith("tree") else None)))
         if name.startswith("tree"):
             phases.append(dict(name=name, time_fs=t, repetitions=len(times),

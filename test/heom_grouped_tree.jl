@@ -48,3 +48,38 @@ using Test, LinearAlgebra, TTNSolver, TTNDynamics
     empty_system=HEOMTTNSystem(H,HEOMMode[],Int[];system_layout=:split)
     @test heom_tree(empty_system;bath_grouping=:coupling).children==heom_tree(empty_system).children
 end
+
+@testset "HEOM trees with the system between bath halves" begin
+    H=ComplexF64[0 0.4;0.4 0]
+    V1=ComplexF64[1 0;0 0]; V2=I-V1
+    modes=[HEOMMode(V,0.8+0.1im,0.2,0.3) for V in (V1,V1,V2,V2)]
+    rho=ComplexF64[0.7 0.1im;-0.1im 0.3]
+    for layout in (:fused,:split), grouping in (:balanced,:coupling)
+        system=HEOMTTNSystem(H,modes,fill(2,4);system_layout=layout)
+        tree=heom_tree(system;bath_grouping=grouping,system_position=:center)
+        nsys=layout==:fused ? 1 : 2
+        @test length(tree.leaf_order)==nsys+4
+        # Root: (first bath half, (system branch, second bath half)).
+        first_half,right=tree.children[tree.root]
+        sysbranch,second_half=tree.children[right]
+        leaves_below(n)=tree.children[n]==(0,0) ? [n] : vcat(leaves_below.(tree.children[n])...)
+        sysleaves=tree.leaf_order[1:nsys]
+        @test sort(leaves_below(sysbranch))==sort(sysleaves)
+        @test sort(vcat(leaves_below(first_half),leaves_below(second_half)))==sort(tree.leaf_order[nsys+1:end])
+        @test length(leaves_below(first_half))==2 && length(leaves_below(second_half))==2
+        grouping==:coupling && @test tree.parent[tree.leaf_order[nsys+1]]==tree.parent[tree.leaf_order[nsys+2]]
+        x=heom_initial_state(system,rho;tree)
+        @test dense(x) ≈ dense(heom_initial_state(system,rho))
+        @test TTNDynamics.root_density_matrix(x,system) ≈ rho
+        @test dense(TTNDynamics.trace_observable(system;tree)) ≈ dense(TTNDynamics.trace_observable(system))
+        op=heom_generator(system)
+        result=heom_tamen_evolve(system,x,[0.0,0.2,0.4];time_points=8,rtol=1e-10,maxrank=16,maxsweeps=20)
+        exact=exp(0.4dense(op))*vec(dense(x))
+        @test norm(vec(dense(result.final_state))-exact) < 1e-7*norm(exact)
+        @test abs(last(result.traces)-tr(rho)) < 1e-10
+    end
+    system=HEOMTTNSystem(H,modes[1:1],[2];system_layout=:split)
+    # A single bath group falls back to the root layout.
+    @test heom_tree(system;system_position=:center).children==heom_tree(system).children
+    @test_throws ArgumentError heom_tree(system;system_position=:middle)
+end
