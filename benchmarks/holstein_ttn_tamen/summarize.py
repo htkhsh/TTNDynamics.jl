@@ -1,10 +1,11 @@
 """Summarize only observed common times; never extrapolate incomplete runs."""
 import csv
+import sys
 import statistics as st
 import tomllib
 from pathlib import Path
 
-root = Path(__file__).resolve().parent / "output/five_fs"
+root = Path(__file__).resolve().parent / "output" / (sys.argv[1] if len(sys.argv) > 1 else "five_fs")
 rows = list(csv.DictReader((root / "comparison.csv").open()))
 summary = []
 phases = []

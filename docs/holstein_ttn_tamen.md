@@ -1,5 +1,8 @@
 # HolsteinでのTT / TTN tAMEn比較
 
+TT流の受理条件とチャネル環境を加えた5 fsの再測定は
+[holstein_tt_acceptance.md](holstein_tt_acceptance.md)を参照（TTの約2.7倍まで短縮）。
+
 この測定後に実施したBUGのKrylov・恒等縮約最適化と、TTNO残差検証の試行は
 [追加の最適化結果](reference_optimization.md)を参照。以下の5fs測定値は当時の実装の結果。
 

@@ -3,6 +3,10 @@ include("../holstein_longtime/driver.jl")
 using .HolsteinLongTime, LinearAlgebra, Serialization, TOML
 const HLT=HolsteinLongTime
 const TS=HLT.TTNSolver
+# Separate output roots keep runs from different solver sources apart.
+default_root()=joinpath(@__DIR__,"output",get(ENV,"HOLSTEIN_TTN_TAMEN_OUTPUT","five_fs"))
+const TT_ACCEPTANCE=Dict("tree_tt"=>5e-5,"tree_tt_tight"=>3e-5,"tree_tt_loose"=>1e-4,
+    "tree_tt_channels"=>5e-5,"tree_tt_channels_tight"=>3e-5,"tree_tt_channels_loose"=>1e-4)
 
 function configuration(;sites=10,local_size=5,end_fs=5.0)
     cfg=HLT.load_config(joinpath(@__DIR__,"../holstein_longtime/config_50fs.toml"))
@@ -18,6 +22,15 @@ function specification(cfg,name)
         name=="tt_serial" && (s["blas_threads"]=1)
         return s
     end
+    if haskey(TT_ACCEPTANCE,name)
+        # TT-style work: truncate each sweep, accept on the local auxiliary
+        # estimate, and solve local systems to 1% of the acceptance target.
+        return Dict{String,Any}("method"=>"tree_tamen","dt_fs"=>0.5,"points"=>8,
+            "tolerance"=>TT_ACCEPTANCE[name],"maxrank"=>96,"sweeps"=>20,"kick_rank"=>4,
+            "blas_threads"=>1,"als_sweep"=>"etter","threaded"=>true,
+            "truncation_rtol"=>1e-5,"certify"=>false,"local_tol_factor"=>0.01,
+            "local_operator"=>occursin("channels",name) ? "channels" : "sop")
+    end
     name in ("tree","tree_tight","tree_loose") || error("unknown run $name")
     return Dict{String,Any}("method"=>"tree_tamen","dt_fs"=>0.5,"points"=>8,
         "tolerance"=>(name=="tree_tight" ? 1e-5 : name=="tree_loose" ? 5e-4 : 1e-4),
@@ -31,10 +44,13 @@ function advance(p,x,s,work,hint)
         time_points=s["points"],rtol=s["tolerance"],maxrank=s["maxrank"],
         maxsweeps=s["sweeps"],kickrank=s["kick_rank"],conserved=p.conserved,
         als_sweep=Symbol(s["als_sweep"]),threaded=s["threaded"],
-        warm_start=hint,store_warm_start=true,estimate_time_error=true)
+        warm_start=hint,store_warm_start=true,estimate_time_error=true,
+        truncation_rtol=get(s,"truncation_rtol",0.0),certify=get(s,"certify",true),
+        local_tol_factor=get(s,"local_tol_factor",nothing),
+        local_operator=Symbol(get(s,"local_operator","sop")))
 end
 
-function run_case(name;root=joinpath(@__DIR__,"output","five_fs"),wall_seconds=1200.0,repeats=1,
+function run_case(name;root=default_root(),wall_seconds=1200.0,repeats=1,
                   cfg=configuration(),settings=specification(cfg,name))
     s=copy(settings)
     isfinite(wall_seconds) && wall_seconds>=0 && repeats>=1 || error("invalid budget/repetitions")
@@ -72,7 +88,11 @@ function run_case(name;root=joinpath(@__DIR__,"output","five_fs"),wall_seconds=1
     HLT.Random.seed!(cfg["execution"]["seed"]+1)
     save_status("warmup")
     warm=try
-        @elapsed advance(p,deepcopy(initial),s,work,nothing)
+        # Compile both the cold first interval and the warm-started path.
+        @elapsed begin
+            y,d=advance(p,deepcopy(initial),s,work,nothing)
+            istree && advance(p,y,s,work,d.warm_start)
+        end
     catch error
         status["failure"]=sprint(showerror,error);save_status("warmup_failed");rethrow()
     end
@@ -92,7 +112,7 @@ function run_case(name;root=joinpath(@__DIR__,"output","five_fs"),wall_seconds=1
         x=deepcopy(initial);hint=nothing;seconds=0.0;bytes=0;gc=0.0;laststep=0;peak=1;failure=""
         GC.gc()
         open(joinpath(repdir,"steps.csv"),"w") do io
-            println(io,"step,time_fs,seconds,cumulative_seconds,bytes,gc_seconds,maxrank,sweeps,global_checks,relative_bound,global_seconds,addition_seconds,weight_qr_seconds,svd_seconds,basis_update_seconds,final_qr_seconds,time_defect")
+            println(io,"step,time_fs,seconds,cumulative_seconds,bytes,gc_seconds,maxrank,sweeps,global_checks,relative_bound,global_seconds,addition_seconds,weight_qr_seconds,svd_seconds,basis_update_seconds,final_qr_seconds,time_defect,relative_estimate,matvecs,als_seconds,environment_seconds,time_error_seconds")
             serialize(joinpath(repdir,"time_0.jls"),x)
             for j in 1:total
                 time()-start<wall_seconds || break
@@ -107,7 +127,8 @@ function run_case(name;root=joinpath(@__DIR__,"output","five_fs"),wall_seconds=1
                 end
                 x,d=measured.value
                 if istree
-                    @assert d.converged && d.history[end].global_residual_checked
+                    # Uncertified runs are validated against the refined reference instead.
+                    @assert d.converged && (d.history[end].global_residual_checked || !get(s,"certify",true))
                     hint=d.warm_start
                 end
                 seconds+=measured.time;bytes+=measured.bytes;gc+=measured.gctime;laststep=j
@@ -118,7 +139,10 @@ function run_case(name;root=joinpath(@__DIR__,"output","five_fs"),wall_seconds=1
                     istree ? d.sweeps : 0,istree ? d.global_checks : 0,
                     istree ? d.relative_residual_bound : NaN,
                     istree ? d.timings.residual_global_seconds : 0.,parts...,
-                    istree ? d.time_error.absolute : NaN),','));flush(io)
+                    istree ? d.time_error.absolute : NaN,
+                    istree ? d.relative_residual_estimate : NaN,istree ? d.matvecs : 0,
+                    istree ? d.timings.als_seconds : 0.,istree ? d.timings.environment_seconds : 0.,
+                    istree ? d.timings.time_error_seconds : 0.),','));flush(io)
                 serialize(joinpath(repdir,"latest.jls"),(;state=x,step=j,time_fs=j*s["dt_fs"],seconds))
                 if j%observe==0
                     serialize(joinpath(repdir,"time_$(j÷observe).jls"),x)
@@ -142,7 +166,7 @@ function csvrows(path)
     return [Dict(zip(header,split(line,','))) for line in lines[2:end]]
 end
 
-function analyze(;root=joinpath(@__DIR__,"output","five_fs"))
+function analyze(;root=default_root())
     names=filter(n->isfile(joinpath(root,n,"metadata.toml")),readdir(root))
     isempty(names) && error("no attempted runs")
     base=TOML.parsefile(joinpath(root,"reference_refined" in names ? "reference_refined" : first(names),"metadata.toml"))

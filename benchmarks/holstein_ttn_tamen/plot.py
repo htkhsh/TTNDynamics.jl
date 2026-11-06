@@ -1,5 +1,6 @@
 """Plot recorded common-time results; incomplete runs stop at their last point."""
 import csv
+import sys
 import statistics
 from pathlib import Path
 
@@ -7,14 +8,20 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-root = Path(__file__).resolve().parent / "output/five_fs"
+root = Path(__file__).resolve().parent / "output" / (sys.argv[1] if len(sys.argv) > 1 else "five_fs")
 rows = list(csv.DictReader((root / "comparison.csv").open()))
 fig, axes = plt.subplots(1, 3, figsize=(12, 3.5), constrained_layout=True)
 labels = {"tt": "TT tAMEn (BLAS 8)", "tt_serial": "TT tAMEn (BLAS 1)",
           "tree": "TTN, 0.5 fs / 8 points (BLAS 1)",
           "tree_interval1": "TTN, 1 fs / 6 points (BLAS 1)",
           "tree_blas8": "TTN, 0.5 fs / 8 points (BLAS 8)",
-          "tree_tight": "TTN, tighter", "tree_loose": "TTN, looser"}
+          "tree_tight": "TTN, tighter", "tree_loose": "TTN, looser",
+          "tree_tt": "TTN, TT-style acceptance, rtol 5e-5",
+          "tree_tt_tight": "TTN, TT-style acceptance, rtol 3e-5",
+          "tree_tt_loose": "TTN, TT-style acceptance, rtol 1e-4",
+          "tree_tt_channels": "TTN, TT-style + channels, rtol 5e-5",
+          "tree_tt_channels_tight": "TTN, TT-style + channels, rtol 3e-5",
+          "tree_tt_channels_loose": "TTN, TT-style + channels, rtol 1e-4"}
 for name in dict.fromkeys(r["name"] for r in rows):
     group = [r for r in rows if r["name"] == name]
     times = sorted({float(r["time_fs"]) for r in group})

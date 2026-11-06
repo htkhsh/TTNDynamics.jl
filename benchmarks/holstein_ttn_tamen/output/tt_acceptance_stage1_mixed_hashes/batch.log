@@ -1,0 +1,147 @@
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference 19.224954725 s; setup 11.26489463 s
+reference t=1.0 fs; seconds=2.1523605359999998 rank=43
+reference t=2.0 fs; seconds=7.244428833999999 rank=70
+reference t=3.0 fs; seconds=18.381116421999998 rank=97
+reference t=4.0 fs; seconds=35.07784803599999 rank=130
+reference t=5.0 fs; seconds=69.989661988 rank=176
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 69.989661988, bytes = 12751128336, gc = 7.344127702, peak_rank = 176)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference_refined 0.191875054 s; setup 0.655216795 s
+reference_refined t=1.0 fs; seconds=4.421145234 rank=57
+reference_refined t=2.0 fs; seconds=18.87004155 rank=95
+reference_refined t=3.0 fs; seconds=58.00670911 rank=145
+reference_refined t=4.0 fs; seconds=137.88243437 rank=192
+reference_refined t=5.0 fs; seconds=270.225219158 rank=255
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 270.225219158, bytes = 46641542408, gc = 24.264900522, peak_rank = 255)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt 0.07485568 s; setup 0.633926552 s
+tt t=1.0 fs; seconds=0.155879435 rank=22
+tt t=2.0 fs; seconds=0.5068713920000001 rank=29
+tt t=3.0 fs; seconds=1.088450844 rank=41
+tt t=4.0 fs; seconds=2.164589146 rank=57
+tt t=5.0 fs; seconds=4.02264755 rank=65
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 4.02264755, bytes = 1157272296, gc = 0.5444847349999999, peak_rank = 65)
+tt t=1.0 fs; seconds=0.217305118 rank=22
+tt t=2.0 fs; seconds=0.630747583 rank=29
+tt t=3.0 fs; seconds=1.127939411 rank=41
+tt t=4.0 fs; seconds=2.2751502390000002 rank=57
+tt t=5.0 fs; seconds=3.685928284 rank=65
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 3.685928284, bytes = 1007908688, gc = 0.029020529, peak_rank = 65)
+tt t=1.0 fs; seconds=0.212347666 rank=22
+tt t=2.0 fs; seconds=0.6131948779999999 rank=29
+tt t=3.0 fs; seconds=1.216202285 rank=41
+tt t=4.0 fs; seconds=2.396987321 rank=57
+tt t=5.0 fs; seconds=3.8713792390000004 rank=65
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 3.8713792390000004, bytes = 1007917040, gc = 0.032137587999999995, peak_rank = 65)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt_serial 0.128934913 s; setup 0.128342371 s
+tt_serial t=1.0 fs; seconds=0.179592067 rank=22
+tt_serial t=2.0 fs; seconds=0.566001286 rank=29
+tt_serial t=3.0 fs; seconds=1.209249007 rank=39
+tt_serial t=4.0 fs; seconds=2.976439394 rank=53
+tt_serial t=5.0 fs; seconds=4.93097688 rank=64
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 4.93097688, bytes = 1089140600, gc = 0.586941101, peak_rank = 64)
+tt_serial t=1.0 fs; seconds=0.175114574 rank=22
+tt_serial t=2.0 fs; seconds=0.532419856 rank=29
+tt_serial t=3.0 fs; seconds=1.118020144 rank=39
+tt_serial t=4.0 fs; seconds=2.2994942619999996 rank=53
+tt_serial t=5.0 fs; seconds=4.313124254 rank=64
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 4.313124254, bytes = 939772816, gc = 0.029949329000000004, peak_rank = 64)
+tt_serial t=1.0 fs; seconds=0.17004917 rank=22
+tt_serial t=2.0 fs; seconds=0.521314623 rank=29
+tt_serial t=3.0 fs; seconds=1.105322687 rank=39
+tt_serial t=4.0 fs; seconds=2.2833394229999997 rank=53
+tt_serial t=5.0 fs; seconds=4.161648135999999 rank=64
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 4.161648135999999, bytes = 939772816, gc = 0.027046117, peak_rank = 64)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_tt 13.005217593 s; setup 0.123325091 s
+tree_tt t=1.0 fs; seconds=0.950671157 rank=19
+tree_tt t=2.0 fs; seconds=1.7062224000000001 rank=25
+tree_tt t=3.0 fs; seconds=4.6345912 rank=37
+tree_tt t=4.0 fs; seconds=9.814664703 rank=44
+tree_tt t=5.0 fs; seconds=17.564188676 rank=51
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 17.564188676, bytes = 10304100264, gc = 3.2311196619999993, peak_rank = 51)
+tree_tt t=1.0 fs; seconds=0.328543682 rank=19
+tree_tt t=2.0 fs; seconds=1.061272934 rank=25
+tree_tt t=3.0 fs; seconds=4.075608239999999 rank=37
+tree_tt t=4.0 fs; seconds=9.177090922 rank=44
+tree_tt t=5.0 fs; seconds=16.543673134 rank=51
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 16.543673134, bytes = 10262514232, gc = 2.7784277100000003, peak_rank = 51)
+tree_tt t=1.0 fs; seconds=0.349772401 rank=19
+tree_tt t=2.0 fs; seconds=1.0968452 rank=25
+tree_tt t=3.0 fs; seconds=3.9945379979999998 rank=37
+tree_tt t=4.0 fs; seconds=9.159122915 rank=44
+tree_tt t=5.0 fs; seconds=16.369878843 rank=51
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 16.369878843, bytes = 10262514232, gc = 2.711669328, peak_rank = 51)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_tt_tight 0.241361416 s; setup 0.109643204 s
+tree_tt_tight t=1.0 fs; seconds=0.402107608 rank=19
+tree_tt_tight t=2.0 fs; seconds=1.716666541 rank=30
+tree_tt_tight t=3.0 fs; seconds=6.160492315 rank=42
+tree_tt_tight t=4.0 fs; seconds=12.489262057 rank=49
+tree_tt_tight t=5.0 fs; seconds=29.201342443999998 rank=61
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 29.201342443999998, bytes = 15581382488, gc = 5.303984783000001, peak_rank = 61)
+tree_tt_tight t=1.0 fs; seconds=0.326586858 rank=19
+tree_tt_tight t=2.0 fs; seconds=1.5006968459999999 rank=30
+tree_tt_tight t=3.0 fs; seconds=5.266420603 rank=42
+tree_tt_tight t=4.0 fs; seconds=11.980045478000001 rank=49
+tree_tt_tight t=5.0 fs; seconds=28.267751499 rank=61
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 28.267751499, bytes = 15581382488, gc = 4.857305687999999, peak_rank = 61)
+tree_tt_tight t=1.0 fs; seconds=0.32266091 rank=19
+tree_tt_tight t=2.0 fs; seconds=1.5114251699999999 rank=30
+tree_tt_tight t=3.0 fs; seconds=5.267555434 rank=42
+tree_tt_tight t=4.0 fs; seconds=12.080398222000001 rank=49
+tree_tt_tight t=5.0 fs; seconds=28.769325449 rank=61
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 28.769325449, bytes = 15581382488, gc = 5.2896997589999994, peak_rank = 61)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree_tt_loose 0.122872589 s; setup 0.095834737 s
+tree_tt_loose t=1.0 fs; seconds=0.18689905299999998 rank=14
+tree_tt_loose t=2.0 fs; seconds=0.558801834 rank=21
+tree_tt_loose t=3.0 fs; seconds=2.251396398 rank=33
+tree_tt_loose t=4.0 fs; seconds=8.183884134 rank=45
+tree_tt_loose t=5.0 fs; seconds=13.121288045999998 rank=47
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 13.121288045999998, bytes = 9446697296, gc = 2.5278253259999994, peak_rank = 47)
+tree_tt_loose t=1.0 fs; seconds=0.187153814 rank=14
+tree_tt_loose t=2.0 fs; seconds=0.551216961 rank=21
+tree_tt_loose t=3.0 fs; seconds=2.232172201 rank=33
+tree_tt_loose t=4.0 fs; seconds=8.013588963 rank=45
+tree_tt_loose t=5.0 fs; seconds=13.396474119 rank=47
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 13.396474119, bytes = 9446696976, gc = 2.741897359, peak_rank = 47)
+tree_tt_loose t=1.0 fs; seconds=0.199987621 rank=14
+tree_tt_loose t=2.0 fs; seconds=0.5786359560000001 rank=21
+tree_tt_loose t=3.0 fs; seconds=2.25318694 rank=33
+tree_tt_loose t=4.0 fs; seconds=8.216765153 rank=45
+tree_tt_loose t=5.0 fs; seconds=13.234833162000001 rank=47
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 13.234833162000001, bytes = 9446696976, gc = 2.6421113309999997, peak_rank = 47)
+ERROR: LoadError: source mismatch reference
+Stacktrace:
+ [1] error(s::String)
+   @ Base ./error.jl:44
+ [2] analyze(; root::String)
+   @ Main.HolsteinTAMEnComparison ~/.julia/dev/TTNDynamics/benchmarks/holstein_ttn_tamen/common.jl:169
+ [3] analyze()
+   @ Main.HolsteinTAMEnComparison ~/.julia/dev/TTNDynamics/benchmarks/holstein_ttn_tamen/common.jl:162
+ [4] top-level scope
+   @ ~/.julia/dev/TTNDynamics/benchmarks/holstein_ttn_tamen/batch_tt_acceptance.jl:18
+ [5] include(mod::Module, _path::String)
+   @ Base ./Base.jl:306
+ [6] exec_options(opts::Base.JLOptions)
+   @ Base ./client.jl:317
+ [7] _start()
+   @ Base ./client.jl:550
+in expression starting at /home/takahashi/.julia/dev/TTNDynamics/benchmarks/holstein_ttn_tamen/batch_tt_acceptance.jl:18

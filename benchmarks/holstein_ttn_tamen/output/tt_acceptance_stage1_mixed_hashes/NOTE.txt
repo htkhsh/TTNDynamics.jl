@@ -1,0 +1,5 @@
+Stage-1 run (truncation_rtol / certify=false / local_tol_factor) of batch_tt_acceptance.jl.
+All cases executed in one Julia process with the TTNSolver code loaded at its start
+(stage-1 sources). TTNSolver sources were edited while the batch ran, so the
+per-case `sources` hashes in metadata.toml are inconsistent. Do not pass this
+directory to analyze(); it is kept only as an informal timing record.

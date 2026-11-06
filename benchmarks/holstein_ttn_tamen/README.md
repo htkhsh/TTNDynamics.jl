@@ -44,3 +44,13 @@ placeholders; these do not mean the TT algorithm performed no internal checks.
 measured phases and must not be added to their sum.
 
 See [results and limitations](../../docs/holstein_ttn_tamen.md).
+
+`batch_tt_acceptance.jl` re-runs references, TT and the TT-style TTN cases
+(`tree_tt*`: `truncation_rtol`, `certify=false`, `local_tol_factor`, and
+`local_operator=:channels` for `tree_tt_channels*`) into `output/tt_acceptance`.
+Set `HOLSTEIN_TTN_TAMEN_OUTPUT` to choose another output root; `summarize.py`
+and `plot.py` take the same root name as their first argument. Do not edit the
+hashed sources while a batch runs: every case records source hashes, and
+`analyze()` rejects a root whose cases disagree. Uncertified TTN cases are
+validated only against the refined reference. Results:
+[holstein_tt_acceptance.md](../../docs/holstein_tt_acceptance.md).
