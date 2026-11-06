@@ -1,0 +1,6 @@
+Julia 1.12.6; CPU znver5; threads 1; BLAS 1
+Solver source: /home/takahashi/.julia/dev/TTNSolver/src/TTNSolver.jl
+Five-interval HEOM: 8 bath modes; split M2; local bath dimension3; h0.2; nt5; rtol1e-8; cap32; Etter; warm starts.
+Controlled case: 32 leaves; physical dimension4; initial rank8; 12 terms; residual cap24; budget1e-8; seeded random tensors, not physical dynamics.
+Same serialized HEOM iterate and RNG seed; warm-up and explicit GC excluded; GC during timing included; repetitions 5
+Previous=canonical sum before buffer/thread optimization. Neither=new kernels, fresh workspace per term. Reuse=serial persistent workspace. Threads=fresh workspace per term, subtree tasks. Both=persistent workspace and tasks.

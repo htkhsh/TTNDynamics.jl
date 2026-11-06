@@ -1,0 +1,75 @@
+WARNING: Constructor for type "Array" was extended in `LowRankApprox` without explicit qualification or import.
+  NOTE: Assumed "Array" refers to `Base.Array`. This behavior is deprecated and may differ in future versions.`
+  NOTE: This behavior may have differed in Julia versions prior to 1.12.
+  Hint: If you intended to create a new generic function of the same name, use `function Array end`.
+  Hint: To silence the warning, qualify `Array` as `Base.Array` in the method signature or explicitly `import Base: Array`.
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference 23.347572206 s; setup 11.303033054 s
+reference t=1.0 fs; seconds=2.0814963200000003 rank=43
+reference t=2.0 fs; seconds=6.708552146 rank=70
+reference t=3.0 fs; seconds=17.59054639 rank=97
+reference t=4.0 fs; seconds=34.097102582999995 rank=130
+reference t=5.0 fs; seconds=69.029385569 rank=176
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 69.029385569, bytes = 12751093520, gc = 6.962422598, peak_rank = 176)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM reference_refined 0.301628473 s; setup 0.146710871 s
+reference_refined t=1.0 fs; seconds=4.282305265 rank=57
+reference_refined t=2.0 fs; seconds=19.139325134 rank=95
+reference_refined t=3.0 fs; seconds=54.625633267999994 rank=145
+reference_refined t=4.0 fs; seconds=130.437977705 rank=192
+reference_refined t=5.0 fs; seconds=258.904877356 rank=255
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 258.904877356, bytes = 46641536544, gc = 21.139119461999996, peak_rank = 255)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt 0.06405179 s; setup 0.490083947 s
+tt t=1.0 fs; seconds=0.20900683800000003 rank=22
+tt t=2.0 fs; seconds=0.605559348 rank=29
+tt t=3.0 fs; seconds=1.207907386 rank=41
+tt t=4.0 fs; seconds=2.188497934 rank=57
+tt t=5.0 fs; seconds=3.988685331 rank=65
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 3.988685331, bytes = 1157268120, gc = 0.5013461419999999, peak_rank = 65)
+tt t=1.0 fs; seconds=0.206442614 rank=22
+tt t=2.0 fs; seconds=0.617964144 rank=29
+tt t=3.0 fs; seconds=1.204860608 rank=41
+tt t=4.0 fs; seconds=2.388005598 rank=57
+tt t=5.0 fs; seconds=3.675032457 rank=65
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 3.675032457, bytes = 1007908688, gc = 0.027598506000000002, peak_rank = 65)
+tt t=1.0 fs; seconds=0.204760752 rank=22
+tt t=2.0 fs; seconds=0.5615940239999999 rank=29
+tt t=3.0 fs; seconds=1.082256752 rank=41
+tt t=4.0 fs; seconds=2.289660351 rank=57
+tt t=5.0 fs; seconds=3.6780911690000004 rank=65
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 3.6780911690000004, bytes = 1007917040, gc = 0.034252235, peak_rank = 65)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tt_serial 0.056805404 s; setup 0.135369126 s
+tt_serial t=1.0 fs; seconds=0.174310816 rank=22
+tt_serial t=2.0 fs; seconds=0.5374597720000001 rank=29
+tt_serial t=3.0 fs; seconds=1.091890875 rank=39
+tt_serial t=4.0 fs; seconds=2.275044103 rank=53
+tt_serial t=5.0 fs; seconds=4.577351897 rank=64
+(repetition = 1, complete = true, time_fs = 5.0, seconds = 4.577351897, bytes = 1089144776, gc = 0.528117553, peak_rank = 64)
+tt_serial t=1.0 fs; seconds=0.172848705 rank=22
+tt_serial t=2.0 fs; seconds=0.515421302 rank=29
+tt_serial t=3.0 fs; seconds=1.066462105 rank=39
+tt_serial t=4.0 fs; seconds=2.228797026 rank=53
+tt_serial t=5.0 fs; seconds=4.003411388 rank=64
+(repetition = 2, complete = true, time_fs = 5.0, seconds = 4.003411388, bytes = 939776992, gc = 0.023145311000000002, peak_rank = 64)
+tt_serial t=1.0 fs; seconds=0.16293548000000002 rank=22
+tt_serial t=2.0 fs; seconds=0.504564384 rank=29
+tt_serial t=3.0 fs; seconds=1.0617543040000001 rank=39
+tt_serial t=4.0 fs; seconds=2.1362213700000003 rank=53
+tt_serial t=5.0 fs; seconds=4.058715498 rank=64
+(repetition = 3, complete = true, time_fs = 5.0, seconds = 4.058715498, bytes = 939776992, gc = 0.027239836, peak_rank = 64)
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+WARM tree 15.409069213 s; setup 0.127967999 s
+tree t=1.0 fs; seconds=17.573187807 rank=19
+tree t=2.0 fs; seconds=172.524595318 rank=26

@@ -1,4 +1,6 @@
 using TTSolver, Random, Serialization
+# Both solvers export a workspace type. This benchmark's train solves use TT.
+using TTSolver: TAMEnWorkspace
 include("../parallel_large_trees/fixtures.jl")
 
 # Keep TT contractions serial; only the BUG node ODEs use Julia workers.

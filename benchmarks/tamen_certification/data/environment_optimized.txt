@@ -1,0 +1,6 @@
+Julia 1.12.6; CPU znver5; threads 4; BLAS 1
+Solver source: /home/takahashi/.julia/dev/TTNSolver/src/TTNSolver.jl
+Eight bath modes, split M=2, hierarchy dimension3, h=0.2, nt=5, rtol=1e-8, maxrank32, Etter threaded.
+Trajectory: five intervals to dimensionless time1; accepted warm starts. Repeats: 5
+Certificate: identical serialized reference iterate, cap64, same termwise error budget.
+Model setup, compilation/warm-up and explicit GC excluded; GC enabled during timing.

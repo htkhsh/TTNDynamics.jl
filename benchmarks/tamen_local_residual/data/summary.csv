@@ -1,0 +1,3 @@
+method,seconds,bytes,residual_seconds,residual_local_seconds,residual_global_seconds,sweeps,global_checks,rank
+global,0.782371194,2.363084952e9,0.7264867639999999,0.0,0.7264867639999999,4.0,4.0,14.0
+local,0.397836716,1.159668488e9,0.34711311499999997,0.010012392,0.337095702,4.0,1.0,14.0

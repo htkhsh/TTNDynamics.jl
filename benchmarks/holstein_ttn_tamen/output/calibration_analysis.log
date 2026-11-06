@@ -1,0 +1,40 @@
+WARNING: Constructor for type "Array" was extended in `LowRankApprox` without explicit qualification or import.
+  NOTE: Assumed "Array" refers to `Base.Array`. This behavior is deprecated and may differ in future versions.`
+  NOTE: This behavior may have differed in Julia versions prior to 1.12.
+  Hint: If you intended to create a new generic function of the same name, use `function Array end`.
+  Hint: To silence the warning, qualify `Array` as `Base.Array` in the method signature or explicitly `import Base: Array`.
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+(name = "tree", repetition = 1, time_fs = 1, seconds = 17.573187807, max_state_error = 9.31775765791088e-5, max_density_error = 2.9891286433539223e-6, max_trace_error = 1.1071678368590226e-13, qualified = true, maxrank = 19)
+(name = "tree", repetition = 1, time_fs = 2, seconds = 172.524595318, max_state_error = 0.00027813181359885917, max_density_error = 1.2387019648853283e-5, max_trace_error = 1.6626254496476498e-13, qualified = true, maxrank = 26)
+(name = "tt", repetition = 1, time_fs = 1, seconds = 0.20900683800000003, max_state_error = 7.386906598897132e-5, max_density_error = 8.693222218121477e-6, max_trace_error = 3.89881180252057e-14, qualified = true, maxrank = 22)
+(name = "tt", repetition = 1, time_fs = 2, seconds = 0.605559348, max_state_error = 0.00015813297290719598, max_density_error = 2.09152991409156e-5, max_trace_error = 7.142316015098252e-14, qualified = true, maxrank = 29)
+(name = "tt", repetition = 1, time_fs = 3, seconds = 1.207907386, max_state_error = 0.000424694495484766, max_density_error = 4.35690837135936e-5, max_trace_error = 1.0888791915593651e-13, qualified = true, maxrank = 41)
+(name = "tt", repetition = 1, time_fs = 4, seconds = 2.188497934, max_state_error = 0.0004632023665765006, max_density_error = 8.891729463839513e-5, max_trace_error = 1.4014549242317464e-13, qualified = true, maxrank = 57)
+(name = "tt", repetition = 1, time_fs = 5, seconds = 3.988685331, max_state_error = 0.0006019638425313609, max_density_error = 0.00012861884624201455, max_trace_error = 1.7414684447097266e-13, qualified = true, maxrank = 65)
+(name = "tt", repetition = 2, time_fs = 1, seconds = 0.206442614, max_state_error = 7.386906598897132e-5, max_density_error = 8.693222218121477e-6, max_trace_error = 3.89881180252057e-14, qualified = true, maxrank = 22)
+(name = "tt", repetition = 2, time_fs = 2, seconds = 0.617964144, max_state_error = 0.00015813297290719598, max_density_error = 2.09152991409156e-5, max_trace_error = 7.142316015098252e-14, qualified = true, maxrank = 29)
+(name = "tt", repetition = 2, time_fs = 3, seconds = 1.204860608, max_state_error = 0.000424694495484766, max_density_error = 4.35690837135936e-5, max_trace_error = 1.0888791915593651e-13, qualified = true, maxrank = 41)
+(name = "tt", repetition = 2, time_fs = 4, seconds = 2.388005598, max_state_error = 0.0004632023665765006, max_density_error = 8.891729463839513e-5, max_trace_error = 1.4014549242317464e-13, qualified = true, maxrank = 57)
+(name = "tt", repetition = 2, time_fs = 5, seconds = 3.675032457, max_state_error = 0.0006019638425313609, max_density_error = 0.00012861884624201455, max_trace_error = 1.7414684447097266e-13, qualified = true, maxrank = 65)
+(name = "tt", repetition = 3, time_fs = 1, seconds = 0.204760752, max_state_error = 7.386906598897132e-5, max_density_error = 8.693222218121477e-6, max_trace_error = 3.89881180252057e-14, qualified = true, maxrank = 22)
+(name = "tt", repetition = 3, time_fs = 2, seconds = 0.5615940239999999, max_state_error = 0.00015813297290719598, max_density_error = 2.09152991409156e-5, max_trace_error = 7.142316015098252e-14, qualified = true, maxrank = 29)
+(name = "tt", repetition = 3, time_fs = 3, seconds = 1.082256752, max_state_error = 0.000424694495484766, max_density_error = 4.35690837135936e-5, max_trace_error = 1.0888791915593651e-13, qualified = true, maxrank = 41)
+(name = "tt", repetition = 3, time_fs = 4, seconds = 2.289660351, max_state_error = 0.0004632023665765006, max_density_error = 8.891729463839513e-5, max_trace_error = 1.4014549242317464e-13, qualified = true, maxrank = 57)
+(name = "tt", repetition = 3, time_fs = 5, seconds = 3.6780911690000004, max_state_error = 0.0006019638425313609, max_density_error = 0.00012861884624201455, max_trace_error = 1.7414684447097266e-13, qualified = true, maxrank = 65)
+(name = "tt_serial", repetition = 1, time_fs = 1, seconds = 0.174310816, max_state_error = 7.418629703744232e-5, max_density_error = 8.309962144015673e-6, max_trace_error = 2.940629040324537e-14, qualified = true, maxrank = 22)
+(name = "tt_serial", repetition = 1, time_fs = 2, seconds = 0.5374597720000001, max_state_error = 0.00015526472439811399, max_density_error = 1.969821465414039e-5, max_trace_error = 6.095618417678363e-14, qualified = true, maxrank = 29)
+(name = "tt_serial", repetition = 1, time_fs = 3, seconds = 1.091890875, max_state_error = 0.0004593762897134669, max_density_error = 4.2792644113702004e-5, max_trace_error = 9.32558994149707e-14, qualified = true, maxrank = 39)
+(name = "tt_serial", repetition = 1, time_fs = 4, seconds = 2.275044103, max_state_error = 0.0005259280739235181, max_density_error = 9.270885710304256e-5, max_trace_error = 1.278012460360398e-13, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 1, time_fs = 5, seconds = 4.577351897, max_state_error = 0.0006648036449935107, max_density_error = 0.00013547264948648836, max_trace_error = 1.622539501560845e-13, qualified = true, maxrank = 64)
+(name = "tt_serial", repetition = 2, time_fs = 1, seconds = 0.172848705, max_state_error = 7.418629703744232e-5, max_density_error = 8.309962144015673e-6, max_trace_error = 2.940629040324537e-14, qualified = true, maxrank = 22)
+(name = "tt_serial", repetition = 2, time_fs = 2, seconds = 0.515421302, max_state_error = 0.00015526472439811399, max_density_error = 1.969821465414039e-5, max_trace_error = 6.095618417678363e-14, qualified = true, maxrank = 29)
+(name = "tt_serial", repetition = 2, time_fs = 3, seconds = 1.066462105, max_state_error = 0.0004593762897134669, max_density_error = 4.2792644113702004e-5, max_trace_error = 9.32558994149707e-14, qualified = true, maxrank = 39)
+(name = "tt_serial", repetition = 2, time_fs = 4, seconds = 2.228797026, max_state_error = 0.0005259280739235181, max_density_error = 9.270885710304256e-5, max_trace_error = 1.278012460360398e-13, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 2, time_fs = 5, seconds = 4.003411388, max_state_error = 0.0006648036449935107, max_density_error = 0.00013547264948648836, max_trace_error = 1.622539501560845e-13, qualified = true, maxrank = 64)
+(name = "tt_serial", repetition = 3, time_fs = 1, seconds = 0.16293548000000002, max_state_error = 7.418629703744232e-5, max_density_error = 8.309962144015673e-6, max_trace_error = 2.940629040324537e-14, qualified = true, maxrank = 22)
+(name = "tt_serial", repetition = 3, time_fs = 2, seconds = 0.504564384, max_state_error = 0.00015526472439811399, max_density_error = 1.969821465414039e-5, max_trace_error = 6.095618417678363e-14, qualified = true, maxrank = 29)
+(name = "tt_serial", repetition = 3, time_fs = 3, seconds = 1.0617543040000001, max_state_error = 0.0004593762897134669, max_density_error = 4.2792644113702004e-5, max_trace_error = 9.32558994149707e-14, qualified = true, maxrank = 39)
+(name = "tt_serial", repetition = 3, time_fs = 4, seconds = 2.1362213700000003, max_state_error = 0.0005259280739235181, max_density_error = 9.270885710304256e-5, max_trace_error = 1.278012460360398e-13, qualified = true, maxrank = 53)
+(name = "tt_serial", repetition = 3, time_fs = 5, seconds = 4.058715498, max_state_error = 0.0006648036449935107, max_density_error = 0.00013547264948648836, max_trace_error = 1.622539501560845e-13, qualified = true, maxrank = 64)

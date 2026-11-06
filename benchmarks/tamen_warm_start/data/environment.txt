@@ -1,0 +1,4 @@
+Julia: 1.12.6; CPU: znver5; Julia threads: 4; BLAS threads: 1; threaded=false; local residual in both modes
+Eight bath modes, split M=2, hierarchy dimension3; five intervals0.2 to dimensionless time1.0
+time_points=5, linear rtol=1e-8, maxrank=32, kickrank=3; repeats=5
+Both paths warmed; alternate trials; GC enabled, explicit GC outside timer; model setup excluded.

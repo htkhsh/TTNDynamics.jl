@@ -1,0 +1,9 @@
+failure = ""
+phase = "calibration_stopped"
+repetition = 1
+time_fs = 0.6000000000000001
+wall_seconds = 226.82861995697021
+warmup_seconds = 15.521476958
+
+interruption_reason = "Stopped to test eager Arnoldi convergence checks; original sources retained in source_snapshot."
+wall_seconds_is_complete = false

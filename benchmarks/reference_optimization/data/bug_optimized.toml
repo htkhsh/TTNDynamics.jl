@@ -1,0 +1,58 @@
+label = "optimized"
+truncation_per_step = 5.0e-7
+dt_fs = 0.05
+threads = 4
+krylov_tol = 1.0e-12
+initial_snapshot = ""
+elapsed_fs = 0.2
+blas_threads = 1
+solver_source = "/home/takahashi/.julia/dev/TTNSolver/src/TTNSolver.jl"
+
+[[runs]]
+trace_error = 5.3290706043237714e-15
+method = "augmented"
+relative_difference = 1.1963505924325033e-10
+bytes = 31564024
+repeat = 1
+seconds = 0.037413765
+maxrank = 12
+[[runs]]
+trace_error = 5.3290706043237714e-15
+method = "augmented"
+relative_difference = 1.1963505924325033e-10
+bytes = 31564024
+repeat = 2
+seconds = 0.038101159
+maxrank = 12
+[[runs]]
+trace_error = 5.3290706043237714e-15
+method = "augmented"
+relative_difference = 1.1963505924325033e-10
+bytes = 31564024
+repeat = 3
+seconds = 0.037132384
+maxrank = 12
+[[runs]]
+trace_error = 5.551131761967138e-15
+method = "parallel"
+relative_difference = 2.6703641361102462e-11
+bytes = 37901704
+repeat = 1
+seconds = 0.035114761
+maxrank = 10
+[[runs]]
+trace_error = 5.551131761967138e-15
+method = "parallel"
+relative_difference = 2.6703641361102462e-11
+bytes = 37901704
+repeat = 2
+seconds = 0.034872619
+maxrank = 10
+[[runs]]
+trace_error = 5.551131761967138e-15
+method = "parallel"
+relative_difference = 2.6703641361102462e-11
+bytes = 37901704
+repeat = 3
+seconds = 0.035504673
+maxrank = 10

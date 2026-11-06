@@ -1,0 +1,57 @@
+label = "baseline"
+truncation_per_step = 5.0e-7
+dt_fs = 0.05
+threads = 4
+krylov_tol = 1.0e-12
+time_fs = 0.2
+blas_threads = 1
+solver_source = "/tmp/ttn-reference-optimization/baseline/TTNSolver/src/TTNSolver.jl"
+
+[[runs]]
+trace_error = 7.32749393522167e-15
+method = "augmented"
+relative_difference = 4.370480593417627e-16
+bytes = 38162768
+repeat = 1
+seconds = 0.046322023
+maxrank = 12
+[[runs]]
+trace_error = 7.32749393522167e-15
+method = "augmented"
+relative_difference = 4.370480593417627e-16
+bytes = 38162768
+repeat = 2
+seconds = 0.045792185
+maxrank = 12
+[[runs]]
+trace_error = 7.32749393522167e-15
+method = "augmented"
+relative_difference = 4.370480593417627e-16
+bytes = 38162768
+repeat = 3
+seconds = 0.04709423
+maxrank = 12
+[[runs]]
+trace_error = 5.107034964970174e-15
+method = "parallel"
+relative_difference = 6.958098651489745e-16
+bytes = 40798256
+repeat = 1
+seconds = 0.035467349
+maxrank = 10
+[[runs]]
+trace_error = 5.107034964970174e-15
+method = "parallel"
+relative_difference = 6.958098651489745e-16
+bytes = 40798256
+repeat = 2
+seconds = 0.034834664
+maxrank = 10
+[[runs]]
+trace_error = 5.107034964970174e-15
+method = "parallel"
+relative_difference = 6.958098651489745e-16
+bytes = 40798256
+repeat = 3
+seconds = 0.036517567
+maxrank = 10

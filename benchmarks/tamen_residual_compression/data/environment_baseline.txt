@@ -1,0 +1,3 @@
+Julia 1.12.6; CPU znver5; workers 4; GC 4; BLAS 1
+Solver source /tmp/ttn-residual-compression-baseline/src/TTNSolver.jl; warmed repeats 5
+Same8bathmode split M2 HEOM; cap32, nt5, h0.2, rtol1e-8; certificate cap64; sequential5intervals with accepted warm starts.

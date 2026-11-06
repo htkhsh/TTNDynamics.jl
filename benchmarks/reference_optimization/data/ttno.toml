@@ -1,0 +1,99 @@
+fixture = "/tmp/ttn-residual-comparison-states/fixture.bin"
+threads = 4
+dimensions = [2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 5]
+residual_maxrank = 64
+terms = 43
+state_ranks = [2, 2, 4, 3, 3, 3, 3, 3, 3, 3, 3, 9, 9, 14, 9, 9, 14, 14, 6, 5, 1]
+budget = 1.4008925726121897e-8
+blas_threads = 1
+
+[[runs]]
+operator_ranks = []
+backend = "sop"
+build_seconds = 1.816e-6
+relative_difference = 4.636463990657458e-24
+bytes = 401053616
+repeat = 1
+relative_residual_bound = 2.8022015788996477e-9
+seconds = 0.234352162
+operator_discarded_bound = 0.0
+[[runs]]
+operator_ranks = []
+backend = "sop"
+build_seconds = 1.816e-6
+relative_difference = 4.636463990657458e-24
+bytes = 401053616
+repeat = 2
+relative_residual_bound = 2.8022015788996477e-9
+seconds = 0.243005668
+operator_discarded_bound = 0.0
+[[runs]]
+operator_ranks = []
+backend = "sop"
+build_seconds = 1.816e-6
+relative_difference = 4.636463990657458e-24
+bytes = 401053616
+repeat = 3
+relative_residual_bound = 2.8022015788996477e-9
+seconds = 0.234778236
+operator_discarded_bound = 0.0
+[[runs]]
+operator_ranks = [3, 3, 5, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 13, 7, 7, 13, 25, 43, 2, 1]
+backend = "ttno_structural"
+build_seconds = 9.8735e-5
+relative_difference = 4.372978061830149e-11
+bytes = 790786616
+repeat = 1
+relative_residual_bound = 2.8699676924757313e-9
+seconds = 0.852398134
+operator_discarded_bound = 0.0
+[[runs]]
+operator_ranks = [3, 3, 5, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 13, 7, 7, 13, 25, 43, 2, 1]
+backend = "ttno_structural"
+build_seconds = 9.8735e-5
+relative_difference = 4.372978061830149e-11
+bytes = 790790128
+repeat = 2
+relative_residual_bound = 2.8699676924757313e-9
+seconds = 0.792658806
+operator_discarded_bound = 0.0
+[[runs]]
+operator_ranks = [3, 3, 5, 4, 4, 4, 4, 4, 4, 4, 4, 7, 7, 13, 7, 7, 13, 25, 43, 2, 1]
+backend = "ttno_structural"
+build_seconds = 9.8735e-5
+relative_difference = 4.372978061830149e-11
+bytes = 790776080
+repeat = 3
+relative_residual_bound = 2.8699676924757313e-9
+seconds = 0.758422813
+operator_discarded_bound = 0.0
+[[runs]]
+operator_ranks = [3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1]
+backend = "ttno_compressed"
+build_seconds = 0.00177419
+relative_difference = 4.3729780596530724e-11
+bytes = 101973320
+repeat = 1
+relative_residual_bound = 2.8699714464619994e-9
+seconds = 0.029438541
+operator_discarded_bound = 4.6902699366469626e-14
+[[runs]]
+operator_ranks = [3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1]
+backend = "ttno_compressed"
+build_seconds = 0.00177419
+relative_difference = 4.3729780596530724e-11
+bytes = 101973320
+repeat = 2
+relative_residual_bound = 2.8699714464619994e-9
+seconds = 0.034605292
+operator_discarded_bound = 4.6902699366469626e-14
+[[runs]]
+operator_ranks = [3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1]
+backend = "ttno_compressed"
+build_seconds = 0.00177419
+relative_difference = 4.3729780596530724e-11
+bytes = 101973320
+repeat = 3
+relative_residual_bound = 2.8699714464619994e-9
+seconds = 0.028476897
+operator_discarded_bound = 4.6902699366469626e-14

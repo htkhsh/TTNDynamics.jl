@@ -1,0 +1,3 @@
+/output/**/*.jls
+/output/**/*.tmp
+__pycache__/

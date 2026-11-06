@@ -1,0 +1,7 @@
+VERSION = v"1.12.6"
+Sys.CPU_NAME = "znver5"
+Sys.CPU_THREADS = 128
+Threads.nthreads() = 4
+BLAS.get_num_threads() = 1
+BLAS.get_config() = LBTConfig([ILP64] libopenblas64_.so)
+Threads.ngcthreads() = 4

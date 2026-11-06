@@ -1,0 +1,8 @@
+completed_repetitions = 3
+failure = ""
+phase = "complete"
+repetition = 3
+setup_seconds = 0.490083947
+time_fs = 5.0
+wall_seconds = 13.349036931991577
+warmup_seconds = 0.06405179

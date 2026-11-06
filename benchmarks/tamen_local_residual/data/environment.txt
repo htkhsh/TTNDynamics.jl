@@ -1,0 +1,4 @@
+Julia: 1.12.6; CPU: znver5; Julia threads: 4; BLAS threads: 1; task threading: false
+8 bath modes, 10 spatial leaves, 42 generator terms, hierarchy dimensions 3, split M=2
+duration=0.2 (dimensionless), time_points=5, linear rtol=1e-8, maxrank=24, kickrank=3
+Five alternating warmed trials, GC enabled, explicit GC before the timer; setup excluded.

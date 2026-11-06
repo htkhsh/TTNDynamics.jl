@@ -1,0 +1,6 @@
+failure = ""
+phase = "timeout"
+repetition = 1
+time_fs = 3.8000000000000003
+wall_seconds = 2278.18826007843
+warmup_seconds = 0.108017815

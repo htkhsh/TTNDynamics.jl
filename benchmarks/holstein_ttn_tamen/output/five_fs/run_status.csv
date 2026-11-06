@@ -1,0 +1,8 @@
+name,phase,time_fs,completed_repetitions,reference_checked
+reference,complete,5.0,1,true
+reference_refined,complete,5.0,1,true
+tree,calibration_stopped,2.0,0,true
+tree_blas8,calibration_stopped,3.0,0,true
+tree_interval1,calibration_stopped,2.0,0,true
+tt,complete,5.0,3,true
+tt_serial,complete,5.0,3,true

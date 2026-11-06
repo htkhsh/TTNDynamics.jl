@@ -1,0 +1,234 @@
+script_hash = "62a45983e772b81cb8db311afbdbed7a44d3335ab6e78202c4cb4ab5df282803"
+wall_seconds = 600.0
+
+[config.comparison]
+density_target = 0.001
+reference = "reference"
+reference_check = "reference_refined"
+runs = ["tamen", "augmented", "parallel"]
+state_target = 0.001
+
+[config.execution]
+output_directory = "output/holstein50_weighted"
+seed = 20261105
+
+[config.model]
+damping_cm = 300.0
+frequency_cm = 800.0
+hierarchy_local_size = 5
+hopping_cm = 400.0
+initial_site = 1
+operator_tolerance = 1.0e-10
+pade_order = 0
+reorganization_cm = 800.0
+sites = 10
+temperature_K = 300.0
+
+[config.runs.augmented]
+blas_threads = 1
+dt_fs = 0.1
+krylov_tolerance = 1.0e-12
+maxrank = 64
+method = "augmented"
+truncation = "weighted"
+truncation_rate = 1.0e-5
+
+[config.runs.augmented_hhalf]
+dt_fs = 0.05
+extends = "augmented"
+
+[config.runs.augmented_rank]
+extends = "augmented"
+maxrank = 128
+
+[config.runs.parallel]
+extends = "augmented"
+method = "parallel"
+
+[config.runs.parallel_hhalf]
+dt_fs = 0.05
+extends = "parallel"
+
+[config.runs.parallel_rank]
+extends = "parallel"
+maxrank = 128
+
+[config.runs.reference]
+dt_fs = 0.25
+extends = "tamen"
+local_iters = 40
+sweeps = 20
+tolerance = 1.0e-6
+
+[config.runs.reference_refined]
+dt_fs = 0.125
+extends = "reference"
+local_iters = 60
+sweeps = 30
+tolerance = 1.0e-7
+
+[config.runs.tamen]
+blas_threads = 8
+dt_fs = 0.5
+kick_rank = 4
+local_iters = 20
+method = "tamen"
+points = 12
+sweeps = 10
+time_error_damp = 100.0
+tolerance = 0.0001
+
+[config.time]
+checkpoint_fs = 1.0
+end_fs = 5.0
+observation_fs = 1.0
+
+[runtime]
+blas_threads = 8
+cpu = "AMD Ryzen Threadripper PRO 9985WX 64-Cores"
+gc_threads = 1
+julia = "1.12.6"
+julia_threads = 4
+
+[sources]
+"../packages/KrylovKit/bEE7W/src/KrylovKit.jl" = "8776bdb31b83c40146ab8176e84e466c8a2a88a55258ab756a84c5abf0cf1ffa"
+"../packages/KrylovKit/bEE7W/src/algorithms.jl" = "58fb4eb6f2e53aece9198337f1e87980a7af6e75584d1193500ac45b529f729a"
+"../packages/KrylovKit/bEE7W/src/apply.jl" = "84a13414925cf8bb0ff65a4a83dd884594032bea43e8d1f0baa9b01996f05d58"
+"../packages/KrylovKit/bEE7W/src/dense/givens.jl" = "1dee77162a94700d7521f1de3a822bb338f7514f274abfe992801d8eeed34567"
+"../packages/KrylovKit/bEE7W/src/dense/linalg.jl" = "e051c73fc4503bcac789b3ea5ed5ee64a42827455d50d994bb4f01f3e579126b"
+"../packages/KrylovKit/bEE7W/src/dense/packedhessenberg.jl" = "9c783cc54bd6273d8cb24ad48e4a14f380f495528f17c96b7abc91ab6571a3be"
+"../packages/KrylovKit/bEE7W/src/dense/reflector.jl" = "3eda941757f0504cb146b2d6b7c287696ae926070988f5402974c0fec5ade2e9"
+"../packages/KrylovKit/bEE7W/src/deprecated.jl" = "89c69e03032fa7063166f10bd1686d7f9f92b45965e0806895561c19f2d446b2"
+"../packages/KrylovKit/bEE7W/src/eigsolve/arnoldi.jl" = "4d63b5addde704d795659ecd0d588b701fcaa050bb4d5132ba9440e327ebd787"
+"../packages/KrylovKit/bEE7W/src/eigsolve/biarnoldi.jl" = "bf488066697c84a06a476bacfe5bb8ca04a4a16b30eb2c0cd22bf5887b0ae8b8"
+"../packages/KrylovKit/bEE7W/src/eigsolve/blocklanczos.jl" = "1b4e034b1d33fe25906e28d853794a31099af0c2218dd732ac22319b42cd6a31"
+"../packages/KrylovKit/bEE7W/src/eigsolve/eigsolve.jl" = "1a9c7c5f7878dbb608072507aa939b696c2505281acf43a6f028d61ed5420142"
+"../packages/KrylovKit/bEE7W/src/eigsolve/geneigsolve.jl" = "efce6a2979845a19e7fa5775450af91c7e1095a13d8c0e5d441953c40819827f"
+"../packages/KrylovKit/bEE7W/src/eigsolve/golubye.jl" = "970823c195560ddc3729a811e9169edc7a5210cfb1b58f922d88301d11e27786"
+"../packages/KrylovKit/bEE7W/src/eigsolve/lanczos.jl" = "243237b0b9f7d50a5169e6a3690fb22948b2c5ad82eb1b39a6abe9efad81743d"
+"../packages/KrylovKit/bEE7W/src/eigsolve/svdsolve.jl" = "315fc847e47b9a0d959d07c8b39d63d529c09f73664da609a0924d281e85a56f"
+"../packages/KrylovKit/bEE7W/src/factorizations/arnoldi.jl" = "e7538aafb4fdbbdb059ce330ce9c6464192af29fe20532f4839e46f6af0f22d8"
+"../packages/KrylovKit/bEE7W/src/factorizations/biarnoldi.jl" = "2ef4161585b51d19b466633dd382da16fcc92e7ab347a6155f138c5977d76334"
+"../packages/KrylovKit/bEE7W/src/factorizations/blocklanczos.jl" = "221eaac2ade33446befc1e36a76244f42e338ed1cd7fef45f1c846df6935b90c"
+"../packages/KrylovKit/bEE7W/src/factorizations/gkl.jl" = "291c798ae87211d541a883f45476c10df906f6462a4b98f5aea5b08597e6f88c"
+"../packages/KrylovKit/bEE7W/src/factorizations/krylov.jl" = "84bce304b7667f31b7c60c2f16b1392ee692ec404d3d9091a51c97ac14dccade"
+"../packages/KrylovKit/bEE7W/src/factorizations/lanczos.jl" = "f1a0202140b9f51b19fba0e17d7efb6998c966787cd331fefcb73893a72f1ddc"
+"../packages/KrylovKit/bEE7W/src/innerproductvec.jl" = "d84dac5f34b556b7fa3a60ce7ab61d491c2a6730d567e49dd823114b7f012157"
+"../packages/KrylovKit/bEE7W/src/linsolve/bicgstab.jl" = "9c59484bd3c36063e2168078fea7612ad9ea73ca77bdbfb1f60f46a137f27a49"
+"../packages/KrylovKit/bEE7W/src/linsolve/cg.jl" = "c12c1a1458100257e3b5042653d081bd05715abdfb3032dba70dad703c27b6f4"
+"../packages/KrylovKit/bEE7W/src/linsolve/gmres.jl" = "019e815de8b75cd35cb608a7d80adfef25a3d7613c95a6849c53b85129349db3"
+"../packages/KrylovKit/bEE7W/src/linsolve/linsolve.jl" = "b6ae4ef8a4b8a3c3b21f5a76f7f2c5f2dcfaeb77872ea7eacbb6f4bcc10c367b"
+"../packages/KrylovKit/bEE7W/src/lssolve/lsmr.jl" = "3f82ac96ca317de5ad5ad6b1fdf173adf7e6c7f77f49b289dc280eb3036e3a27"
+"../packages/KrylovKit/bEE7W/src/lssolve/lssolve.jl" = "2599e3b0453e23d6f9d8bbe9b4908e8e025964320960902a060f9c5c5efef515"
+"../packages/KrylovKit/bEE7W/src/matrixfun/expintegrator.jl" = "86571dfeb07accbfc837dbecd2203b4276c8b7c21f52f7605e018b59dc25411e"
+"../packages/KrylovKit/bEE7W/src/matrixfun/exponentiate.jl" = "5d9686aa6d6c916a2355d1cfce0a8f8ed503165406394e6370647d384d6efd15"
+"../packages/KrylovKit/bEE7W/src/orthonormal.jl" = "4e2170c915a95263d470a248871528dab76d93cdc9a06f144573e777a3fedcb8"
+"HEOMKit/Manifest.toml" = "de5e74836af14fb80c78c746c2ea5465c20843599198d0b669ae616538cb6898"
+"HEOMKit/src/HEOMKit.jl" = "b4fce908fb2537e4c68937e56da9adcb77e8de9f2945626ab5666d1f2190049d"
+"HEOMKit/src/blas.jl" = "8a6b81ddebe68ac3743d20323d705f097a01cc4b9a03d1a2c5151d2acacffcb2"
+"HEOMKit/src/const.jl" = "414f676d8ad718a0195132a14433f1ad37fe62cea23955fc2299ad99a12bce4c"
+"HEOMKit/src/evolution.jl" = "3d9951fc260e6e066f7f2269042122409a8c4638b998f44c73bf2f7e1d982ae2"
+"HEOMKit/src/heom.jl" = "82254eb206b7ed466741a3f985e45d9221a972b6f898ad781db8d02657c1062b"
+"HEOMKit/src/hierarchy.jl" = "da31accd14d15ba5a3749bd40786e5d4dabb94d413b80dab6f0404b627fa9601"
+"HEOMKit/src/hseom.jl" = "9672ba327f6363d81496657e629a1581ff6caddb6f70c3507c90b843db9c879e"
+"HEOMKit/src/matrix.jl" = "41cb8041b429fd46288704952c7e4a48e61f193b82daf2a1a99664d5d69abb62"
+"HEOMKit/src/noise.jl" = "1b534bec0c8c3bf6eab1e241e41f6b6e48199e31ef0a1c54e04bed2a973f4dfc"
+"QFiND/Manifest.toml" = "a0978b60f4de0b9c144814d72e57a7b87de825862a62b908933c44fc7e0a329f"
+"QFiND/src/QFiND.jl" = "bd818529f47407da16d67c994b63f13d13e72c6a45ceb2237699d90b098af81c"
+"QFiND/src/abstract.jl" = "dac0ebaceba658509bdafdf487205025d4414bc32afeb039b55ba2acc0251032"
+"QFiND/src/balanced_truncation.jl" = "3bc142640465cc4eac2fdf4fb28be13d49d51ab460711857144bec1b15490816"
+"QFiND/src/bsdo.jl" = "73b130ae6f7bad1a1e411fbec5132d7a086f5081788ab3983f459e7511ee8be5"
+"QFiND/src/chebyshev.jl" = "fc72bbfdaaccf9f302a6e53ea3a67d3f1163a107f4711156b3b2a7592cb5aadf"
+"QFiND/src/constants.jl" = "71b84fc55cde678a71c018aea92b20289545b968b46f9f45a35cd0f57a16458a"
+"QFiND/src/corrfunc.jl" = "2b568524e70a42371de705d0ae5ad1fa0e79d9167637a07a16084148414b8223"
+"QFiND/src/evaluate.jl" = "ddd71fa74f36b7ce48bffb941c6ba079a20b520e6353127f72e9b5e880e713ca"
+"QFiND/src/id.jl" = "86d996fdeeeca95336ae650915a6d3ec8bddb9cb93d936bd8911a602ae0df488"
+"QFiND/src/id_sub.jl" = "d59f4f201167c83e6a8bd06f38186b7dbf06776e97ad62a998d66bd1c24613ea"
+"QFiND/src/psd.jl" = "f0645588836f8f0b3528c0b9d91f893f77ba03463b3509f3c5d8dcee975dc263"
+"QFiND/src/specdens.jl" = "ee601f406b12b28ec0e7d9e889a15127f1890f39ad95e491edb89cbf79f24924"
+"QFiND/src/utils.jl" = "69137416dc3d3bb0e705a1676367b126beede11eb53c2f743831f68c9ea89b2d"
+"TTDynamics/Manifest.toml" = "6667efe0c5d5222dac86d1df710ff5b2c63fb5dc1c30ed3567c410c4385353a5"
+"TTDynamics/examples/common/output_utils.jl" = "edf8e886ab6d46f107e802279e455e56a80de61be3c22c4444bdc592ce269bfb"
+"TTDynamics/examples/holstein/Manifest.toml" = "d3797d18dac91169d0aeb9d2ac69383685c4ec2189b2cc260690418246351fa7"
+"TTDynamics/examples/holstein/Project.toml" = "594168e104cd357a5ae628719a0a686586dd2ef6f74c56900acc218025790801"
+"TTDynamics/examples/holstein/config.jl" = "03ae5a24652fe60fbb14ac7ffc4779626e858166d3264377c3624f53fe816441"
+"TTDynamics/examples/holstein/model.jl" = "8e655f5d5cfbc02dc0626cc455729bb4f6a6b83a0a654f7d7a0eed88f26983b2"
+"TTDynamics/examples/holstein/utils.jl" = "8b1448a0c3298028359e5517260c7abbaf1a0f42a6c634cff7a06784a1f6835e"
+"TTDynamics/src/TTDynamics.jl" = "53cafdd650d696886a288b54c71c72294ef3d3619df8c4be423e397e8f66ce6d"
+"TTDynamics/src/correlation.jl" = "e92e9d841b09743061538e10d6cfac08c79385dd6489d73b587f9aca231c8e18"
+"TTDynamics/src/heom.jl" = "859f2e5e0f5dfe7a1ad617e495af57997a6c9fad392c791031ec144516b01015"
+"TTDynamics/src/heom_observables.jl" = "99419437363c48846a80b05919ceb66212138d732350f0ed18bb11b1936858fa"
+"TTDynamics/src/heom_old.jl" = "7efef6b6913e8c36879ce57a84e93b3385638caa83ec0a8b2d4dfe88fcd20f88"
+"TTDynamics/src/multicore_heom.jl" = "dde2385fa6484ff9a30498b7fc6c64441994ff7907e840ffac3b7c2494a6c629"
+"TTDynamics/src/multicore_redfield.jl" = "bc4363f602fb831ead85bbd786f00cc1866392eaf178fd73fa6ea127dbc86f7a"
+"TTDynamics/src/multicore_states.jl" = "bfe8c25980d404abe56f450435c1d51431bdb4af867e1dc2b3fd5dd72b097541"
+"TTDynamics/src/tamen_propagation.jl" = "e0c18fb52bc863b220fee22b8e1755a4db2d9699e4d9e9b6a90af59fdfcba367"
+"TTDynamics/src/tfd.jl" = "a2cc8137fae02ff214ff143f21501aa5a4a54912b2762215fe0677178d37d4a8"
+"TTDynamics/src/tt_io.jl" = "15c83d444d9ee07e3a806f6b0ce6105a612820a56f2a83d00665221eb50b5503"
+"TTDynamics/src/tt_op.jl" = "e66bc99f08753b452bdd5fca7af8dcb9328e37d5a3117708a51bf8ebff75bb76"
+"TTDynamics/src/tt_states.jl" = "8916bad7ecaebe73aba96b0540de15f9ea2316339f4ab783d399ddade4fcac36"
+"TTDynamics/src/types.jl" = "a9c0e4c63fc45bebf94eed6a5cb821ea271aae96bb4979b5eea7e1bdcca9c564"
+"TTDynamics/src/util.jl" = "15c6f8363c7bcbaf46781fdd6293deae6d703431e6f1a134d26f139a4bc768ee"
+"TTNDynamics/Manifest.toml" = "f7369cec9bf918a3c4aa7c24c8366f244fcba9ca7fc8fbfd830898a798c8b561"
+"TTNDynamics/benchmarks/holstein10_split/common.jl" = "9741b1653f0c005894d4e6f4d90ab9be2b048546534aa8c7cfaad64f82caa02c"
+"TTNDynamics/benchmarks/holstein_longtime/analysis.jl" = "f53f289e708bd1837f989b2e4c1ed5e73d8c03c20e5c1ec9ca6c80a58f4f8bad"
+"TTNDynamics/benchmarks/holstein_longtime/configuration.jl" = "1dce93b04e3d400babde8bbba291bef2c219290c570641187c018cbaaf41e91d"
+"TTNDynamics/benchmarks/holstein_longtime/driver.jl" = "16ad9d5300dbd29992b5299dbb965794e22d36d2ffeb49cdd74320cfc44f82ae"
+"TTNDynamics/benchmarks/parallel_large_trees/fixtures.jl" = "19f9503d85cd6176c085714ee0300f0e6af687d317db9046665711c3aead6df6"
+"TTNDynamics/benchmarks/tamen_comparison/common.jl" = "f2c460b4bf02ac71822e150bb214e8bb2813dcbe8d812120144b32cc91f6ff45"
+"TTNDynamics/src/TTNDynamics.jl" = "a43e940aa278e84b272593a8f45e464ad360fe1075447f5b673f61e908c10e51"
+"TTNDynamics/src/adaptive_evolution.jl" = "ad39ad8e89b8c590c4ae32a3ec759f89bd8fcd075a9a78a0012eb7cf35e30d6a"
+"TTNDynamics/src/evolution.jl" = "cda30530b3c27cbe81cb3e221321661152ddcc66f6b1a5491820441e3a0d10e9"
+"TTNDynamics/src/heom.jl" = "bc7b058626b80d271e9f966a54fb12762260c2dbcd38c9e3c8b0b104ffe59847"
+"TTNDynamics/src/tamen_evolution.jl" = "7de57fd424b583523a431115813d8c279b8fbc9fa5e0d5ebe48da4dc429b70be"
+"TTNDynamics/src/tfd.jl" = "2a2e512021c1fc31d14bd63e658f22d956940c3274e7cef5b3a61d679917df2b"
+"TTNDynamics/src/tfd_evolution.jl" = "5062ba9f81e552c5ccf8a97aed24032c0585c14aab697fdf2e9c2a3f7e4ffe6e"
+"TTNSolver/Manifest.toml" = "f5910c8390461ed25dfd6e86a1091b10228f21ba30da97da7f981aa972e1b808"
+"TTNSolver/src/TTNSolver.jl" = "0e1e73d6cd82a031cc7c7a6a3bca1592f6fbd8a0bc5609fe02b74822b0914630"
+"TTNSolver/src/adaptive.jl" = "30031ac94f9bb13156742e39a7c7ccc4cae9385cc84eb3ddaf640ba00d572c58"
+"TTNSolver/src/algebra.jl" = "3b4ca1256775849458b08c4900bb6e95616d61e9bd3e3c9a4f0b03fdd63a58e8"
+"TTNSolver/src/bug.jl" = "6ac02a0e16302761931d12d88c0bdac57dd555e64c4f8d23b88454b4e6b4a582"
+"TTNSolver/src/bug_workspaces.jl" = "b10d8318dcef2b085d2e402cefc6a5239b2739a4abdc48c3a75fffa9c308e833"
+"TTNSolver/src/contractions.jl" = "013d947532a883cadff1f4cff053d8ac1d52c3091d4e1b6e66f333bfad570d8c"
+"TTNSolver/src/enrichment.jl" = "d17737938adf810d67d254d160629ec506aa15578674b4d0c142c122c37fda91"
+"TTNSolver/src/operators.jl" = "1d1ef3d3b66f430daae8017b91f77d35f7acde5eb4f23a29f66b201a934387ad"
+"TTNSolver/src/parallel_bug.jl" = "0b2201e4007164da5053f58ced4434e2347e7016c3c37aa762f7b62d35ccfb2f"
+"TTNSolver/src/parallel_workspaces.jl" = "b86ee8881e381d1af3e9d840e6c2b6231c6a2059134d1ff193ea525b04029232"
+"TTNSolver/src/spacetime.jl" = "dd7394d5cb816096624774ac10c8c5161ccd6b630348d43fe652a6dcd70f54d0"
+"TTNSolver/src/states.jl" = "5403084b2f37f61999867d27626e5cba8f80a23423c7c14799c98602b2789e6d"
+"TTNSolver/src/tamen.jl" = "3beabfaf0ff58e5fc08fda728bd18dc576da50f88f1d03b7b3a5bde8a9bae550"
+"TTNSolver/src/tamen_cert_truncation.jl" = "32521f7a09fda17a26cea5ac596e6dc59a0079e707d4bfe067cc16e125f46092"
+"TTNSolver/src/tamen_cert_workspace.jl" = "5e6fa2c07f18cfea250f93bef2e39565a828a3ddfe3488043dd222334039c1ae"
+"TTNSolver/src/tamen_certification.jl" = "f25ec225ba482e4136e57a9e7f4af1adb873764708c4042267a273778ee9af3d"
+"TTNSolver/src/tamen_etter.jl" = "2e92abd89adf0ce18f24b17b4f6a93d8f65de9702d61b1a3edf37974db4bcb3a"
+"TTNSolver/src/tamen_evolution.jl" = "3efd08735e86eb4a1acec124ed45ad2ac31eda89ae5fa80d78b7c19ef0c502b7"
+"TTNSolver/src/tamen_residual.jl" = "4244f20ded3b97c1979f4db674292c2b748b202fc94789aab5a37657d8ef19e7"
+"TTNSolver/src/tamen_time_error.jl" = "0cc1202460c0bb98a411f82cdabc30bc5bea3ea256e87c596d455533f7885ad6"
+"TTNSolver/src/tamen_warm_start.jl" = "0170bd5943e1f0852ca05c3da2d6ab7ebd001b3485959bdd8633937ff6bfd36c"
+"TTNSolver/src/tamen_workspace.jl" = "b374a761034bd79e241b4b71e8e394d70417e966cb36673b2eb126a906b82950"
+"TTNSolver/src/timing.jl" = "d2fd545b0b7de21a56b4caebff788a41573ae91576e10b8292144a62fc37ac57"
+"TTNSolver/src/trees.jl" = "70ca3f2d9a32899cd7b80c802bf843bfcc8e2d94bb76be3d67c5c70261bf7273"
+"TTNSolver/src/truncation.jl" = "f34eaa131bc3d64279636ef33d001cd9816238d9f517592a5eccaacd5af5a78e"
+"TTSolver/Manifest.toml" = "a24fff4e6a47dce46f44cd54e207586d793980b4ba9ab519e41233452965ef75"
+"TTSolver/src/TTSolver.jl" = "e89c6086940511874389581acad60a265f25c49a936284f76229d68bb0a74436"
+"TTSolver/src/amen_solve.jl" = "ba2a5d55f6ee742560a1c26e7ef075fe7be68e2ea7db608a2ba0fe4cee3abed8"
+"TTSolver/src/amen_utils.jl" = "a4521fef138c5f557e5d86b6beb8510c8ed265376036affb2d4bcbba60916eaf"
+"TTSolver/src/dr_utils.jl" = "d6f6839eb9c56855843909982f455104c61edf1ff077a9d6ab22ce4e91a5a409"
+"TTSolver/src/extract_snapshot.jl" = "add4c98cae537d6791bcaf212a302a6347545bb00d0d883a33e0659287b3815d"
+"TTSolver/src/tamen.jl" = "acaf22f8f0e0c16d205b9cc587e6bcf8d69cd1ba1bf6a23c0ee36cda2032b2e8"
+"TTSolver/src/time_utils.jl" = "2e23f5432e098aa0b0840620bc636c4378c578a93a803a29831dbb9722661a71"
+"TTSolver/src/tt_basic.jl" = "e2a5770b22fd4bbad0264de96e36d12127c1d252ce76ca3a09c6afcc978769b1"
+"TTSolver/src/tt_ksl.jl" = "2caf5158d5777091372a475797acd020c1e91b0806f62c6b23c63df82fa29496"
+"TTSolver/src/tt_ops.jl" = "1216b49cacc000fb300bb5ee886d1efb2ec7f2f8d8a3544b5e845cd12a0a140a"
+"TTSolver/src/tt_types.jl" = "18077fab7a712c0d342237fe3f16fcd40da97933d350b8cb0db4ad7ad6726932"
+
+[spec]
+blas_threads = 8
+dt_fs = 0.5
+kick_rank = 4
+local_iters = 20
+method = "tamen"
+points = 12
+sweeps = 10
+time_error_damp = 100.0
+tolerance = 0.0001

@@ -1,0 +1,4 @@
+(case = "heom2", threads = 8, sweeps = 3, rank = 9, discrepancy = 8.875822125759411e-16)
+(case = "heom8", threads = 8, sweeps = 4, rank = 14, discrepancy = 6.657893673127181e-16)
+(case = "environment16", rank = 32, threads = 8, discrepancy = 0.0)
+(case = "environment64", rank = 32, threads = 8, discrepancy = 0.0)

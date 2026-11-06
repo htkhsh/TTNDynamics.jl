@@ -1,0 +1,85 @@
+duration = 0.2
+threads = 4
+time_points = 5
+rtol = 1.0e-8
+blas_threads = 1
+maxrank = 32
+
+[[runs]]
+checks = 1
+relative_difference = 6.665685391166606e-16
+repeat = 1
+backend = "sop"
+global_residual_seconds = 0.178099871
+bytes = 256316368
+sweeps = 4
+trace_error = 3.2502842917247534e-13
+operator_ranks = []
+relative_residual_bound = 2.8022015804999224e-9
+seconds = 0.237615881
+operator_discarded_bound = 0.0
+[[runs]]
+checks = 1
+relative_difference = 6.665685391166606e-16
+repeat = 2
+backend = "sop"
+global_residual_seconds = 0.175017974
+bytes = 256316368
+sweeps = 4
+trace_error = 3.2502842917247534e-13
+operator_ranks = []
+relative_residual_bound = 2.8022015804999224e-9
+seconds = 0.237173495
+operator_discarded_bound = 0.0
+[[runs]]
+checks = 1
+relative_difference = 6.665685391166606e-16
+repeat = 3
+backend = "sop"
+global_residual_seconds = 0.174518113
+bytes = 256316368
+sweeps = 4
+trace_error = 3.2502842917247534e-13
+operator_ranks = []
+relative_residual_bound = 2.8022015804999224e-9
+seconds = 0.235905306
+operator_discarded_bound = 0.0
+[[runs]]
+checks = 1
+relative_difference = 6.665685391166606e-16
+repeat = 1
+backend = "ttno"
+global_residual_seconds = 0.027367824
+bytes = 177656968
+sweeps = 4
+trace_error = 3.2502842917247534e-13
+operator_ranks = [3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1]
+relative_residual_bound = 2.8699708322084903e-9
+seconds = 0.089805211
+operator_discarded_bound = 3.934007165124409e-14
+[[runs]]
+checks = 1
+relative_difference = 6.665685391166606e-16
+repeat = 2
+backend = "ttno"
+global_residual_seconds = 0.028541775
+bytes = 177656968
+sweeps = 4
+trace_error = 3.2502842917247534e-13
+operator_ranks = [3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1]
+relative_residual_bound = 2.8699708322084903e-9
+seconds = 0.088550378
+operator_discarded_bound = 3.934007165124409e-14
+[[runs]]
+checks = 1
+relative_difference = 6.665685391166606e-16
+repeat = 3
+backend = "ttno"
+global_residual_seconds = 0.027017983
+bytes = 177656968
+sweeps = 4
+trace_error = 3.2502842917247534e-13
+operator_ranks = [3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1]
+relative_residual_bound = 2.8699708322084903e-9
+seconds = 0.088099696
+operator_discarded_bound = 3.934007165124409e-14

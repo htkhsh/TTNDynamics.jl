@@ -1,0 +1,58 @@
+label = "baseline"
+truncation_per_step = 5.0e-7
+dt_fs = 0.05
+threads = 4
+krylov_tol = 1.0e-12
+initial_snapshot = "/home/takahashi/.julia/dev/TTNDynamics/benchmarks/holstein_ps2/output/holstein5_eager/ps2_five_fs/rep1/time_3.jls"
+elapsed_fs = 0.05
+blas_threads = 1
+solver_source = "/tmp/ttn-reference-optimization/baseline/TTNSolver/src/TTNSolver.jl"
+
+[[runs]]
+trace_error = 2.2329918740933642e-15
+method = "augmented"
+relative_difference = 8.928034692878022e-16
+bytes = 3046289320
+repeat = 1
+seconds = 30.705804103
+maxrank = 64
+[[runs]]
+trace_error = 2.2329918740933642e-15
+method = "augmented"
+relative_difference = 8.928034692878022e-16
+bytes = 3046289320
+repeat = 2
+seconds = 31.594476133
+maxrank = 64
+[[runs]]
+trace_error = 2.2329918740933642e-15
+method = "augmented"
+relative_difference = 8.928034692878022e-16
+bytes = 3046289320
+repeat = 3
+seconds = 31.251688562
+maxrank = 64
+[[runs]]
+trace_error = 1.7815424140811436e-15
+method = "parallel"
+relative_difference = 7.461197692122662e-16
+bytes = 2107939376
+repeat = 1
+seconds = 7.475386925
+maxrank = 64
+[[runs]]
+trace_error = 1.7815424140811436e-15
+method = "parallel"
+relative_difference = 7.461197692122662e-16
+bytes = 2107939376
+repeat = 2
+seconds = 7.66618935
+maxrank = 64
+[[runs]]
+trace_error = 1.7815424140811436e-15
+method = "parallel"
+relative_difference = 7.461197692122662e-16
+bytes = 2107939376
+repeat = 3
+seconds = 7.732183576
+maxrank = 64

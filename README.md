@@ -17,6 +17,14 @@ julia --startup-file=no --project=examples examples/holstein_tfd/dynamics.jl
 
 ## Time-evolution algorithms
 
+HEOM also supports experimental **space-time TTN AMEn** via `heom_tamen_evolve`,
+following [Dolgov's space-time formulation](https://arxiv.org/abs/1403.8085).
+It supports Chebyshev/CN, adaptive interval lengths, independent output times
+and trace protection for fused and split layouts. `als_sweep=:etter, threaded=true`
+enables sibling ALS solves following [Etter](https://doi.org/10.1137/15M1038852).
+See the [parallel ALS measurements](docs/tamen_etter.md) and
+[usage, validation and remaining gaps](docs/tamen.md).
+
 HEOM and TFD support first-order **augmented BUG** [1] and **parallel BUG** [3],
 both with adaptive tensor ranks. The solver keyword `method=:parallel` selects
 parallel BUG; `:augmented` is the default. `threaded=true` (default) runs sibling

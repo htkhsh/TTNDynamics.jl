@@ -1,0 +1,10 @@
+completed_repetitions = 0
+failure = "Stopped an expensive trial; only accepted checkpoints are used for accuracy comparison."
+phase = "calibration_stopped"
+recovered_at_unix = 1.793940446471203e9
+repetition = 1
+setup_seconds = 12.009591742
+time_fs = 3.0
+wall_seconds = 683.5612678527832
+wall_seconds_is_complete = false
+warmup_seconds = 18.3857476

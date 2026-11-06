@@ -17,6 +17,8 @@ one. NumPy and Matplotlib are only needed for the optional Python plots.
 | HEOM operator and dense check | `heom/operator_check/run.jl` | Writes two SVGs directly |
 | Fixed-step augmented BUG | `heom/bug_dynamics/run.jl` | `heom/bug_dynamics/plot.py` |
 | Adaptive augmented BUG | `heom/adaptive_dynamics/run.jl` | `heom/adaptive_dynamics/plot.py` |
+| Experimental space-time TTN AMEn (split, dense check) | `heom/tamen_dynamics/run.jl` | Writes CSV diagnostics |
+| Adaptive TTN AMEn (Chebyshev/CN, split) | `heom/tamen_dynamics/adaptive.jl` | Writes samples and interval-attempt CSVs |
 | Two-site Holstein–TFD (fixed by default) | `holstein_tfd/dynamics.jl` | `holstein_tfd/plot_dynamics.py` |
 
 For example:

@@ -1,0 +1,5 @@
+Julia 1.12.6; CPU znver5; Julia threads 1; BLAS threads 1; repeats 3
+Warmed paths, alternating order, GC enabled; explicit GC and setup excluded from timing.
+HEOM: split M=2, 8 modes, n=3, h=0.2, nt=5, rtol=1e-8, rank<=32, local residual.
+Synthetic: 16/64 spatial leaves, n=4, rank<=24, 2d+1 space-time terms, h=0.2, nt=5.
+Synthetic measures ONE sweep with local tolerance1e-9, not a converged propagation.

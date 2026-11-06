@@ -1,0 +1,10 @@
+Test Summary: | Pass  Total     Time
+TTNSolver     | 2644   2644  1m07.4s
+Test Summary: | Pass  Total   Time
+TTNDynamics   |  595    595  19.1s
+Test Summary:       | Pass  Total   Time
+PS2 numerical trial |   43     43  10.0s
+Test Summary:                   | Pass  Total   Time
+PS2 split HEOM physical fixture |   75     75  22.0s
+Test Summary:         | Pass  Total   Time
+PS2 comparison runner |    8      8  23.8s

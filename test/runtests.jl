@@ -17,4 +17,7 @@ include("../examples/heom/common/dense_heom_reference.jl")
     include("parallel_evolution.jl")
     include("truncation_policy.jl")
     include("augmented_threads.jl")
+    include("tamen_evolution.jl")
+    include("tamen_adaptive_evolution.jl")
+    include("tamen_warm_start.jl")
 end

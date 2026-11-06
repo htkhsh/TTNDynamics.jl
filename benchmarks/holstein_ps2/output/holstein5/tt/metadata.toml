@@ -1,0 +1,19 @@
+stop_fs = 5.0
+
+[runtime]
+blas_threads = 8
+cpu = "AMD Ryzen Threadripper PRO 9985WX 64-Cores"
+gc_threads = 1
+julia = "1.12.6"
+julia_threads = 4
+
+[spec]
+blas_threads = 8
+dt_fs = 0.5
+kick_rank = 4
+local_iters = 20
+method = "tamen"
+points = 12
+sweeps = 10
+time_error_damp = 100.0
+tolerance = 0.0001

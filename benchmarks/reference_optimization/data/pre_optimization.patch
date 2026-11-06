@@ -1,0 +1,363 @@
+--- a/src/TTNSolver.jl
++++ b/src/TTNSolver.jl
+@@ -8,7 +8,6 @@
+ export TTNTensor, product_state, dense, leafdims, tree_ranks
+ export orthogonalize!, ttn_distance, enrich_basis
+ export ProductTerm, SumOfProducts, apply
+-export TreeTensorOperator
+ export OperatorEnvironments, operator_environments, local_apply
+ export truncate!
+ export augmented_bug_step, parallel_bug_step, LocalSolveFailure
+@@ -24,7 +23,6 @@
+ include("operators.jl")
+ include("contractions.jl")
+ include("truncation.jl")
+-include("ttno.jl")
+ include("enrichment.jl")
+ include("bug_workspaces.jl")
+ include("bug.jl")
+--- a/src/bug.jl
++++ b/src/bug.jl
+@@ -31,7 +31,7 @@
+             throw(ArgumentError("maxrank cannot hold the conserved directions"))
+     end
+     tree = old.tree
+-    up = _upward_operators(operator, old;orthonormal=true)
++    up = _upward_operators(operator, old)
+     initial = Vector{Union{Matrix{ComplexF64},Array{ComplexF64,3}}}(undef,length(tree.children))
+     boundary = Vector{Vector{Matrix{ComplexF64}}}(undef,length(tree.children))
+     root = tree.root
+@@ -45,7 +45,7 @@
+             fac = qr(complement)
+             rank = min(size(complement)...)
+             Q,R = Matrix(fac.Q)[:,1:rank],Matrix(fac.R)
+-            boundary[child] = _complement_operators(Q,boundary[node],up[sibling];orthonormal=true)
++            boundary[child] = _complement_operators(Q,boundary[node],up[sibling])
+             initial[child] = _isleaf(tree,child) ? old.leaves[child] * transpose(R) :
+                 _parent_product(old.cores[child],R)
+             descend(child)
+@@ -156,8 +156,7 @@
+         # IVP and restore its amplitude, so small coefficients still update.
+         y, info = KrylovKit.exponentiate(rhs, Float64(h), x / scale;
+             ishermitian=false, issymmetric=false, tol=Float64(krylov_tol),
+-            krylovdim=min(Int(krylovdim), length(x)), maxiter=Int(krylov_maxiter),
+-            eager=true, verbosity=0)
++            krylovdim=min(Int(krylovdim), length(x)), maxiter=Int(krylov_maxiter), verbosity=0)
+         info.converged == 1 || throw(LocalSolveFailure(:nonconvergence, Float64(info.normres)))
+         all(isfinite, y) || throw(LocalSolveFailure(:nonfinite, Inf))
+         restored = scale .* y
+@@ -183,7 +182,7 @@
+             if !isnothing(c)
+                 conserved_overlap[child] = Uhat' * c.leaves[child]
+             end
+-            upnew[child] = _leaf_operators(operator,modes[child],Uhat;orthonormal=true)
++            upnew[child] = _leaf_operators(operator,modes[child],Uhat)
+         else
+             evolved, _ = evolve_core(child)
+             left, right = tree.children[child]
+@@ -196,7 +195,7 @@
+             if !isnothing(c)
+                 conserved_overlap[child] = Uhat' * protected
+             end
+-            upnew[child] = _subtree_operators(updated[child],upnew[left],upnew[right];orthonormal=true)
++            upnew[child] = _subtree_operators(updated[child],upnew[left],upnew[right])
+         end
+     end
+ 
+--- a/src/bug_workspaces.jl
++++ b/src/bug_workspaces.jl
+@@ -53,22 +53,17 @@
+ function _leaf_rhs_workspace(operator, mode, boundary, initial; buffers=nothing)
+     local_product,acted = isnothing(buffers) ? (similar(initial),similar(initial)) : buffers
+     transposed = transpose.(boundary)
+-    identity_boundary = isone.(boundary)
+     function action(x)
+         result = zeros(ComplexF64,size(x))
+         for (k,term) in enumerate(operator.terms)
+             iszero(term.coefficient) && continue
+             if haskey(term.factors,mode)
+                 mul!(local_product,term.factors[mode],x)
+-                source = local_product
++                mul!(acted,local_product,transposed[k])
+             else
+-                source = x
++                mul!(acted,x,transposed[k])
+             end
+-            if !identity_boundary[k]
+-                mul!(acted,source,transposed[k])
+-                source = acted
+-            end
+-            result .+= term.coefficient .* source
++            result .+= term.coefficient .* acted
+         end
+         return result
+     end
+@@ -77,7 +72,6 @@
+ 
+ function _core_rhs_workspace(operator, boundary, left, right, initial; buffers=nothing)
+     terms = _group_core_terms(operator, boundary, left, right)
+-    identities = [isone.(t.factors) for t in terms]
+     p,l,r = size(initial)
+     if isnothing(buffers)
+         left_input = Array{ComplexF64}(undef,l,p,r)
+@@ -96,30 +90,14 @@
+     function action(x)
+         result = zeros(ComplexF64,size(x))
+         permutedims!(left_input,x,(2,1,3))
+-        for (term,(bi,li,ri)) in zip(terms,identities)
++        for term in terms
+             B,L,R = term.factors
+-            if li && ri
+-                source = x
+-            else
+-                if li
+-                    permutedims!(right_input,x,(3,1,2))
+-                else
+-                    mul!(left_out,L,left_in)
+-                    permutedims!(right_input,left_output,(3,2,1))
+-                end
+-                if ri
+-                    permutedims!(projected_right,right_input,(2,3,1))
+-                else
+-                    mul!(right_out,R,right_in)
+-                    permutedims!(projected_right,right_output,(2,3,1))
+-                end
+-                source = projected_right
+-            end
+-            if !bi
+-                mul!(parent_out,B,reshape(source,p,:))
+-                source = acted
+-            end
+-            result .+= term.coefficient .* source
++            mul!(left_out,L,left_in)
++            permutedims!(right_input,left_output,(3,2,1))
++            mul!(right_out,R,right_in)
++            permutedims!(projected_right,right_output,(2,3,1))
++            mul!(parent_out,B,parent_in)
++            result .+= term.coefficient .* acted
+         end
+         return result
+     end
+--- a/src/contractions.jl
++++ b/src/contractions.jl
+@@ -29,30 +29,24 @@
+     return result
+ end
+ 
+-function _leaf_operators(operator, mode, bra, ket=bra; orthonormal=false)
++function _leaf_operators(operator, mode, bra, ket=bra)
+     cache = Dict{Union{Nothing,Matrix{ComplexF64}},Matrix{ComplexF64}}()
+     result = Vector{Matrix{ComplexF64}}(undef, length(operator.terms))
+     for (k,term) in enumerate(operator.terms)
+         factor = get(term.factors, mode, nothing)
+         result[k] = get!(cache, factor) do
+-            if orthonormal && bra === ket && isnothing(factor)
+-                Matrix{ComplexF64}(I,size(bra,2),size(bra,2))
+-            else
+-                bra' * (isnothing(factor) ? ket : factor * ket)
+-            end
++            bra' * (isnothing(factor) ? ket : factor * ket)
+         end
+     end
+     return result
+ end
+ 
+-function _subtree_operators(core, left, right; orthonormal=false)
++function _subtree_operators(core, left, right)
+     basis = _basis_matrix(core)
+-    return _mixed_subtree_operators(basis, core, left, right; orthonormal)
++    return _mixed_subtree_operators(basis, core, left, right)
+ end
+ 
+-# orthonormal=true asserts that bra is the isometric basis represented by core.
+-# Mixed old/new frames and general public environments must leave it false.
+-function _mixed_subtree_operators(bra, core, left, right; orthonormal=false)
++function _mixed_subtree_operators(bra, core, left, right)
+     isempty(left) && return Matrix{ComplexF64}[]
+     p,l,r = size(core)
+     a,b = size(first(left),1),size(first(right),1)
+@@ -67,12 +61,9 @@
+     lm,ri,ro = reshape(left_out,a,:),reshape(right_in,r,:),reshape(right_out,b,:)
+     basis = reshape(projected,a*b,p)
+     return _map_unique_pairs(left, right) do L,R
+-        if orthonormal && isone(L) && isone(R)
+-            return Matrix{ComplexF64}(I,p,p)
+-        end
+-        isone(L) ? copyto!(lm,left_in) : mul!(lm,L,left_in)
++        mul!(lm,L,left_in)
+         permutedims!(right_in,left_out,(3,2,1))
+-        isone(R) ? copyto!(ro,ri) : mul!(ro,R,ri)
++        mul!(ro,R,ri)
+         permutedims!(projected,right_out,(3,1,2))
+         bra' * basis
+     end
+@@ -92,26 +83,25 @@
+     return Q' * reshape(acted, b*s, :)
+ end
+ 
+-function _complement_operators(Q, boundary, sibling; orthonormal=false)
++function _complement_operators(Q, boundary, sibling)
+     isempty(boundary) && return Matrix{ComplexF64}[]
+     b,s = size(first(boundary),1),size(first(sibling),1)
+     # Express the complement as a subtree with Q as both bra and ket. This
+     # uses the same buffered contraction for all distinct boundary pairs.
+     core = permutedims(reshape(Q,b,s,:),(3,1,2))
+-    return _mixed_subtree_operators(Q,core,boundary,sibling; orthonormal)
++    return _mixed_subtree_operators(Q,core,boundary,sibling)
+ end
+ 
+-function _upward_operators(operator, state; orthonormal=false)
++function _upward_operators(operator, state)
+     up = [Vector{Matrix{ComplexF64}}(undef, length(operator.terms))
+           for _ in state.tree.children]
+     modes = Dict(node => mode for (mode, node) in enumerate(state.tree.leaf_order))
+     for node in state.tree.postorder
+-        isometry = orthonormal && node != state.tree.root
+         up[node] = if _isleaf(state.tree, node)
+-            _leaf_operators(operator, modes[node], state.leaves[node];orthonormal=isometry)
++            _leaf_operators(operator, modes[node], state.leaves[node])
+         else
+             left, right = state.tree.children[node]
+-            _subtree_operators(state.cores[node], up[left], up[right];orthonormal=isometry)
++            _subtree_operators(state.cores[node], up[left], up[right])
+         end
+     end
+     return up
+--- a/src/parallel_bug.jl
++++ b/src/parallel_bug.jl
+@@ -65,8 +65,7 @@
+     iszero(scale) && return (;value=copy(x),error=0.0,solves=1,skipped=0,dimension=length(x))
+     y,info = KrylovKit.exponentiate(rhs,Float64(h),x/scale;
+         ishermitian=false,issymmetric=false,tol=Float64(krylov_tol),
+-        krylovdim=min(Int(krylovdim),length(x)),maxiter=Int(krylov_maxiter),
+-        eager=true,verbosity=0)
++        krylovdim=min(Int(krylovdim),length(x)),maxiter=Int(krylov_maxiter),verbosity=0)
+     info.converged == 1 || throw(LocalSolveFailure(:nonconvergence,Float64(info.normres)))
+     value = scale .* y
+     all(isfinite,value) || throw(LocalSolveFailure(:nonfinite,Inf))
+--- a/src/parallel_workspaces.jl
++++ b/src/parallel_workspaces.jl
+@@ -17,12 +17,12 @@
+     pi,po = reshape(parent_in,p,:),reshape(acted,a,:)
+     for term in terms
+         B,L,R = term.factors
+-        isone(L) ? copyto!(lm,left_in) : mul!(lm,L,left_in)
++        mul!(lm,L,left_in)
+         # Directly shuffle left/parent/right -> right/parent/left.
+         permutedims!(right_in,left_out,(3,2,1))
+-        isone(R) ? copyto!(ro,ri) : mul!(ro,R,ri)
++        mul!(ro,R,ri)
+         permutedims!(parent_in,right_out,(2,3,1))
+-        isone(B) ? copyto!(po,pi) : mul!(po,B,pi)
++        mul!(po,B,pi)
+         result .+= term.coefficient .* acted
+     end
+     return result
+--- a/src/tamen.jl
++++ b/src/tamen.jl
+@@ -133,7 +133,7 @@
+                residual_maxrank=nothing, strict=true, time_scheme=:cheb,
+                conserved_observables=nothing, estimate_time_error=false,
+                workspace=nothing, threaded=false, residual_method=:local,
+-               residual_sweeps=1, residual_check_every=4, residual_backend=:sop,
++               residual_sweeps=1, residual_check_every=4,
+                warm_start=nothing, store_warm_start=false, als_sweep=:serial)
+ 
+ Experimental AMEn-type fixed-interval solve for `dx/dt = generator*x`. Attach
+@@ -143,14 +143,6 @@
+ point, as in TT tAMEn. Chebyshev counts unknowns excluding the initial point.
+ The generator must be constant over the interval. No dense spatial tensor or
+ global matrix is constructed; no normalization or trace correction is applied.
+-
+-`residual_backend=:ttno` selects experimental tree-operator global certification.
+-It compiles and compresses the space-time SoP once per interval, applies it with subtree QR,
+-then compresses the explicit residual once. Local ALS still uses SoP. The
+-default `:sop` uses streamed termwise certification with smaller intermediates.
+-TTNO construction is counted in global residual time; operator/state bond-rank
+-products can make this backend memory intensive. No squared-norm cancellation
+-formula or unchecked acceptance is used.
+ 
+ `residual_maxrank=nothing` defaults to twice `maxrank`, saturating at `typemax(Int)`.
+ `maxrank` caps spatial bonds after each sweep (temporary enriched ranks can be
+@@ -226,7 +218,6 @@
+                     time_scheme=:cheb,estimate_time_error::Bool=false,
+                     conserved_observables=nothing,workspace,threaded::Bool=false,
+                     residual_method=:local,residual_sweeps=1,residual_check_every=4,
+-                    residual_backend=:sop,
+                     warm_start=nothing,store_warm_start::Bool=false,als_sweep=:serial)
+     _check_operator(generator,initial)
+     _check_bug_options(atol,maxrank,krylov_tol,krylovdim,krylov_maxiter)
+@@ -238,7 +229,6 @@
+         residual_maxrank = maxrank <= div(typemax(Int),2) ? 2Int(maxrank) : typemax(Int)
+     end
+     residual_method in (:local,:global) || throw(ArgumentError("residual_method must be :local or :global"))
+-    residual_backend in (:sop,:ttno) || throw(ArgumentError("residual_backend must be :sop or :ttno"))
+     als_sweep in (:serial,:etter) || throw(ArgumentError("als_sweep must be :serial or :etter"))
+     for (name,value) in ((:maxsweeps,maxsweeps),(:kickrank,kickrank),(:residual_maxrank,residual_maxrank),
+                          (:residual_sweeps,residual_sweeps),(:residual_check_every,residual_check_every))
+@@ -259,7 +249,6 @@
+         [_canonical_conserved(initial,c) for c in conserved_observables]
+     time_leaf = length(initial.tree.children)+1
+     A = _spacetime_operator(generator,grid)
+-    certificate_operator = nothing
+     b = _time_lift(initial,grid.d0)
+     warm_started = time_ns()
+     x,auxiliary,warm_start_status = _tamen_initial_guess(initial,grid,warm_start)
+@@ -326,14 +315,7 @@
+         residual = auxiliary
+         if global_residual_checked
+             started = time_ns()
+-            if isnothing(certificate_operator)
+-                # Reserve a small fraction of the solve tolerance for operator
+-                # compression. Its actual Frobenius bound is multiplied by the
+-                # current ||x|| at EVERY check, including later larger iterates.
+-                certificate_operator = residual_backend==:ttno ?
+-                    TreeTensorOperator(A,x.tree;atol=target/2000/max(norm(x),1.0)) : A
+-            end
+-            residual,residual_bound,compression_bound = _tamen_residual(certificate_operator,x,b,target/20,residual_maxrank;
++            residual,residual_bound,compression_bound = _tamen_residual(A,x,b,target/20,residual_maxrank;
+                 workspace=workspace.certification,threaded)
+             residual_global_seconds += (time_ns()-started)/1e9
+             global_checks += 1
+@@ -375,10 +357,7 @@
+                   residual_global_parts=_residual_time_delta(workspace.certification,residual_times_before),
+                   enrichment_seconds,environment_seconds,time_error_seconds,warm_start_seconds),invariant_values,invariant_history,
+         warm_start=next_warm_start,warm_start_used,residual_warm_start_used,warm_start_status,
+-        residual_method,residual_backend,
+-        residual_operator_ranks=certificate_operator isa TreeTensorOperator ? tree_ranks(certificate_operator) : Int[],
+-        residual_operator_discarded_bound=certificate_operator isa TreeTensorOperator ? certificate_operator.discarded_bound : 0.0,
+-        global_checks,residual_updates,als_sweep,als_parallel_tasks,
++        residual_method,global_checks,residual_updates,als_sweep,als_parallel_tasks,
+         threaded=threaded && Threads.nthreads(:default)>1,
+         workspace_stats=_tamen_work_delta(workspace,work_before))
+     strict && !converged && throw(TAMEnConvergenceError(:global_residual,info))
+--- a/src/tamen_certification.jl
++++ b/src/tamen_certification.jl
+@@ -125,27 +125,6 @@
+     end
+ end
+ 
+-# Experimental one-application certificate. Its error allowance includes any
+-# operator compression as ||A-W||_F ||x||; never accept on a compressed operator
+-# residual alone. The small residual is assembled explicitly to avoid squared-
+-# norm subtraction near convergence. Threading currently uses the sum builder.
+-function _tamen_residual(A::TreeTensorOperator,x,b,budget,maxrank;workspace=nothing,threaded=false)
+-    return _with_residual_workspace(workspace) do work
+-        started=_residual_tick(work.timings)
+-        acted=apply(A,x)
+-        residual=_residual_add!(work,b,acted,ProductTerm(1,Dict()),-1,threaded)
+-        _residual_record!(work.timings,Val(:addition_seconds),started)
+-        cut=_residual_truncate!(residual,work.cut;atol=budget,maxrank,timings=work.timings)
+-        bound=cut.discarded_bound+A.discarded_bound*norm(x)
+-        started=_residual_tick(work.timings)
+-        orthogonalize!(residual)
+-        root=residual.tree.root
+-        data=_isleaf(residual.tree,root) ? residual.leaves[root] : residual.cores[root]
+-        _residual_record!(work.timings,Val(:final_qr_seconds),started)
+-        return residual,norm(data)+bound,bound
+-    end
+-end
+-
+ function _residual_certificate(A,x,b,budget,maxrank,workspace,threaded)
+     residual = copy(b)
+     bound = 0.0

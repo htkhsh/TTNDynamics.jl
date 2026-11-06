@@ -1,0 +1,18 @@
+stop_fs = 1.0
+
+[runtime]
+blas_threads = 8
+cpu = "AMD Ryzen Threadripper PRO 9985WX 64-Cores"
+gc_threads = 1
+julia = "1.12.6"
+julia_threads = 4
+
+[spec]
+blas_threads = 8
+dt_fs = 0.2
+krylov_eager = true
+krylov_tol = 1.0e-12
+maxrank = 64
+method = "ps2"
+rank_padding = 1
+truncation_rate = 1.0e-5

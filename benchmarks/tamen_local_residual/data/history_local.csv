@@ -1,0 +1,5 @@
+sweep,estimated_relative_residual,global_checked,relative_residual_bound
+1,0.03233864888520301,false,Inf
+2,2.3187468822580858e-5,false,Inf
+3,2.3061999863089246e-7,false,Inf
+4,1.2238797365774213e-9,true,2.8198497797838323e-9

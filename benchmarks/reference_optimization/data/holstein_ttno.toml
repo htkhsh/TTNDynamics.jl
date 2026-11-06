@@ -1,0 +1,12 @@
+initial_qr_elements = 58621
+spacetime_compressed_ranks = [11, 11, 20, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 9, 6, 13, 7, 9, 6, 13, 30, 6, 8, 6, 11, 6, 8, 6, 11, 30, 39, 2, 2, 1]
+build_seconds = 0.001042516
+spacetime_mature_qr_elements = 6824563200
+ranks = [12, 12, 23, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7, 10, 7, 16, 7, 10, 7, 16, 31, 7, 10, 7, 16, 7, 10, 7, 16, 31, 61, 1]
+spacetime_build_seconds = 0.04850614
+spacetime_operator_discarded_bound = 1.1902897317188782e-7
+build_bytes = 3058712
+note = "QR input size estimate; high-rank full action not run"
+spacetime_operator_budget = 4.873397172404481e-7
+mature_qr_elements = 11397798272
+terms = 102
