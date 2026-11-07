@@ -1,0 +1,1 @@
+stopped by hand at 10:37:04 to relieve memory pressure (61/62 GB used, swap active); incomplete run

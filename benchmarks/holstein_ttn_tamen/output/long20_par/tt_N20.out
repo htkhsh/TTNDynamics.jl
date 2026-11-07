@@ -1,0 +1,28 @@
+WARNING: Constructor for type "Array" was extended in `LowRankApprox` without explicit qualification or import.
+  NOTE: Assumed "Array" refers to `Base.Array`. This behavior is deprecated and may differ in future versions.`
+  NOTE: This behavior may have differed in Julia versions prior to 1.12.
+  Hint: If you intended to create a new generic function of the same name, use `function Array end`.
+  Hint: To silence the warning, qualify `Array` as `Base.Array` in the method signature or explicitly `import Base: Array`.
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 42
+tt_center t=1.0 fs cum=1.63 s rank=37
+tt_center t=2.0 fs cum=5.06 s rank=43
+tt_center t=3.0 fs cum=9.91 s rank=51
+tt_center t=4.0 fs cum=15.92 s rank=59
+tt_center t=5.0 fs cum=24.22 s rank=66
+tt_center t=6.0 fs cum=33.45 s rank=75
+tt_center t=7.0 fs cum=48.77 s rank=86
+tt_center t=8.0 fs cum=68.23 s rank=95
+tt_center t=9.0 fs cum=86.37 s rank=106
+tt_center t=10.0 fs cum=106.16 s rank=118
+tt_center t=11.0 fs cum=132.88 s rank=133
+tt_center t=12.0 fs cum=164.47 s rank=144
+tt_center t=13.0 fs cum=201.45 s rank=158
+tt_center t=14.0 fs cum=244.6 s rank=173
+tt_center t=15.0 fs cum=301.25 s rank=196
+tt_center t=16.0 fs cum=376.28 s rank=214
+tt_center t=17.0 fs cum=464.26 s rank=236
+tt_center t=18.0 fs cum=565.0 s rank=260
+tt_center t=19.0 fs cum=681.21 s rank=284
+tt_center t=20.0 fs cum=821.07 s rank=307

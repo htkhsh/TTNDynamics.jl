@@ -1,0 +1,28 @@
+WARNING: Constructor for type "Array" was extended in `LowRankApprox` without explicit qualification or import.
+  NOTE: Assumed "Array" refers to `Base.Array`. This behavior is deprecated and may differ in future versions.`
+  NOTE: This behavior may have differed in Julia versions prior to 1.12.
+  Hint: If you intended to create a new generic function of the same name, use `function Array end`.
+  Hint: To silence the warning, qualify `Array` as `Base.Array` in the method signature or explicitly `import Base: Array`.
+Running PSD (Padé Spectral Decomposition) method...
+Building HEOM Liouvillian in TT format...
+  XOP number of cores: 22
+tree_center_chain t=1.0 fs cum=0.1 s rank=14
+tree_center_chain t=2.0 fs cum=0.94 s rank=21
+tree_center_chain t=3.0 fs cum=1.36 s rank=28
+tree_center_chain t=4.0 fs cum=2.08 s rank=35
+tree_center_chain t=5.0 fs cum=3.09 s rank=42
+tree_center_chain t=6.0 fs cum=5.23 s rank=49
+tree_center_chain t=7.0 fs cum=8.85 s rank=56
+tree_center_chain t=8.0 fs cum=12.47 s rank=63
+tree_center_chain t=9.0 fs cum=17.97 s rank=70
+tree_center_chain t=10.0 fs cum=26.44 s rank=77
+tree_center_chain t=11.0 fs cum=37.2 s rank=84
+tree_center_chain t=12.0 fs cum=51.92 s rank=91
+tree_center_chain t=13.0 fs cum=78.5 s rank=103
+tree_center_chain t=14.0 fs cum=96.49 s rank=105
+tree_center_chain t=15.0 fs cum=123.23 s rank=112
+tree_center_chain t=16.0 fs cum=155.78 s rank=119
+tree_center_chain t=17.0 fs cum=194.67 s rank=126
+tree_center_chain t=18.0 fs cum=237.58 s rank=133
+tree_center_chain t=19.0 fs cum=285.68 s rank=140
+tree_center_chain t=20.0 fs cum=344.08 s rank=147

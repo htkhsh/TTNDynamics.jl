@@ -2,6 +2,8 @@
 # Logs every interval to output/long20/NAME$LONG_TAG/log.csv and saves states
 # at integer fs (git-ignored). LONG_MAXRANK and LONG_BLAS override the spec;
 # LONG_SITES sets the number of sites and LONG_ROOT the output folder.
+# LONG_TOL, LONG_DT and LONG_TRUNC override the tolerance, step and
+# truncation_rtol; meta.toml records the settings and source hashes.
 include(joinpath(@__DIR__,"common.jl"))
 using .HolsteinTAMEnComparison, LinearAlgebra, Random, Serialization
 const H=HolsteinTAMEnComparison; const HLT=H.HLT; const TS=HLT.TTNSolver
@@ -13,6 +15,12 @@ function main()
     s=H.specification(cfg,name)
     haskey(ENV,"LONG_MAXRANK") && (s["maxrank"]=parse(Int,ENV["LONG_MAXRANK"]))
     haskey(ENV,"LONG_BLAS") && (s["blas_threads"]=parse(Int,ENV["LONG_BLAS"]))
+    haskey(ENV,"LONG_TOL") && (s["tolerance"]=parse(Float64,ENV["LONG_TOL"]))
+    haskey(ENV,"LONG_DT") && (s["dt_fs"]=parse(Float64,ENV["LONG_DT"]))
+    haskey(ENV,"LONG_TRUNC") && (s["truncation_rtol"]=parse(Float64,ENV["LONG_TRUNC"]))
+    HLT.atomic_toml(joinpath(out,"meta.toml"),Dict("spec"=>s,"sites"=>sites,"end_fs"=>endfs,
+        "julia_threads"=>Threads.nthreads(),"sources"=>HLT.source_hashes(),
+        "env"=>Dict(k=>v for (k,v) in ENV if startswith(k,"LONG_"))))
     q=H.ordered_problem(HLT.comparison_problem(cfg),H.run_order(name);
         bath_layout=Symbol(get(s,"bath_layout","balanced")))
     BLAS.set_num_threads(s["blas_threads"])
