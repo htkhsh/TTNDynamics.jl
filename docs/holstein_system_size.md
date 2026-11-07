@@ -272,6 +272,38 @@ TTNは8スレッド、TTはBLAS 8スレッド。どちらもGCスレッド4。4�
 - 20サイトでは、TTNが20 fsまで常に速い（20 fsで1.68倍）。
 - 10サイトでは、10 fs以降はTTが速い。20 fsでの差は1.7倍で、前回の約3倍から縮まった。
 
+20サイトは、同時実行の影響を除くため、TTNとTTを1本ずつ順に実行し直した（同じ8コア、GCスレッド4）。
+
+| 方法 | 5 fs | 10 fs | 15 fs | 20 fs | 20 fsでのランク |
+|---|---:|---:|---:|---:|---:|
+| TTN（8スレッド） | 4.3秒 | 35.9秒 | 142.3秒 | 455.3秒 | 142 |
+| TT（BLAS 8スレッド） | 19.4秒 | 84.9秒 | 246.9秒 | 763.7秒 | 307 |
+
+1本ずつでも、TTNは20 fsまで常に速く、20 fsで1.68倍だった。
+1 fsあたりのコストも、18〜20 fsでTTN 83秒、TT 130秒で、TTNが安いままである。
+
+### 切断を部分木ごとに並列化
+
+環境の縮約の次に大きい逐次処理は、切断と基底の追加（`truncate!`、`orthogonalize!`、`enrich_basis`）だった。
+これらの木の処理を、兄弟の部分木ごとにタスクへ分けた。
+
+- `orthogonalize!` と `enrich_basis` は葉から根へ、`truncate!` の切断は根から葉へ進む。
+- 各ノードは自分と子の分だけを書き換える。子の因子は、元の逐次処理と同じ順に親へ掛ける。
+- そのため、結果はスレッド数によらず、変更前ともビット単位で一致する。
+
+15 fsの保存状態からの1ステップの時間（同じスキャン内での比較）：
+
+| ケース | 従来 3ステップ目 | 変更後 | 従来 4ステップ目 | 変更後 |
+|---|---:|---:|---:|---:|
+| 10サイト、8スレッド、GC 4 | 11.6秒 | 10.1秒 | 21.6秒 | 20.3秒 |
+| 10サイト、4スレッド | 13.1秒 | 12.7秒 | 26.7秒 | 24.8秒 |
+| 20サイト、8スレッド、GC 4 | 31.4秒 | 29.1秒 | 38.2秒 | 35.2秒 |
+| 20サイト、4スレッド | 38.8秒 | 35.7秒 | 46.0秒 | 42.1秒 |
+
+- 20サイト・8スレッドで、切断と根の再解法の時間は6.2/8.0秒から4.8/5.8秒に減った。基底の追加は0.7/0.9秒から0.4/0.6秒になった。
+- ステップ全体では6〜8%の短縮。最大メモリは変わらない。
+- 切断の上の方のノード（系の接合ノードと浴の半分の根）が最も大きく、ここは並列にならないため、効果はこの程度にとどまる。
+
 ## 再現
 
 ```bash
@@ -286,4 +318,4 @@ julia trunc_accuracy.jl
 SCAN_SITES=10 SCAN_LABEL=t8 JULIA_NUM_GC_THREADS=4 julia --threads=8 thread_scan.jl tree_center_chain output/long20/tree_center_chain_lowrank/time_15.jls 4
 ```
 
-記録：[output/sizes](../benchmarks/holstein_ttn_tamen/output/sizes/)、[output/sizes_near](../benchmarks/holstein_ttn_tamen/output/sizes_near/)、[output/long20_trunc](../benchmarks/holstein_ttn_tamen/output/long20_trunc/)、[output/thread_scan](../benchmarks/holstein_ttn_tamen/output/thread_scan/)、[output/long20_par](../benchmarks/holstein_ttn_tamen/output/long20_par/)。
+記録：[output/sizes](../benchmarks/holstein_ttn_tamen/output/sizes/)、[output/sizes_near](../benchmarks/holstein_ttn_tamen/output/sizes_near/)、[output/long20_trunc](../benchmarks/holstein_ttn_tamen/output/long20_trunc/)、[output/thread_scan](../benchmarks/holstein_ttn_tamen/output/thread_scan/)、[output/long20_par](../benchmarks/holstein_ttn_tamen/output/long20_par/)、[output/long20_quiet](../benchmarks/holstein_ttn_tamen/output/long20_quiet/)。
