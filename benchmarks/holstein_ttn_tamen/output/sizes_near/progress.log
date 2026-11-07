@@ -1,0 +1,15 @@
+N=10 MPO max rank (near order) = 12
+N=10 tt threads=1 blas=1 5 fs: 4.21 s rank=53
+N=10 tt threads=4 blas=8 5 fs: 3.47 s rank=52
+N=10 ttn threads=1 blas=1 5 fs: 4.41 s rank=42
+N=10 ttn threads=4 blas=1 5 fs: 3.21 s rank=42
+N=20 MPO max rank (near order) = 23
+N=20 tt threads=1 blas=1 5 fs: 42.39 s rank=66
+N=20 tt threads=4 blas=8 5 fs: 15.16 s rank=67
+N=20 ttn threads=1 blas=1 5 fs: 6.48 s rank=42
+N=20 ttn threads=4 blas=1 5 fs: 4.36 s rank=42
+N=30 MPO max rank (near order) = 35
+N=30 tt threads=1 blas=1 5 fs: 202.48 s rank=79
+N=30 tt threads=4 blas=8 5 fs: 52.4 s rank=79
+N=30 ttn threads=1 blas=1 5 fs: 10.25 s rank=42
+N=30 ttn threads=4 blas=1 5 fs: 6.91 s rank=42

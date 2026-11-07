@@ -9,7 +9,8 @@ const TD=HLT.TTNDynamics
 default_root()=joinpath(@__DIR__,"output",get(ENV,"HOLSTEIN_TTN_TAMEN_OUTPUT","five_fs"))
 const TT_ACCEPTANCE=Dict("tree_tt"=>5e-5,"tree_tt_tight"=>3e-5,"tree_tt_loose"=>1e-4,
     "tree_tt_channels"=>5e-5,"tree_tt_channels_tight"=>3e-5,"tree_tt_channels_loose"=>1e-4,
-    "tree_center"=>5e-5,"tree_center_tight"=>3e-5,"tree_center_loose"=>1e-4)
+    "tree_center"=>5e-5,"tree_center_tight"=>3e-5,"tree_center_loose"=>1e-4,
+    "tree_center_chain"=>5e-5)
 
 # Runs named *center* use heom_tree(...; system_position=:center). Its leaves
 # are visited in the physical order `perm` = (baths of the first half, ket,
@@ -34,12 +35,12 @@ function leaf_sequence(tree)
 end
 
 """Problem view for one core/leaf order; `:original` keeps the stored model."""
-function ordered_problem(p,order)
+function ordered_problem(p,order;bath_layout=:balanced)
     n=length(p.operator.dimensions)
     order==:original && return merge(p,(;order,perm=collect(1:n),ketpos=1,
         mpo=p.problem.liouvillian,trace=p.problem.trace_observable))
     order==:center || error("unknown order $order")
-    tree=TD.heom_tree(p.system;bath_grouping=:coupling,system_position=:center)
+    tree=TD.heom_tree(p.system;bath_grouping=:coupling,system_position=:center,bath_layout)
     perm=leaf_sequence(tree)
     ketpos=findfirst(==(1),perm)
     ketpos<n && perm[ketpos+1]==2 || error("ket and bra must stay adjacent")
@@ -129,7 +130,8 @@ function specification(cfg,name)
             "blas_threads"=>1,"als_sweep"=>"etter","threaded"=>true,
             "truncation_rtol"=>1e-5,"certify"=>false,"local_tol_factor"=>0.01,
             "local_operator"=>(occursin("channels",name) || occursin("center",name)) ? "channels" : "sop",
-            "order"=>String(run_order(name)))
+            "order"=>String(run_order(name)),
+            "bath_layout"=>occursin("chain",name) ? "chain" : "balanced")
     end
     name in ("tree","tree_tight","tree_loose") || error("unknown run $name")
     return Dict{String,Any}("method"=>"tree_tamen","dt_fs"=>0.5,"points"=>8,
@@ -155,7 +157,8 @@ function advance(p,x,s,work,hint)
         warm_start=hint,store_warm_start=true,estimate_time_error=true,
         truncation_rtol=get(s,"truncation_rtol",0.0),certify=get(s,"certify",true),
         local_tol_factor=get(s,"local_tol_factor",nothing),
-        local_operator=Symbol(get(s,"local_operator","sop")))
+        local_operator=Symbol(get(s,"local_operator","sop")),
+        residual_rank=get(s,"residual_rank",nothing))
 end
 
 function run_case(name;root=default_root(),wall_seconds=1200.0,repeats=1,
@@ -180,7 +183,8 @@ function run_case(name;root=default_root(),wall_seconds=1200.0,repeats=1,
         save_status("timeout");return
     end
     p=try
-        built=@timed ordered_problem(HLT.comparison_problem(cfg),Symbol(get(s,"order","original")))
+        built=@timed ordered_problem(HLT.comparison_problem(cfg),Symbol(get(s,"order","original"));
+            bath_layout=Symbol(get(s,"bath_layout","balanced")))
         setup=built.time;built.value
     catch error
         status["failure"]=sprint(showerror,error);save_status("setup_failed");rethrow()

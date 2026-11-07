@@ -83,3 +83,33 @@ end
     @test heom_tree(system;system_position=:center).children==heom_tree(system).children
     @test_throws ArgumentError heom_tree(system;system_position=:middle)
 end
+
+@testset "HEOM trees with chained bath halves" begin
+    n=6
+    H=ComplexF64[abs(i-j)==1 ? 0.4 : 0 for i in 1:n, j in 1:n]
+    P(j)=diagm(ComplexF64.(1:n .== j))
+    modes=[HEOMMode(P(j),0.8+0.1im,0.2,0.3) for j in 1:n]
+    rho=zeros(ComplexF64,n,n); rho[1,1]=0.7; rho[2,2]=0.3; rho[1,2]=0.1im; rho[2,1]=-0.1im
+    system=HEOMTTNSystem(H,modes,fill(2,n);system_layout=:split)
+    tree=heom_tree(system;bath_grouping=:coupling,system_position=:center,bath_layout=:chain)
+    balanced=heom_tree(system;bath_grouping=:coupling,system_position=:center)
+    @test tree.children != balanced.children
+    @test length(tree.leaf_order)==n+2
+    # Chain nodes join one bath leaf to the rest of their half.
+    first_half,right=tree.children[tree.root]
+    leafs=Set(tree.leaf_order[3:end])
+    node=first_half
+    while !(node in leafs)
+        a,b=tree.children[node]
+        @test (a in leafs) || (b in leafs)
+        node=a in leafs ? b : a
+    end
+    x=heom_initial_state(system,rho;tree)
+    @test dense(x) ≈ dense(heom_initial_state(system,rho))
+    op=heom_generator(system)
+    result=heom_tamen_evolve(system,x,[0.0,0.2];time_points=8,rtol=1e-10,maxrank=64,maxsweeps=20)
+    exact=exp(0.2dense(op))*vec(dense(x))
+    @test norm(vec(dense(result.final_state))-exact) < 1e-7*norm(exact)
+    @test_throws ArgumentError heom_tree(system;bath_layout=:chain)
+    @test_throws ArgumentError heom_tree(system;system_position=:center,bath_layout=:ring)
+end

@@ -1,0 +1,12 @@
+N=10 BLAS1 tt_center t=5.0 fs cum=3.8 s rank=52
+N=10 BLAS8 tt_center t=5.0 fs cum=4.77 s rank=53
+N=10 TTN1 tree_center t=5.0 fs cum=4.38 s rank=42
+N=10 TTN4 tree_center t=5.0 fs cum=3.11 s rank=42
+N=20 BLAS1 tt_center t=5.0 fs cum=44.69 s rank=66
+N=20 BLAS8 tt_center t=5.0 fs cum=19.13 s rank=66
+N=20 TTN1 tree_center t=5.0 fs cum=7.19 s rank=42
+N=20 TTN4 tree_center t=5.0 fs cum=4.53 s rank=42
+N=30 BLAS1 tt_center t=5.0 fs cum=156.37 s rank=77
+N=30 BLAS8 tt_center t=5.0 fs cum=54.19 s rank=80
+N=30 TTN1 tree_center t=5.0 fs cum=10.08 s rank=42
+N=30 TTN4 tree_center t=5.0 fs cum=6.66 s rank=42
